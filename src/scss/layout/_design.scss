@@ -19,22 +19,25 @@ legend {
 }
 .design_selected {
     display: flex;
-  align-items: center;
-  gap: 8px;
+    align-items: center;
+    gap: 8px;
     padding: 1rem;
     //border-radius: 12px;
-    border: 1px solid #ddd;
+    border: 1px solid red;
     cursor: pointer;
-    background-color: var(--color-bg-secondary);
+    background-color: var(--color-fill-bg);
+    color: var(--color-fill-text)
 }
 .design_options {
-    display: none;
-    position: absolute;
+   
+    display: flex;
+    justify-content: space-around;
     width: 100%;
     margin-top: 5px;
     border-radius: 12px;
-    background: white;
+    background-color: var(--color-fill-bg);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+     border: 1px solid blue;
 }
 .option {
     padding: 14px;
@@ -54,6 +57,6 @@ input, button {
     border: 1px solid #ddd;
 }
 button {
-    background: rgb(250, 146, 146);
-    color: white;
+    background-color: var(--color-accent-primary);
+    color: var( --color-accent-secondary);
 }
