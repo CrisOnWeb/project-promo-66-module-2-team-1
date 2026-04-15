@@ -1,26 +1,31 @@
 <fieldset class="design_fieldset">
-    <h3 class="design_text">Elige tu diseño:</h3>
-    <btn class="design_btn" type="icon">###</btn>
-        <div class="design_options hidden">
-            <div class="default_design"> Diseño por defecto
-                <span style="background-color: #dfd6d6">__</span>
-                <span style="background-color: #000000">__</span>
-                <span style="background-color: #7e6868">__</span>
+    <legend class="design_text">1. Elige tu diseño:</legend>
+    <div class="custom_select js_customSelect">
+        <div class="design_selected js_selectedDesign"></div>
+
+        <div class="design_options js_optionsDesign">
+            <div class="option js_designDefault js_option" data-value="default"> Diseño por defecto
+                <span class="color" style="background-color: #dfd6d6"></span>
+                <span class="color" style="background-color: #000000"></span>
+                <span class="color" style="background-color: #7e6868"></span>
             </div>
-            <div class="design_option1"> Diseño pastel
-                <span style="background-color: #E5635F">__</span>
-                <span style="background-color: #9ABEF2">__</span>
-                <span style="background-color: #F1DB7E">__</span>
+            <div class="option design_option1 js_option" data-value="pastel"> Diseño pastel
+                <span class="color" style="background-color: #E5635F"></span>
+                <span class="color" style="background-color: #9ABEF2"></span>
+                <span class="color" style="background-color: #F1DB7E"></span>
             </div>
-            <div class="design_option2"> Diseño eléctrico
-                <span style="background-color: #0015ff">__</span>
-                <span style="background-color: #aa00ff">__</span>
-                <span style="background-color: #ff5900">__</span>
+            <div class="option design_option2 js_option" data-value="electrico"> Diseño eléctrico
+                <span class="color" style="background-color: #0015ff"></span>
+                <span class="color" style="background-color: #aa00ff"></span>
+                <span class="color" style="background-color: #ff5900"></span>
             </div>
-            <div class="design_option2"> Diseño neutro
-                <span style="background-color: #8b5a31">__</span>
-                <span style="background-color: #bab531">__</span>
-                <span style="background-color: #3f8745">__</span>
+            <div class="option design_option3 js_option"data-value="neutro"> Diseño neutro
+                <span class="color" style="background-color: #8b5a31"></span>
+                <span class="color" style="background-color: #bab531"></span>
+                <span class="color" style="background-color: #3f8745"></span>
             </div>
         </div>
+    </div>
+    <input type="hidden" name="design_hidden" class="design_hidden js_hiddenDesign" id="design_hidden">
+    <button class="btn js_btn" type="submit">Este me gusta!</button>
 </fieldset>
