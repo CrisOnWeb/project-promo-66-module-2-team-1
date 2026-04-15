@@ -1,3 +1,9 @@
-label{
+.design_fieldset{
+    background-color: grey;
     display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#design{
+    width: 100px;
 }
