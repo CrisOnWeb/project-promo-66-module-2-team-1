@@ -2,7 +2,7 @@
 @use '../common/reset' as reset;
 form{
     width: 100%;
-    background-color: var(--color-bg-secondary);
+   // background-color: var(--color-bg-secondary);
 }
 .design_fieldset{
     border: none;
@@ -26,30 +26,31 @@ legend {
     //border-radius: 12px;
     border: 1px solid red;
     cursor: pointer;
-    background-color: var(--color-fill-bg);
+    //background-color: var(--color-fill-bg);
+    background-color: grey;
     color: var(--color-fill-text)
 }
 .design_options {
-   
-    display: flex;
-    justify-content: space-around;
+    display: none;
+    position: absolute;
     width: 100%;
     margin-top: 5px;
     border-radius: 12px;
-    background-color: var(--color-fill-bg);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-     border: 1px solid blue;
-}
+    //background-color: var(--color-fill-bg);
+    background-color: grey;
+    //box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 1px solid blue;
+    }
 .option {
     padding: 14px;
     display: flex;
-    align-items: center;
     gap: 5px;
     cursor: pointer;
 }
 .color {
-    width: 16px;
-    height: 16px;
+    display: block;
+    width: 2rem;
+    height: 2rem;
 }
 input, button {
     width: 50%;
@@ -57,7 +58,7 @@ input, button {
     border-radius: 12px;
     border: 1px solid #ddd;
 }
-button {
+button { 
     background-color: var(--color-accent-primary);
     color: var( --color-accent-secondary);
 }
