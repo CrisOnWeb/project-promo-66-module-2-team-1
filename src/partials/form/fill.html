@@ -1,57 +1,57 @@
 <section class="fill" aria-labelledby="fill-title">
     <header class="fill__header">
         <h2 class="fill__title" id="fill-title">Rellena los datos</h2>
-        <button class="fill__buton" type="submit">Enviar</button>
     </header>
 
     <fieldset class="fill_fieldset">
-        <legend class="fill__is-hidden">Datos del perro</legend>
-
-        <label class="fill__field fill__field--file">
-            <span class="fill__field-text">Añadir imagen</span>
-            <input class="fill__file-input" type="file" name="imagen" accept="image/*" required />
-        </label>
+        <legend class="fill__legend">Datos del perro</legend>
 
         <label class="fill__field">
-            <span class="fill__is-hidden">Nombre</span>
-            <input class="fill__input" type="text" name="nombre" placeholder="Nombre" required />
+            <span class="fill__label">Añadir imagen</span>
+            <input class="fill__input fill__input--file" type="file" name="imagen" accept="image/*" required />
+        </label>
+
+        <label class="fill__field">
+            <span class="fill__label">Nombre</span>
+            <input class="fill__input" type="text" name="nombre" autocomplete="given-name" placeholder="Nombre" required />
         </label>
         
         <label class="fill__field">
-            <span class="fill__is-hidden">Apellido</span>
-            <input class="fill__input" type="text" name="apellido" placeholder="Apellido" required />
+            <span class="fill__label">Apellido</span>
+            <input class="fill__input" type="text" name="apellido" placeholder="Apellido" autocomplete="family-name"required />
         </label>
         
         <label class="fill__field">
-            <span class="fill__is-hidden">Descripción</span>
-            <input class="fill__input" type="text" name="descripcion" placeholder="Descripción" required />
+            <span class="fill__label">Descripción</span>
+            <input class="fill__input" type="text" name="descripcion" placeholder="Descripción" autocomplete="off" required />
         </label>
         
         <label class="fill__field">
-            <span class="fill__is-hidden">Edad</span>
-            <input class="fill__input" type="number" name="edad" placeholder="Edad" min="0" max="20" step="1" required />
+            <span class="fill__label">Edad</span>
+            <input class="fill__input" type="number" name="edad" placeholder="Edad" min="0" max="20" step="1" inputmode="numeric" required />
         </label>
         
         <label class="fill__field">
-            <span class="fill__is-hidden">Peso</span>
-            <input class="fill__input" type="number" name="peso" placeholder="Peso" min="0" step="0.1" required />
+            <span class="fill__label">Peso</span>
+            <input class="fill__input" type="number" name="peso" placeholder="Peso" min="0" step="0.1" inputmode="decimal" required />
         </label>
         
         <label class="fill__field">
-            <span class="fill__is-hidden">Raza</span>
-            <input class="fill__input" type="text" name="raza" placeholder="Raza" required />
+            <span class="fill__label">Raza</span>
+            <input class="fill__input" type="text" name="raza" placeholder="Raza" autocomplete="off" required />
         </label>
         
         <label class="fill__field">
-            <span class="fill__is-hidden">Color</span>
-            <input class="fill__input" type="text" name="color" placeholder="Color" required />
+            <span class="fill__label">Color</span>
+            <input class="fill__input" type="text" name="color" placeholder="Color" autocomplete="off" required />
         </label>
 
          <label class="fill__field">
-            <span class="fill__is-hidden">Instagram</span>
-            <input class="fill__input" type="url" name="instagram" placeholder="Instagram perruno" required />
+            <span class="fill__label">Instagram</span>
+            <input class="fill__input" type="url" name="instagram" placeholder="Instagram perruno" autocomplete="url" required />
         </label>
 
-        <p class="fill__note">Todos los campos obligatorios</p>
+        <p class="fill__note">Todos los campos son obligatorios.</p>
+        <button class="fill__button" type="submit">Enviar</button>
     </fieldset>
 </section>
