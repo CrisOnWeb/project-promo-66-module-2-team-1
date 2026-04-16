@@ -26,8 +26,8 @@ legend {
     //border-radius: 12px;
     border: 1px solid red;
     cursor: pointer;
-    //background-color: var(--color-fill-bg);
-    background-color: grey;
+   // background-color: var(--color-fill-bg);
+   // background-color: grey;
     color: var(--color-fill-text)
 }
 .design_options {
@@ -36,8 +36,8 @@ legend {
     width: 100%;
     margin-top: 5px;
     border-radius: 12px;
-    //background-color: var(--color-fill-bg);
-    background-color: grey;
+    background-color: var(--color-fill-bg);
+    //background-color: grey;
     //box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     border: 1px solid blue;
     }
@@ -47,10 +47,13 @@ legend {
     gap: 5px;
     cursor: pointer;
 }
-.color {
-    display: block;
-    width: 2rem;
-    height: 2rem;
+.option span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+.option:hover{
+    background-color: var(--color-fill-action);
 }
 input, button {
     width: 50%;
@@ -62,3 +65,54 @@ button {
     background-color: var(--color-accent-primary);
     color: var( --color-accent-secondary);
 }
+
+//Colores de las tarjetas
+.option span:nth-child(1){
+    background-color: var(--form-color-bg);
+}
+.option span:nth-child(2){
+    background-color: var(--form-color-text);
+}
+.option span:nth-child(3){
+    background-color: var(--form-color-accent);
+}
+
+
+/*
+Diseño 1: Por defecto
+    --form-background-card: #F5F5F5;
+    --form-text-card: #1A1A1A;
+    --form-detail-card: #9E9E9E;
+    modo oscuro:
+    --form-background-card-dark: #121212;
+    --form-text-card-dark: #F5F5F5;
+    --form-detail-card-dark: #3A3A3A
+
+Diseño 2: Tonos pastel
+    --form-background-card: #F5F5F5;
+    --form-text-card: #1A1A1A;
+    --form-detail-card: #9E9E9E;
+    modo oscuro:
+    --form-background-card-dark: #2A1F26;
+    --form-text-card-dark: #F3E8EE;
+    --form-detail-card-dark: #7FBFB8;
+
+Diseño 3: Tonos eléctricos
+    --form-background-card: #F5F5F5;
+    --form-text-card: #1A1A1A;
+    --form-detail-card: #9E9E9E;
+    modo oscuro:
+    --form-background-card-dark: #0B0F1A;
+    --form-text-card-dark: #E6FFFF
+    --form-detail-card-dark: #FF00A8;
+    
+Diseño 4: tonos neutros
+    --form-background-card: #EAE7E1;
+    --form-text-card: #3E3E3E;
+    --form-detail-card: #A3B18A;
+    modo oscuro:
+    --form-background-card-dark: #1F1F1F;
+    --form-text-card-dark: #E6E1D9;
+    --form-detail-card-dark: #6B8F71;
+
+*/
