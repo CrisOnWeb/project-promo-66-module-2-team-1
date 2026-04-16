@@ -1,4 +1,7 @@
 .tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
   padding-block: 1.25rem;
   padding-inline: 0.5rem;
   background-color: var(
@@ -6,12 +9,24 @@
   ); // hay que borrarla al terminar de maquetar
 
   &__button {
-    padding-block: 0.5rem;
-    padding-inline: 1.25rem;
-    border: none;
+    position: relative;
+    padding-block: 0.35rem;
+    padding-left: 1.25rem;
+    padding-right: 2.25rem;
+    border: 1px solid transparent;
+    border-radius: 3px;
     background-color: var(--color-accent-secondary);
     color: var(--color-text-primary);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+
+    border-top-right-radius: 0.5rem 50%;
+    border-bottom-right-radius: 0.5rem 50%;
+    corner-shape: bevel;
     cursor: pointer;
+    transition:
+      border 0.1s ease,
+      font-weight 0.1s ease;
 
     &:hover,
     &:active,
