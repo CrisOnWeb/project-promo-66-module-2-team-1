@@ -22,13 +22,15 @@ legend {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 1rem;
+    padding: 1rem; 
     //border-radius: 12px;
     border: 1px solid red;
     cursor: pointer;
    // background-color: var(--color-fill-bg);
    // background-color: grey;
-    color: var(--color-fill-text)
+    //color: var(--color-fill-surface);
+    height: 20px;
+    width: 100px;
 }
 .design_options {
     display: none;
@@ -76,8 +78,14 @@ button {
 .option span:nth-child(3){
     background-color: var(--form-color-accent);
 }
-
-
+//.palette-electric{--form-color-bg}
+/*
+.h3prueba{
+    background-color: var(--form-color-bg);
+    color: var(--form-color-text);
+    border-color: var(--form-color-accent);
+}
+*/
 /*
 Diseño 1: Por defecto
     --form-background-card: #F5F5F5;

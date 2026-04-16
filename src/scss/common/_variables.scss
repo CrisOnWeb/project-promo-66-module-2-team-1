@@ -21,30 +21,22 @@
   --space-1: 0.25rem;
   --space-2: 0.5rem; 
 
-  /* Cards?? 
-//Diseño 1: Por defecto
-  --form-background-card: #F5F5F5;
-  --form-text-card: #1A1A1A;
-  --form-detail-card: #9E9E9E;
-*/
+  /* Card */
   .palette-default {
     --form-color-bg: #F5F5F5;
     --form-color-text: #1A1A1A;
     --form-color-accent: #9E9E9E;
   }
-
   .palette-pastel {
     --form-color-bg: #FFE4EC;
     --form-color-text: #5A5A5A;
     --form-color-accent: #B8E1DD;
   }
-
   .palette-electric {
     --form-color-bg: #00F0FF;
     --form-color-text: #0A0A0A;
     --form-color-accent: #FF00A8;
   }
-
   .palette-neutral {
     --form-color-bg: #EAE7E1;
     --form-color-text: #3E3E3E;

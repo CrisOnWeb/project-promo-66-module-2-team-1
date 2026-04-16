@@ -1,51 +1,37 @@
+ <load src="../preview.html"/>
 <fieldset class="design_fieldset">
-    <legend class="design_text">1. Elige tu diseño:</legend>
-    <div class="custom_select js_customSelect">
+    <legend class="design_text">Elige el diseño de tu tarjeta:</legend>
+    <div class="custom-select js_customSelect">
         <div class="design_selected js_selectedDesign"></div>
 
         <div class="design_options js_optionsDesign">
-            <div class="option palette-default js_designDefault js_option" data-value="default"> 
+            <div class="option palette-default js_designDefault js_option" data-value="0" id="default"> 
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <div class="option palette-pastel js_option" data-value="pastel">
+            <div class="option palette-pastel js_option" data-value="1" id="pastel">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <div class="option palette-electric js_option" data-value="electrico">
+            <div class="option palette-electric js_option" data-value="2" id="electric">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <div class="option palette-neutral js_option" data-value="neutro">
+            <div class="option palette-neutral js_option" data-value="3" id="neutral">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
         </div>
     </div>
+    <div class="prueba">
+        <h3 class="h3prueba">Holi</h3>
+        <p class="pprueba">holi holi</p>
+    </div>
     <input type="hidden" name="design_hidden" class="design_hidden js_hiddenDesign" id="design_hidden">
     <button class="btn js_btn" type="submit">Este me gusta!</button>
 </fieldset>
 
-<!--
-Variables
-Diseño 1: Por defecto
-    --form-background-card: #F5F5F5;
-    --form-text-card: #1A1A1A;
-    --form-detail-card: #9E9E9E;
-Diseño 2: Tonos pastel
-    --form-background-card: #FFE4EC;
-    --form-text-card: #5A5A5A;
-    --form-detail-card: #B8E1DD;
-Diseño 3: Tonos eléctricos
-    --form-background-card: #00F0FF;
-    --form-text-card: #0A0A0A;
-    --form-detail-card: #00F0A8;
-Diseño 4: tonos neutros
-    --form-background-card: #EAE7E1;
-    --form-text-card: #3E3E3E;
-    --form-detail-card: #A3B18A;
--->
