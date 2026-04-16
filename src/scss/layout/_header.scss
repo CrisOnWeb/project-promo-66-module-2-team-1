@@ -1,1 +1,41 @@
+.header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      border-bottom: 2px solid var(--color-bg-secondary);
+      padding: 20px;
+      background-color: var(--color-fill-surface);
+    }
+.logo{
+    font-size: 16px;
+    color: var(--color-bg-secondary);
+}
+
+.menu-simbolo{
+    display: none;
+    font-size: 20px;
+}
+
+.menu{
+    display: flex;
+    gap: 20px;
+}
+
+  @media (max-width: 768px) {
+      .menu-simbolo {
+        display: block;
+      }
+      nav.menu {
+        display: none;
+        flex-direction: column;
+        background-color: var(--color-bg-secondary);
+        color: var(--color-bg-secondary);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 10px;
+      }
+    }
 
