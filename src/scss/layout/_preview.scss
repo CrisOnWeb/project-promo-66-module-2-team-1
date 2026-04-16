@@ -1,1 +1,39 @@
 
+.previewContainer {
+    width: 150px;
+}
+.previewCard {
+    border: 2px solid black
+}
+
+.petInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 5%;
+}
+
+.imageContainer {
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.imageValue {
+
+}
+
+.cardInfo {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    padding: 5%;
+
+}
+
+.temperValue {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 5%;
+}
