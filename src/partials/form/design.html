@@ -1,37 +1,38 @@
- <load src="../preview.html"/>
+<div class="design-page">
+<div class="preview-design js_previewDesign">
+<load src="../preview.html"/>
+</div>
+
 <fieldset class="design_fieldset">
     <legend class="design_text">Elige el diseño de tu tarjeta:</legend>
     <div class="custom-select js_customSelect">
         <div class="design_selected js_selectedDesign"></div>
 
         <div class="design_options js_optionsDesign">
-            <div class="option palette-default js_designDefault js_option" data-value="0" id="default"> 
+            <div class="option palette-default js_designDefault js_option" data-value="0" id="palette0"> 
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <div class="option palette-pastel js_option" data-value="1" id="pastel">
+            <div class="option palette-pastel js_option" data-value="1" id="palette1">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <div class="option palette-electric js_option" data-value="2" id="electric">
+            <div class="option palette-electric js_option" data-value="2" id="palette2">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <div class="option palette-neutral js_option" data-value="3" id="neutral">
+            <div class="option palette-neutral js_option" data-value="3" id="palette3">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
         </div>
     </div>
-    <div class="prueba">
-        <h3 class="h3prueba">Holi</h3>
-        <p class="pprueba">holi holi</p>
-    </div>
     <input type="hidden" name="design_hidden" class="design_hidden js_hiddenDesign" id="design_hidden">
-    <button class="btn js_btn" type="submit">Este me gusta!</button>
 </fieldset>
+<button class="btn img-btn js_btnImg" type="submit">Subir imagen</button>
 
+</div>
