@@ -33,6 +33,14 @@
     </div>
     <input type="hidden" name="design_hidden" class="design_hidden js_hiddenDesign" id="design_hidden">
 </fieldset>
-<button class="btn img-btn js_btnImg" type="submit">Subir imagen</button>
-
+<button class="btn img-btn js_btnImg" type="button">Subir imagen</button>
+<input type="file" id="" accept=".jpg, .png" style="display: none;">
 </div>
+<!--
+accept tiene problemas de seguridad!!
+En JS: 
+    - if (!file.type.startsWith("image/") return;
+    - const MAX_SIZE = 2 * 1024 * 1024; // 2MB
+        if (file.size > MAX_SIZE) return;
+    - Necesita más validación en backend!!
+-->
