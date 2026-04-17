@@ -4,6 +4,7 @@
 
 .design-page{
     height: 500px; //???
+    width: 100%; //???
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,22 +16,22 @@
     background-color: var(--color-design-bg);
 }
 .preview-design{
-    height: 200px;
-    width: 200px;
+    height: 200px; //???
+    width: 200px; //???
     border-radius: 20px;
-    margin: 8px;
+    margin: 8px; //spaces?
     box-shadow: 0 5px 15px #0000001a;
     background-color: var(--color-design-img);
 }
 .design_fieldset{
     display: flex;
     border: none;
-    margin-bottom: 2rem;
-    padding: 0;
+    margin-bottom: 2rem; //spaces?
+    padding: 0; //spaces??
 }
 legend {
     color: var(--color-text-primary);
-    padding: 1rem;
+    padding: 1rem; //spaces?
     justify-content: center;
 }
 .custom-select {
@@ -59,15 +60,15 @@ legend {
     }
 */
 .option {
-    padding: 0.5rem;
+    padding: 0.5rem; //spaces?
     display: flex;
     cursor: pointer;
 }
 .option span {
     display: flex;
     flex-direction: column;
-    width: 40px;
-    height: 40px;
+    width: 40px; //???
+    height: 40px; //???
     border-radius: 50%;
 }
 .option:hover{
@@ -76,16 +77,17 @@ legend {
 }
 .img-btn {
     font-weight: 600;
-    padding: 0.5rem 1rem;
-    border-radius: 512px;
-    border: 1px solid #ddd;
+    padding: 0.5rem 1rem; //spaces?
+    border-radius: 25px;
+    border: 1px solid var(--color-accent-secondary);
     background-color: var(--color-accent-primary);
-    color: var(--color-accent-secondary);
+    color: var(--color-accent-secondary); // ???
     cursor: pointer;
 }
 .img-btn:hover {
     background-color: var(--color-accent-secondary);
-    color: var(--color-accent-primary)
+    color: var(--color-accent-primary);
+    border: 1px solid var(--color-accent-primary);
 }
 
 //Colores de las tarjetas
