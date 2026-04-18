@@ -4,31 +4,301 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Título</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
-    />
-    <link rel="icon" href="./images/favicon.png" />
-    <link rel="stylesheet" crossorigin href="./assets/main-tn0RQdqM.css">
+    />
+    <link rel="icon" href="/images/favicon.png" />
+    <script
+      src="https://kit.fontawesome.com/66349fc88a.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" crossorigin href="./assets/main-D64n1j8j.css">
   </head>
 
   <body>
     <header>HEADER</header>
 
     <main>
-      <section>PREVIEW</section>
+      <div class="tabs">
+  <button class="tabs__button">1. Diseña</button>
+  <button class="tabs__button">2. Rellena</button>
+  <button class="tabs__button">3. Publica</button>
+</div>
 
+      <preview>PREVIEW</preview>
       <form>
-  DESIGN
+  <div class="design-page">
+<div class="preview-design js_previewDesign">
+<preview>PREVIEW</preview>
+</div>
 
-  FILL
+<fieldset class="design_fieldset">
+    <legend class="design_text">Elige el diseño de tu tarjeta:</legend>
+    <div class="custom-select js_customSelect">
+        <div class="design_selected js_selectedDesign"></div>
 
-  SHARE
+        <div class="design_options js_optionsDesign">
+            <div class="option palette-default js_designDefault js_option" data-value="0" id="palette0"> 
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="option palette-pastel js_option" data-value="1" id="palette1">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="option palette-electric js_option" data-value="2" id="palette2">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="option palette-neutral js_option" data-value="3" id="palette3">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="design_hidden" class="design_hidden js_hiddenDesign" id="design_hidden">
+</fieldset>
+<button class="btn img-btn js_btnImg" type="button">Subir imagen</button>
+<input type="file" id="" accept=".jpg, .png" style="display: none;">
+</div>
+<!--
+accept tiene problemas de seguridad!!
+En JS: 
+    - if (!file.type.startsWith("image/") return;
+    - const MAX_SIZE = 2 * 1024 * 1024; // 2MB
+        if (file.size > MAX_SIZE) return;
+    - Necesita más validación en backend!!
+-->
+  <section class="fill" aria-labelledby="fill-title">
+    <div class="fill__layout">
+      <header class="fill__header">
+        <!-- Ayuda contextual para decirle a la usuaria qué hacer y qué pasará, ya que tenemos un preview en tiempo real -->
+        <h2 class="fill__title" id="fill-title">
+          Completa la información para ver los cambios.
+        </h2>
+      </header>
 
+      <!-- Contenido principal de la sección: primero preview y después formulario -->
+      <div class="fill__content">
+        <div class="fill__preview">
+          <div class="fill__preview-card">
+            <!-- Aquí se renderiza la tarjeta del preview del perro -->
+          </div>
+        </div>
+
+        <div class="fill__form-wrapper">
+          <!-- Se mantiene form porque estamos recogiendo datos y después se trabajará con JS sobre el submit -->
+          <form class="fill__form">
+            <fieldset class="fill__group">
+              <legend class="fill__legend">Datos del perro</legend>
+
+              <div class="fill__field">
+                <label class="fill__label" for="image">Añadir imagen</label>
+                <input
+                  class="fill__input fill__input--file"
+                  id="image"
+                  type="file"
+                  name="imagen"
+                  accept="image/*"
+                  required
+                />
+              </div>
+
+              <div class="fill__field">
+                <label class="fill__label" for="name">Nombre</label>
+                <input
+                  class="fill__input"
+                  id="name"
+                  type="text"
+                  name="nombre"
+                  required
+                />
+              </div>
+
+              <div class="fill__field">
+                <label class="fill__label" for="description">Descripción</label>
+                <textarea
+                  class="fill__input fill__input--textarea"
+                  id="description"
+                  name="descripcion"
+                  placeholder="Cuéntanos algo especial sobre este perrete"
+                  required
+                ></textarea>
+              </div>
+
+              <!-- Creado grid para emplear en el CSS y agrupar los campos que pueden repartirse mejor en tablet/ordenador -->
+              <div class="fill__grid">
+                <div class="fill__field">
+                  <label class="fill__label" for="age">Edad</label>
+                  <input
+                    class="fill__input"
+                    id="age"
+                    type="number"
+                    name="edad"
+                    min="0"
+                    max="20"
+                    step="1"
+                    inputmode="numeric"
+                    required
+                  />
+                </div>
+
+                <div class="fill__field">
+                  <label class="fill__label" for="breed">Raza</label>
+                  <input
+                    class="fill__input"
+                    id="breed"
+                    type="text"
+                    name="raza"
+                    required
+                  />
+                </div>
+
+                <div class="fill__field">
+                  <label class="fill__label" for="weight">Peso</label>
+                  <input
+                    class="fill__input"
+                    id="weight"
+                    type="number"
+                    name="peso"
+                    min="0"
+                    step="0.1"
+                    inputmode="decimal"
+                    required
+                  />
+                </div>
+
+                <div class="fill__field">
+                  <label class="fill__label" for="instagram">Instagram</label>
+                  <input
+                    class="fill__input"
+                    id="instagram"
+                    type="url"
+                    name="instagram"
+                    autocomplete="url"
+                    placeholder="https://instagram.com/..."
+                    required
+                  />
+                </div>
+              </div>
+            </fieldset>
+
+            <p class="fill__note">* Todos los campos son obligatorios.</p>
+            <!-- Botón único para guardar los cambios y seguir, posteriormente funcional con JS -->
+            <div class="fill__actions">
+              <button class="fill__button fill__button--primary" type="submit">
+                Guardar y seguir
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+  <section class="share">
+  <h2 class="share__title">Comparte</h2>
+
+  <div class="share__container">
+    <button class="share__create__btn" type="button">
+      ✨ Crear tarjeta
+    </button>
+
+    <div class="share__result">
+      <p class="share__result__title">
+        La tarjeta ha sido creada:
+      </p>
+
+      <a href="#" target="_blank" class="share__link">
+        https://tarjeragenerada
+      </a>
+
+      <button class="share__instagram__btn">
+        📸 Compartir en Instagram
+      </button>
+    </div>
+  </div>
+</section>
 </form>
 
     </main>
-    <footer>FOOTER</footer>
+    <footer class="footer">
+  <p class="footer__copy">
+    &copy; 2026 Proyecto <strong>[Añadir nombre del proyecto]</strong>.
+  </p>
+  <ul class="footer__list">
+    <li class="footer__item">
+      <a
+        class="footer__link"
+        href="https://github.com/CrisOnWeb"
+        target="_blank"
+        rel="noopener"
+        >Cris - <strong>@CrisOnWeb</strong></a
+      >
+    </li>
+    <li class="footer__item">
+      <a
+        class="footer__link"
+        href="https://github.com/eesser98"
+        target="_blank"
+        rel="noopener"
+        >Emma - <strong>@eesser98</strong></a
+      >
+    </li>
+    <li class="footer__item">
+      <a
+        class="footer__link"
+        href="https://github.com/letivsan"
+        target="_blank"
+        rel="noopener"
+        >Leti - <strong>@letivsan</strong></a
+      >
+    </li>
+    <li class="footer__item">
+      <a
+        class="footer__link"
+        href="https://github.com/Mari2navarro"
+        target="_blank"
+        rel="noopener"
+        >Mari - <strong>@Mari2navarro</strong></a
+      >
+    </li>
+    <li class="footer__item">
+      <a
+        class="footer__link"
+        href="https://github.com/Susana-Gl"
+        target="_blank"
+        rel="noopener"
+        >Susana - <strong>@Susana-Gl</strong></a
+      >
+    </li>
+    <li class="footer__item">
+      <a
+        class="footer__link"
+        href="https://github.com/idontwanttobeanurseanymore"
+        target="_blank"
+        rel="noopener"
+        >Marta - <strong>@idontwanttobeanurseanymore</strong></a
+      >
+    </li>
+  </ul>
+  <a
+    class="footer__link--project"
+    href="https://github.com/CrisOnWeb/project-promo-66-module-2-team-1"
+    target="_blank"
+    rel="noopener"
+    ><i class="fa-brands fa-github footer__icon--gh"></i
+    ><span class="footer__project">Ver en <strong>GitHub</strong></span></a
+  >
+</footer>
 
     <script src="./js/main.js"></script>
   </body>

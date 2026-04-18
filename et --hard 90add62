@@ -1,0 +1,10 @@
+[33mb0efdfa[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mpet-form-fill[m[33m, [m[1;31morigin/pet-form-fill[m[33m)[m HEAD@{0}: reset: moving to ORIG_HEAD
+[33mb0efdfa[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mpet-form-fill[m[33m, [m[1;31morigin/pet-form-fill[m[33m)[m HEAD@{1}: checkout: moving from design-in-form to pet-form-fill
+[33mb50be51[m[33m ([m[1;31morigin/design-in-form[m[33m, [m[1;32mdesign-in-form[m[33m)[m HEAD@{2}: checkout: moving from pet-form-fill to design-in-form
+[33mb0efdfa[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mpet-form-fill[m[33m, [m[1;31morigin/pet-form-fill[m[33m)[m HEAD@{3}: commit (merge): Merge branch 'design-in-form' into pet-form-fill
+[33m90add62[m HEAD@{4}: checkout: moving from preview to pet-form-fill
+[33m32110d4[m[33m ([m[1;31morigin/preview[m[33m, [m[1;32mpreview[m[33m)[m HEAD@{5}: checkout: moving from header to preview
+[33m4e4cf0c[m[33m ([m[1;31morigin/header[m[33m, [m[1;32mheader[m[33m)[m HEAD@{6}: checkout: moving from pet-form-fill to header
+[33m90add62[m HEAD@{7}: commit: final changes in fill section
+[33mf6ed834[m HEAD@{8}: checkout: moving from design-in-form to pet-form-fill
+[33mb50be51[m[33m ([m[1;31morigin/design-in-form[m[33m, [m[1;32mdesign-in-form[m[33m)[m HEAD@{9}: checkout: moving from pet-form-fill to design-in-form
