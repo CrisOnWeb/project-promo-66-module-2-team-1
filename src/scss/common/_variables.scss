@@ -12,14 +12,28 @@
   --color-accent-primary: #e57e3e;
   --color-accent-secondary: #d2d4c0;
   
-  /* Fill form */
-  --color-fill-bg: #ffa601;
-  --color-fill-surface: #f1ede4;
-  --color-fill-action: #2100b4;
+  /* Surfaces and border */
+  --color-surface: #fffaf5;
+  --color-surface-soft: #f1e4d8;
+  --color-border: #d8c8ba;
+
+  /* Brand color */
+  --color-brand: #4f6d63;
+  --color-brand-hover: #3f5a51;
   
+  /* Effects */
+  --shadow-soft: 0 10px 30px rgba(47, 42, 38, 0.08);
+
+  /* Radius */
+  --radius-m: 1rem;
+  --radius-l: 1.5rem;
+
   /* Spacing */
   --space-1: 0.25rem;
-  --space-2: 0.5rem; 
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem; 
 
   /* Design form */
   --color-design-bg: #f7ece4;
