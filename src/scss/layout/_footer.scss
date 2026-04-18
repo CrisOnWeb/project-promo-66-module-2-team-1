@@ -1,1 +1,90 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
 
+  padding-block: 1.5rem;
+  padding-inline: 2rem;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-inverse);
+
+  &__copy {
+    align-self: center;
+  }
+
+  &__list {
+    @media (width > 768px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (width > 1228px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__item {
+    position: relative;
+    // Obliga a que el <li> ocupe solo lo que ocupa el texto
+    width: fit-content;
+    padding-inline: 0.75rem;
+    padding-block: 0.25rem;
+
+    list-style-type: none;
+
+    cursor: pointer;
+
+    // Creación de la barra lateral
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background-color: var(--color-text-inverse);
+    }
+
+    &:hover::before {
+      transform: translateX(5px);
+      transition: transform 0.2s ease;
+    }
+
+    // Para que siempre que se mueva la barra se mueva el enlace también
+    &:hover .footer__link {
+      transform: translateX(5px);
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding-left: 0.25rem;
+    color: var(--color-text-inverse);
+    text-decoration-line: none;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateX(5px);
+    }
+
+    &--project {
+      color: var(--color-text-inverse);
+      text-decoration-line: none;
+      align-self: center;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        text-decoration-line: underline;
+      }
+    }
+  }
+
+  &__project {
+    margin-left: 0.25rem;
+  }
+
+  &__icon--gh {
+    font-size: 18px;
+  }
+}
