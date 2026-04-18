@@ -9,9 +9,11 @@
 
       <!-- Contenido principal de la sección: primero preview y después formulario -->
       <div class="fill__content">
-        <div class="fill__preview">
+        <div>
           <div class="fill__preview-card">
             <load src="partials/preview.html" />
+            <load src="partials/form/design.html" />
+            
             <!-- Aquí se renderiza la tarjeta del preview del perro -->
           </div>
         </div>
@@ -21,18 +23,6 @@
           <form class="fill__form">
             <fieldset class="fill__group">
               <legend class="fill__legend">Datos del perro</legend>
-
-              <div class="fill__field">
-                <label class="fill__label" for="image">Añadir imagen</label>
-                <input
-                  class="fill__input fill__input--file"
-                  id="image"
-                  type="file"
-                  name="imagen"
-                  accept="image/*"
-                  required
-                />
-              </div>
 
               <div class="fill__field">
                 <label class="fill__label" for="name">Nombre</label>
@@ -116,6 +106,9 @@
             <p class="fill__note">* Todos los campos son obligatorios.</p>
             <!-- Botón único para guardar los cambios y seguir, posteriormente funcional con JS -->
             <div class="fill__actions">
+              <button class="fill__reset fill__button--primary js_resetButton" type="submit">
+                Reset
+              </button>
               <button class="fill__button fill__button--primary" type="submit">
                 Guardar y seguir
               </button>
