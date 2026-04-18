@@ -36,11 +36,11 @@ const temperValue = document.querySelector(".js_temperValue");
 /*funciones cambiar datos preview*/
 
 const handleClickReset = () => {
-  nameInput.value = "";
-  emailInput.value = "";
-  dateInput.value = "";
-  messageInput.value = "";
-  senderInput.value = "";
+    nameInput.value = "";
+    ageInput.value = "";
+    imageInput.value = "";
+    breedInput.value = "";
+    temperInput.value = "";
 };
 
 resetButton.addEventListener("click", handleClickReset);
@@ -76,36 +76,76 @@ if (localStorage.getItem("temper")) {
   temperValue.textContent = tmeperInput.value;
 }
 
-nameInput.addEventListener("input", () => {
+nameValue.addEventListener("input", () => {
   nameValue.textContent = nameInput.value;
   localStorage.setItem("name", nameInput.value);
 });
 
-ageInput.addEventListener("input", () => {
+ageValue.addEventListener("input", () => {
   emailValue.textContent = ageInput.value;
   localStorage.setItem("age", ageInput.value);
 });
 
-imageInput.addEventListener("input", () => {
+imgValue.addEventListener("input", () => {
   imageValue.textContent = imageInput.value;
   localStorage.setItem("image", imageInput.value);
 });
 
-breedInput.addEventListener("input", () => {
+breedValue.addEventListener("input", () => {
   breedValue.textContent = breedInput.value;
   localStorage.setItem("breed", breedInput.value);
 });
 
-weightInput.addEventListener("input", () => {
+weightValue.addEventListener("input", () => {
   weightValue.textContent = weightInput.value;
   localStorage.setItem("weight", weightInput.value);
 });
 
-temperInput.addEventListener("input", () => {
+temperValue.addEventListener("input", () => {
   temperValue.textContent = temperInput.value;
   localStorage.setItem("temper", temperInput.value);
 });
 
+//Sección Cambiar Diseño
+for(const option of options){ 
+  option.addEventListener("click", () => { 
+    const value = option.dataset.value; 
+    hiddenInput.value = value; //guardala en una variable 
+    renderDesign(value); 
+
+    //console.log(option) 
+
+})} 
+
+ 
+
+function renderDesign(value){ //0 default
+  selected.innerHTML = ''; 
+  const option = document.querySelector(`[data-value="${value}"]`); 
+  const theme = option.classList[1]
+  if(!option) return; 
+  const previewDesign= document.querySelector('.previewCard')
+  //const fontPreview= document.querySelector('.')
+  //const bgPreview= document.querySelector('.')
+  //const detailsPreview= document.querySelector('.')
+  ; 
+  previewDesign.classList.add(theme); 
+  //le estoy añadiendo la clase palette
+  //ahora la clase tiene que cambiar color, bg y border
+ 
+  //console.log(value)  
+  //console.log(option)// está guardando el valor, falta la preview 
+  console.log(theme)
+} 
+
+
+
+
+
+
+
+
 /*SECCIÓN DE FUNCIONES DE EVENTOS*/
 
 /*SECCIÓN DE ACCIONES AL CARGAR LA PÁGINA - EJECUCIÓN*/
+

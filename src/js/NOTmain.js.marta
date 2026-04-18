@@ -1,0 +1,24 @@
+function displayLocalStorage () {
+  const nameFromLocalStorage = localStorage.getItem("name");
+  const ageFromLocalStorage = localStorage.getItem("age")
+  const imageFromLocalStorage = localStorage.getItem("image")
+  const breedFromLocalStorage = localStorage.getItem("breed")
+  const temperFromLocalStorage = localStorage.getItem("temper")
+
+  if (nameFromLocalStorage) {
+    nameValue.textContent = nameFromLocalStorage
+  }
+  if (ageFromLocalStorage) {
+    ageValue.textContent = ageFromLocalStorage
+  }
+  if (imageFromLocalStorage) {
+    imageValue.textContent = imageFromLocalStorage
+  }
+  if (breedFromLocalStorage) {
+    breednameValue.textContent = breedFromLocalStorage
+  }
+  if (temperFromLocalStorage) {
+    temperValue.textContent = temperFromLocalStorage
+  }
+}
+displayLocalStorage ()
