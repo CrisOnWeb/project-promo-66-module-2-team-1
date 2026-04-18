@@ -11,12 +11,11 @@
 
 .petInfo {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    padding: 5%;
+    flex-direction: column;
     padding-top: 10%;
     font-weight: bold;
     font-size: 120%;
+    align-items: center;
 }
 
 .imageContainer {
