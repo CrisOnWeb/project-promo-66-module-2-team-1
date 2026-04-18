@@ -30,8 +30,17 @@
     </div>
     <input type="hidden" name="design_hidden" class="design_hidden js_hiddenDesign" id="design_hidden">
 </fieldset>
-<button class="btn img-btn js_btnImg" type="button">Subir imagen</button>
-<input type="file" id="" accept=".jpg, .png" style="display: none;">
+  <div class="fill__field">
+    <label class="fill__label" for="image">Añadir imagen</label>
+    <input
+      class="fill__input fill__input--file"
+      id="image"
+      type="file"
+      name="imagen"
+      accept="image/*"
+      required
+    />
+  </div>
 </div>
 <!--
 accept tiene problemas de seguridad!!
