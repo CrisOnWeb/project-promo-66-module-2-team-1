@@ -1,1 +1,50 @@
 
+.previewContainer {
+    font-family: Poppins, Roboto;
+    background-color: var(--color-bg-primary);
+    padding-bottom: 10px;
+}
+.previewCard {
+    border-radius: 10%;
+    box-shadow: 0px 0px 10px 2px #acacac;
+    max-width: 350px;
+    margin-inline: auto;
+    background-color: white;
+}
+
+.petInfo {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10%;
+    font-weight: bold;
+    font-size: 120%;
+    align-items: center;
+}
+
+.imageContainer {
+    margin: 5%;
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+    border-radius: 10%;
+    background-color: #D2D4C0;
+}
+
+.imageValue {
+    border-radius: 10%;
+}
+
+.cardInfo {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    padding: 5%;
+    font-size: 120%;
+}
+
+.temperValue {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 5%;
+}
