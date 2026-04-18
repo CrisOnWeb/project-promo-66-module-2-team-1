@@ -11,7 +11,8 @@
   /* Accents (botones) */
   --color-accent-primary: #e57e3e;
   --color-accent-secondary: #d2d4c0;
-  
+  --color-accent-third: #cad27d;
+
   /* Surfaces and border */
   --color-surface: #fffaf5;
   --color-surface-soft: #f1e4d8;
@@ -20,7 +21,7 @@
   /* Brand color */
   --color-brand: #4f6d63;
   --color-brand-hover: #3f5a51;
-  
+
   /* Effects */
   --shadow-soft: 0 10px 30px rgba(47, 42, 38, 0.08);
 
@@ -33,32 +34,33 @@
   --space-2: 0.5rem;
   --space-3: 1rem;
   --space-4: 1.5rem;
-  --space-5: 2rem; 
+  --space-5: 2rem;
 
   /* Design form */
   --color-design-bg: #f7ece4;
   --color-design-hover: #d2d4c0;
   --color-design-img: #ffffff;
-  
+
   /* Card */
-  #palette0 { //default
-    --form-color-bg: #F5F5F5;
-    --form-color-text: #1A1A1A;
-    --form-color-accent: #9E9E9E;
+  #palette0 {
+    //default
+    --form-color-bg: #f5f5f5;
+    --form-color-text: #1a1a1a;
+    --form-color-accent: #9e9e9e;
   }
   #palette1 {
     --form-color-bg: #cad27d;
-    --form-color-text: #5A5A5A;
-    --form-color-accent: #B8E1DD;
+    --form-color-text: #5a5a5a;
+    --form-color-accent: #b8e1dd;
   }
   #palette2 {
     --form-color-bg: #4b6158;
-    --form-color-text: #0A0A0A;
+    --form-color-text: #0a0a0a;
     --form-color-accent: #9ceaaf;
   }
   #palette3 {
     --form-color-bg: #e57e3e;
-    --form-color-text: #3E3E3E;
-    --form-color-accent: #A3B18A;
+    --form-color-text: #3e3e3e;
+    --form-color-accent: #a3b18a;
   }
 }
