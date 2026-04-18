@@ -38,18 +38,7 @@ legend {
     background-color: var(--color-bg-primary);
     justify-content: center;
 }
-/*
-.design_options {
-    display: none;
-    position: absolute;
-    width: 100%;
-    margin-top: 5px;
-    border-radius: 12px;
-    background-color: var();
-    //box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    border: 1px solid blue;
-    }
-*/
+
 .option {
     padding: 0.5rem; //spaces?
     display: flex;
@@ -65,20 +54,6 @@ legend {
 .option:hover{
     background-color: var(--color-design-hover);
     border-radius: 50%;
-}
-.img-btn {
-    font-weight: 600;
-    padding: 0.5rem 1rem; //spaces?
-    border-radius: 25px;
-    border: 1px solid var(--color-accent-secondary);
-    background-color: var(--color-accent-primary);
-    color: var(--color-accent-secondary); // ???
-    cursor: pointer;
-}
-.img-btn:hover {
-    background-color: var(--color-accent-secondary);
-    color: var(--color-accent-primary);
-    border: 1px solid var(--color-accent-primary);
 }
 
 //Colores de las tarjetas
@@ -96,6 +71,25 @@ legend {
     background-color: var(--form-color-accent);
     display: none;
 }
+/*
+#palette0{
+    background-color: var(--form-color-bg);
+    color: var(--form-color-text);
+    border-radius: 50%;
+}
+#palette1{
+    background-color: var(--form-color-bg);
+    color: var(--form-color-text);
+}
+#palette2{
+    background-color: var(--form-color-bg);
+    color: var(--form-color-text);
+}
+#palette3{
+    background-color: var(--form-color-bg);
+    color: var(--form-color-text);
+}
+
 
 /* Más colores
 

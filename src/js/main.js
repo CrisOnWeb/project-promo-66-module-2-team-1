@@ -122,22 +122,35 @@ for(const option of options){
 function renderDesign(value){ //0 default
   selected.innerHTML = ''; 
   const option = document.querySelector(`[data-value="${value}"]`); 
-  const theme = option.classList[1]
+  const theme = option.id
+  let colours = document.getElementById(theme)
+  console.log(colours.classList[0])
+  console.log(theme)
   if(!option) return; 
   const previewDesign= document.querySelector('.previewCard')
   //const fontPreview= document.querySelector('.')
   //const bgPreview= document.querySelector('.')
   //const detailsPreview= document.querySelector('.')
   ; 
-  previewDesign.classList.add(theme); 
-  //le estoy añadiendo la clase palette
-  //ahora la clase tiene que cambiar color, bg y border
- 
-  //console.log(value)  
-  //console.log(option)// está guardando el valor, falta la preview 
-  console.log(theme)
+  //previewDesign.classList.add(colours.classList[0])
+  previewDesign.style.backgroundColor
 } 
-
+/*
+.option:first-child{
+    display:none;
+}
+.option span:nth-child(1){
+    background-color: var(--form-color-bg);
+}
+.option span:nth-child(2){
+    background-color: var(--form-color-text);
+    display: none; 
+}
+.option span:nth-child(3){
+    background-color: var(--form-color-accent);
+    display: none;
+}
+*/
 
 
 
