@@ -1,6 +1,7 @@
 @use './common/reset';
 @use './common/variables';
 @use './common/mixins';
+@use './common/main';
 @use './layout/header';
 @use './layout/tab_buttons.scss';
 @use './layout/footer';
