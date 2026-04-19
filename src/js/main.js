@@ -6,7 +6,7 @@ const fillForm = document.querySelector(".js_fillForm");
 const fillInputs = document.querySelectorAll(".js_fillInput");
 const imageInput = document.querySelector("#image");
 const fillSubmitBtn = document.querySelector(".js_fillSubmitBtn");
-const previewImage = document.querySelector(".js_previewImage");
+const previewImage = document.querySelector(".js_previewImg");
 const previewName = document.querySelector(".js_previewName");
 const previewDescription = document.querySelector(".js_previewDescription");
 const previewAge = document.querySelector(".js_previewAge");
@@ -35,118 +35,116 @@ const temperValue = document.querySelector(".js_temperValue");
 /*SECCIÓN DE FUNCIONES*/
 /*funciones cambiar datos preview*/
 
-const handleClickReset = () => {
-    nameInput.value = "";
-    ageInput.value = "";
-    imageInput.value = "";
-    breedInput.value = "";
-    temperInput.value = "";
-};
 
-resetButton.addEventListener("click", handleClickReset);
+const handleClickReset = () => {
+    nameValue.value = "";
+    ageValue.value = "";
+    imgValue.value = "";
+    breedValue.value = "";
+    weightValue.value = "";
+    temperValue.value = "";
+};
+//resetButton.addEventListener("click", handleClickReset);
+
+const savedName = localStorage.getItem("name");
+const savedAge = localStorage.getItem("age");
+const savedImg = localStorage.getItem("img"); //no es un string!!!
+const savedBreed = localStorage.getItem("breed");
+const savedWeight = localStorage.getItem("weight");
+const savedTemper = localStorage.getItem("temper");
+
 
 //No funciona
-if (localStorage.getItem("name")) {
-  nameInput.value = localStorage.getItem("name");
-  nameValue.textContent = nameInput.value;
-}
-
-if (localStorage.getItem("age")) {
-  ageInput.value = localStorage.getItem("age");
-  ageValue.textContent = ageInput.value + "años";
-}
-
-if (localStorage.getItem("image")) {
-  imageInput.value = localStorage.getItem("image");
-  imageValue = imageInput.value;
-}
-
-if (localStorage.getItem("breed")) {
-  breedInput.value = localStorage.getItem("breed");
-  breedValue.textContent = breedInput.value;
-}
-
-if (localStorage.getItem("weight")) {
-  weightInput.value = localStorage.getItem("weight");
-  weightValue.textContent = weightInput.value;
-}
-
-if (localStorage.getItem("temper")) {
-  temperInput.value = localStorage.getItem("temper");
-  temperValue.textContent = tmeperInput.value;
-}
-
-nameValue.addEventListener("input", () => {
-  nameValue.textContent = nameInput.value;
-  localStorage.setItem("name", nameInput.value);
+//NameLS
+if (savedName !== null) {
+  previewName.value = savedName;
+  nameValue.textContent = savedName;
+};
+previewName.addEventListener("input", () => {
+  nameValue.textContent = previewName.value;
+  localStorage.setItem("name", previewName.value);
+});
+//AgeLS
+if (savedAge !== null) {
+  previewAge.value = savedAge;
+  ageValue.textContent = savedAge;
+};
+previewAge.addEventListener("input", () => {
+  ageValue.textContent = parseInt(previewAge.value);
+  localStorage.setItem("age", previewAge.value);
+});
+//ImgLS
+if (savedImg !== null) {
+  imgValue.value = savedImg;
+  imgValue.textContent = savedImg;
+};
+previewImage.addEventListener("input", () => {
+  imgValue.textContent = previewImg.value;
+  localStorage.setItem("image", previewImg.value);
+});
+//BreedLS
+if (savedBreed !== null) {
+  breedValue.value = savedBreed;
+  breedValue.textContent = savedBreed;
+};
+previewBreed.addEventListener("input", () => {
+  breedValue.textContent = previewBreed.value;
+  localStorage.setItem("breed", previewBreed.value);
+});
+//DescLS
+if (savedTemper !== null) {
+  temperValue.value = savedTemper;
+  temperValue.textContent = savedTemper;
+};
+previewDescription.addEventListener("input", () => {
+  temperValue.textContent = previewDescription.value;
+  localStorage.setItem("temper", previewDescription.value);
+});
+//WeightLS
+if(savedWeight !== null){
+  weightValue.value = savedWeight;
+  weightValue.textContent = savedWeight;
+};
+previewWeight.addEventListener("input", () => {
+  weightValue.textContent = previewWeight.value;
+  localStorage.setItem("weight", previewWeight.value);
 });
 
-ageValue.addEventListener("input", () => {
-  emailValue.textContent = ageInput.value;
-  localStorage.setItem("age", ageInput.value);
-});
-
-imgValue.addEventListener("input", () => {
-  imageValue.textContent = imageInput.value;
-  localStorage.setItem("image", imageInput.value);
-});
-
-breedValue.addEventListener("input", () => {
-  breedValue.textContent = breedInput.value;
-  localStorage.setItem("breed", breedInput.value);
-});
-
-weightValue.addEventListener("input", () => {
-  weightValue.textContent = weightInput.value;
-  localStorage.setItem("weight", weightInput.value);
-});
-
-temperValue.addEventListener("input", () => {
-  temperValue.textContent = temperInput.value;
-  localStorage.setItem("temper", temperInput.value);
-});
+//EventListener
 
 //Sección Cambiar Diseño
 for(const option of options){ 
   option.addEventListener("click", () => { 
-    if(!option) return;
     const value = option.dataset.value; 
     hiddenInput.value = value; //guardala en una variable 
     renderDesign(value); 
-
-    //console.log(option)  
-
 })} 
 
- 
- 
-function renderDesign(value){ //0 default
+function renderDesign(value){
   const option = document.querySelector(`[data-value="${value}"]`); 
-  const theme = option.id
-  const cardElements = document.querySelectorAll('.previewContainer > div')
+  const theme = option.id;
+  
+  const cardElements = document.querySelectorAll('.previewContainer > div');
   for(const element of cardElements){
     element.classList.remove('palette0', 'palette1', 'palette2', 'palette3');
-    element.classList.add(theme)
-    
+    element.classList.add(theme);
   }
-} 
-/*
-.option:first-child{
-    display:none;
 }
-.option span:nth-child(1){
-    background-color: var(--form-color-bg);
-}
-.option span:nth-child(2){
-    background-color: var(--form-color-text);
-    display: none; 
-}
-.option span:nth-child(3){
-    background-color: var(--form-color-accent);
-    display: none;
-}
-*/
 
+//Permite al usuario volver a default
+const backToDefault = document.querySelector('.previewContainer');
+backToDefault.addEventListener("click", () =>{
+  renderDefault()
+})
+
+function renderDefault(){
+  const cardElements = document.querySelectorAll('.previewContainer > div');
+  for(const element of cardElements){
+    element.classList.remove('palette0', 'palette1', 'palette2', 'palette3');
+    element.classList.add('palette0')
+  }
+}
+  renderDefault() 
 
 
 
