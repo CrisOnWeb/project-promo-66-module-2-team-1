@@ -123,10 +123,11 @@ for(const option of options){
 function renderDesign(value){ //0 default
   const option = document.querySelector(`[data-value="${value}"]`); 
   const theme = option.id
-  const cardElements = document.querySelectorAll('.previewCard > div')
+  const cardElements = document.querySelectorAll('.previewContainer > div')
   for(const element of cardElements){
     element.classList.remove('palette0', 'palette1', 'palette2', 'palette3');
     element.classList.add(theme)
+    
   }
 } 
 /*

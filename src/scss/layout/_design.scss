@@ -169,25 +169,36 @@
 .palette1{
     background-color: var(--form-color-bg);
     color: var(--form-color-text);
-    
+    .imageContainer{
+      background-color: var(--form-color-accent);
+    }
 }
 .palette1{
     background-color: var(--form-color-bg);
     color: var(--form-color-text);
+    .imageContainer{
+      background-color: var(--form-color-accent);
+    }
 }
 .palette2{
     background-color: var(--form-color-bg);
     color: var(--form-color-text);
+    .imageContainer{
+      background-color: var(--form-color-accent);
+    }
 }
 .palette3{
     background-color: var(--form-color-bg);
     color: var(--form-color-text);
+    .imageContainer{
+      background-color: var(--form-color-accent);
+    }
 }
 
 
 /* Más colores
 
-Diseño 1: Por defecto
+Diseño 0: Por defecto
     --form-background-design: #F5F5F5;
     --form-text-design: #1A1A1A;
     --form-accent-design: #9E9E9E;
@@ -196,7 +207,7 @@ Diseño 1: Por defecto
     --form-text-design-dark: #F5F5F5;
     --form-accent-design-dark: #3A3A3A
 
-Diseño 2
+Diseño 1
     --form-background-design: #F5F5F5;
     --form-text-design: #1A1A1A;
     --form-accent-design: #9E9E9E;
@@ -205,7 +216,7 @@ Diseño 2
     --form-text-design-dark: #F3E8EE;
     --form-accent-design-dark: #7FBFB8;
 
-Diseño 3
+Diseño 2
     --form-background-design: #F5F5F5;
     --form-text-design: #1A1A1A;
     --form-accent-design: #9E9E9E;
@@ -214,7 +225,7 @@ Diseño 3
     --form-text-design-dark: #E6FFFF
     --form-accent-design-dark: #FF00A8;
     
-Diseño 4
+Diseño 3
     --form-background-design: #EAE7E1;
     --form-text-design: #3E3E3E;
     --form-accent-design: #A3B18A;
