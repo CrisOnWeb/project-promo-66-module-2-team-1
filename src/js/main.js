@@ -109,6 +109,7 @@ temperValue.addEventListener("input", () => {
 //Sección Cambiar Diseño
 for(const option of options){ 
   option.addEventListener("click", () => { 
+    if(!option) return;
     const value = option.dataset.value; 
     hiddenInput.value = value; //guardala en una variable 
     renderDesign(value); 
@@ -118,24 +119,14 @@ for(const option of options){
 })} 
 
  
-
+ 
 function renderDesign(value){ //0 default
-  selected.innerHTML = ''; 
   const option = document.querySelector(`[data-value="${value}"]`); 
   const theme = option.id
-  //let colours = document.getElementById(theme)
-  
-  console.log(theme) //id
-
-  if(!option) return; 
-  const previewDesign= document.querySelector('.previewCard')
-  
-  
-  console.log(previewDesign)
-  if(previewDesign.id === previewDesign.theme){ 
-     previewDesign.classList.add(theme)
-  } else{
-    //previewDesign.classList.add(theme)
+  const cardElements = document.querySelectorAll('.previewCard > div')
+  for(const element of cardElements){
+    element.classList.remove('palette0', 'palette1', 'palette2', 'palette3');
+    element.classList.add(theme)
   }
 } 
 /*
