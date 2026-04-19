@@ -1,4 +1,10 @@
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  background-color: var(--color-bg-primary);
+
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-style: normal;
