@@ -71,21 +71,21 @@ legend {
     background-color: var(--form-color-accent);
     display: none;
 }
-/*
-#palette0{
+
+.palette1{
     background-color: var(--form-color-bg);
     color: var(--form-color-text);
-    border-radius: 50%;
+    
 }
-#palette1{
-    background-color: var(--form-color-bg);
-    color: var(--form-color-text);
-}
-#palette2{
+.palette1{
     background-color: var(--form-color-bg);
     color: var(--form-color-text);
 }
-#palette3{
+.palette2{
+    background-color: var(--form-color-bg);
+    color: var(--form-color-text);
+}
+.palette3{
     background-color: var(--form-color-bg);
     color: var(--form-color-text);
 }

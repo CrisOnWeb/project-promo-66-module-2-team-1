@@ -123,17 +123,20 @@ function renderDesign(value){ //0 default
   selected.innerHTML = ''; 
   const option = document.querySelector(`[data-value="${value}"]`); 
   const theme = option.id
-  let colours = document.getElementById(theme)
-  console.log(colours.classList[0])
-  console.log(theme)
+  //let colours = document.getElementById(theme)
+  
+  console.log(theme) //id
+
   if(!option) return; 
   const previewDesign= document.querySelector('.previewCard')
-  //const fontPreview= document.querySelector('.')
-  //const bgPreview= document.querySelector('.')
-  //const detailsPreview= document.querySelector('.')
-  ; 
-  //previewDesign.classList.add(colours.classList[0])
-  previewDesign.style.backgroundColor
+  
+  
+  console.log(previewDesign)
+  if(previewDesign.id === previewDesign.theme){ 
+     previewDesign.classList.add(theme)
+  } else{
+    //previewDesign.classList.add(theme)
+  }
 } 
 /*
 .option:first-child{
