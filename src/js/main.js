@@ -114,7 +114,7 @@ for(const option of options){
     hiddenInput.value = value; //guardala en una variable 
     renderDesign(value); 
 
-    //console.log(option) 
+    //console.log(option)  
 
 })} 
 
