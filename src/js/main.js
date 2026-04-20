@@ -6,7 +6,6 @@ const fillForm = document.querySelector(".js_fillForm");
 const fillInputs = document.querySelectorAll(".js_fillInput");
 const imageInput = document.querySelector("#image");
 const fillSubmitBtn = document.querySelector(".js_fillSubmitBtn");
-const previewImage = document.querySelector(".js_previewImage");
 const previewName = document.querySelector(".js_previewName");
 const previewDescription = document.querySelector(".js_previewDescription");
 const previewAge = document.querySelector(".js_previewAge");
