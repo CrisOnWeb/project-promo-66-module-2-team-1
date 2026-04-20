@@ -42,23 +42,36 @@
   --color-design-img: #ffffff;
 
   /* Card */
-  .palette0, #palette0  {
+  .palette0,
+  #palette0 {
     //default
     --form-color-bg: #d2d4c0;
     --form-color-text: #50570f;
     --form-color-accent: #4f6d63;
   }
-  .palette1, #palette1 {
-    --form-color-bg: #f0a8c6;
-    --form-color-text: #570f2d;
-    --form-color-accent: #e0528d;
+
+  /*Dejo comentada la paleta por si queremos rescatarlos*/
+  // .palette1, #palette1 {
+  //   --form-color-bg: #f0a8c6;
+  //   --form-color-text: #570f2d;
+  //   --form-color-accent: #e0528d;
+  // }
+
+  .palette1,
+  #palette1 {
+    --form-color-bg: #a8f0df;
+    --form-color-text: #00674f;
+    --form-color-accent: #d4af37;
   }
-  .palette2, #palette2 {
+
+  .palette2,
+  #palette2 {
     --form-color-bg: #c5a8f0;
     --form-color-text: #2c0f57;
     --form-color-accent: #9ceaaf;
   }
-  .palette3, #palette3 {
+  .palette3,
+  #palette3 {
     --form-color-bg: #e57e3e;
     --form-color-text: #572b0f;
     --form-color-accent: #f0c4a8;
