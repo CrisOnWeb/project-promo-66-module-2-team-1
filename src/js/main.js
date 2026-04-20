@@ -35,76 +35,74 @@ const temperValue = document.querySelector(".js_temperValue");
 /*SECCIÓN DE FUNCIONES*/
 /*funciones cambiar datos preview*/
 
-
 const handleClickReset = () => {
-    nameValue.value = "";
-    ageValue.value = "";
-    imgValue.value = "";
-    breedValue.value = "";
-    weightValue.value = "";
-    temperValue.value = "";
+  previewName.value = "";
+  previewAge.value = "";
+  previewImg.value = "";
+  previewBreed.value = "";
+  previewWeight.value = "";
+  previewTemper.value = "";
 };
-//resetButton.addEventListener("click", handleClickReset);
 
-const savedName = localStorage.getItem("name");
-const savedAge = localStorage.getItem("age");
-const savedImg = localStorage.getItem("img"); //no es un string!!!
-const savedBreed = localStorage.getItem("breed");
-const savedWeight = localStorage.getItem("weight");
-const savedTemper = localStorage.getItem("temper");
+resetButton.addEventListener("click", handleClickReset);
 
+function displayLocalStorage(){
+  const savedName = localStorage.getItem("name");
+  const savedAge = localStorage.getItem("age");
+  const savedImg = localStorage.getItem("img"); //no es un string!!!
+  const savedBreed = localStorage.getItem("breed");
+  const savedWeight = localStorage.getItem("weight");
+  const savedTemper = localStorage.getItem("temper");
 
-//No funciona
-//NameLS
-if (savedName !== null) {
+  if (savedName !== null) {
   previewName.value = savedName;
   nameValue.textContent = savedName;
-};
+  };
+  if (savedAge !== null) {
+    previewAge.value = savedAge;
+    ageValue.textContent = savedAge;
+  };
+  if (savedImg !== null) {
+    imgValue.value = savedImg;
+    imgValue.textContent = savedImg;
+  };
+  if (savedBreed !== null) {
+    breedValue.value = savedBreed;
+    breedValue.textContent = savedBreed;
+  };
+  if (savedTemper !== null) {
+    temperValue.value = savedTemper;
+    temperValue.textContent = savedTemper;
+  };
+  if(savedWeight !== null){
+    weightValue.value = savedWeight;
+    weightValue.textContent = savedWeight;
+  };
+}
+
+//EventListener - Inputs
+
 previewName.addEventListener("input", () => {
   nameValue.textContent = previewName.value;
   localStorage.setItem("name", previewName.value);
+  displayLocalStorage ()
 });
-//AgeLS
-if (savedAge !== null) {
-  previewAge.value = savedAge;
-  ageValue.textContent = savedAge;
-};
 previewAge.addEventListener("input", () => {
   ageValue.textContent = parseInt(previewAge.value);
   localStorage.setItem("age", previewAge.value);
 });
-//ImgLS
-if (savedImg !== null) {
-  imgValue.value = savedImg;
-  imgValue.textContent = savedImg;
-};
 previewImage.addEventListener("input", () => {
   imgValue.textContent = previewImg.value;
   localStorage.setItem("image", previewImg.value);
 });
-//BreedLS
-if (savedBreed !== null) {
-  breedValue.value = savedBreed;
-  breedValue.textContent = savedBreed;
-};
 previewBreed.addEventListener("input", () => {
   breedValue.textContent = previewBreed.value;
   localStorage.setItem("breed", previewBreed.value);
 });
-//DescLS
-if (savedTemper !== null) {
-  temperValue.value = savedTemper;
-  temperValue.textContent = savedTemper;
-};
 previewDescription.addEventListener("input", () => {
   temperValue.textContent = previewDescription.value;
   localStorage.setItem("temper", previewDescription.value);
 });
-//WeightLS
-if(savedWeight !== null){
-  weightValue.value = savedWeight;
-  weightValue.textContent = savedWeight;
-};
 previewWeight.addEventListener("input", () => {
   weightValue.textContent = previewWeight.value;
   localStorage.setItem("weight", previewWeight.value);
@@ -146,7 +144,12 @@ function renderDefault(){
 }
   renderDefault() 
 
+function renderPreview(){ //no está terminada!!!
+  const cardElements = document.querySelectorAll('.previewContainer > div');
+  for(const element of cardElements){
 
+  }
+}
 
 
 
