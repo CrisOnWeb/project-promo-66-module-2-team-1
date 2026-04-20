@@ -1,110 +1,214 @@
 "use strict";
 /*SECCIÓN DE QUERY SELECTORS*/
 
-/*CQS FORM*/
+// Formulario principal de fill
 const fillForm = document.querySelector(".js_fillForm");
+// Todos los campos se rellenan desde fill
 const fillInputs = document.querySelectorAll(".js_fillInput");
-const imageInput = document.querySelector("#image");
+
+// Botones de acciones del formulario
 const fillSubmitBtn = document.querySelector(".js_fillSubmitBtn");
-const previewName = document.querySelector(".js_previewName");
-const previewDescription = document.querySelector(".js_previewDescription");
-const previewAge = document.querySelector(".js_previewAge");
-const previewBreed = document.querySelector(".js_previewBreed");
-const previewWeight = document.querySelector(".js_previewWeight");
-const previewInstagram = document.querySelector(".js_previewInstagram");
 const resetButton = document.querySelector(".js_resetButton");
 
-/*CQS DESIGN*/
-const selected = document.querySelector(".js_selectedDesign");
-const optionsBox = document.querySelector(".js_optionsDesign");
-const options = document.querySelectorAll(".js_option");
-const defaultOption = document.querySelector(".js_designDefault");
-const hiddenInput = document.querySelector(".js_hiddenDesign");
+//Inputs concretos del formulario
+const nameInput = document.querySelector("#name");
+const descriptionInput = document.querySelector("#description");
+const ageInput = document.querySelector("#age");
+const breedInput = document.querySelector("#breed");
+const weightInput = document.querySelector("#weight");
+const instagramInput = document.querySelector("#instagram");
 
 /*CQS PREVIEW*/
-const nameValue = document.querySelector(".js_nameValue");
-const ageValue = document.querySelector(".js_ageValue");
-const imgValue = document.querySelector(".js_imgValue");
-const breedValue = document.querySelector(".js_breedValue");
-const weightValue = document.querySelector(".js_weightValue");
-const temperValue = document.querySelector(".js_temperValue");
+// Elementos visuales de la tarjeta preview que se actualizan en tiempo real
+// Puestos así para que el JS busque los elementos sólo dentro del preview de fill y no de design
+const fillPreview = document.querySelector(".js_fillPreview");
+const nameValue = fillPreview.querySelector(".js_nameValue");
+const ageValue = fillPreview.querySelector(".js_ageValue");
+const breedValue = fillPreview.querySelector(".js_breedValue");
+const weightValue = fillPreview.querySelector(".js_weightValue");
+const descriptionValue = fillPreview.querySelector(".js_descriptionValue");
+const instagramValue = fillPreview.querySelector(".js_instagramValue");
+
+console.log("Contenedor preview fill:", fillPreview);
+console.log("Nombre preview:", nameValue);
+
 
 /*SECCIÓN DE DATOS*/
-
-/*SECCIÓN DE FUNCIONES*/
-/*funciones cambiar datos preview*/
-
-const handleClickReset = () => {
-  nameInput.value = "";
-  emailInput.value = "";
-  dateInput.value = "";
-  messageInput.value = "";
-  senderInput.value = "";
+//Objeto principal donde guardamos la información que la usuaria escribe en fill
+let fillData = {
+  name: "",
+  description: "",
+  age: "",
+  breed: "",
+  weight: "",
+  instagram: "",
 };
 
-resetButton.addEventListener("click", handleClickReset);
 
-//No funciona
-if (localStorage.getItem("name")) {
-  nameInput.value = localStorage.getItem("name");
-  nameValue.textContent = nameInput.value;
+/*SECCIÓN DE FUNCIONES*/
+// Función para pintar los datos en la preview
+function renderPreview() {
+  if (!fillPreview) return;
+  
+  nameValue.textContent = fillData.name.trim() || "Nombre";
+  ageValue.textContent = fillData.age ? `${fillData.age} años`: 'Edad';
+  breedValue.innerHTML = `<i class="fa-solid fa-paw"></i> ${fillData.breed.trim() || "Raza"}`;
+  weightValue.innerHTML = `<i class="fa-solid fa-weight-hanging"></i> ${fillData.weight ? `${fillData.weight} kg` : "Peso"}`;
+  descriptionValue.textContent = fillData.description.trim() || "Descripción";
+  instagramValue.textContent = fillData.instagram.trim() ? "Ver Instagram" : "Instagram";
+
+  // Para poner como enlace el instagram sin espacios por el trim y, sino hay nada, se usa el # que es como un placeholder.
+  instagramValue.href = fillData.instagram.trim() || "#";
 }
 
-if (localStorage.getItem("age")) {
-  ageInput.value = localStorage.getItem("age");
-  ageValue.textContent = ageInput.value + "años";
+// Función para guardar el objeto completo en localStorage
+function saveFillDataInLocalStorage() {
+  localStorage.setItem("fillData", JSON.stringify(fillData));
 }
 
-if (localStorage.getItem("image")) {
-  imageInput.value = localStorage.getItem("image");
-  imageValue = imageInput.value;
+// Función para recuperar los datos guardados en localStorage
+function loadFillDataFromLocalStorage() {
+  const savedFillData = localStorage.getItem("fillData");
+  
+  if (savedFillData) {
+    fillData = JSON.parse(savedFillData);
+    
+    // Rellenamos también los inputs para que cuando recarguemos, el formulario conserve los datos.
+    // Ej: pon en el input nameInput el valor de fillData.name y sino existe, pon un string vacío.
+    nameInput.value = fillData.name || "";
+    descriptionInput.value = fillData.description || "";
+    ageInput.value = fillData.age || "";
+    breedInput.value = fillData.breed || "";
+    weightInput.value = fillData.weight || "";
+    instagramInput.value = fillData.instagram || "";
+  }
 }
 
-if (localStorage.getItem("breed")) {
-  breedInput.value = localStorage.getItem("breed");
-  breedValue.textContent = breedInput.value;
+// Función para actualizar el objeto fillData cuando la usuaria escribe
+function handleInputFill(ev) {
+  const changedInput = ev.target;
+  const inputName = changedInput.name;
+  const inputValue = changedInput.value;
+  
+  fillData[inputName] = inputValue;
+
+  // Comprobar si el objeto se actualiza correctamente y si el name de los inputs está bien conectado
+  console.log("fillData actualizado:", fillData);
+  
+  saveFillDataInLocalStorage();
+  renderPreview();
+  validateForm();
+  toggleResetButton();
 }
 
-if (localStorage.getItem("weight")) {
-  weightInput.value = localStorage.getItem("weight");
-  weightValue.textContent = weightInput.value;
+// Función para decir que el formulario está completo solo si todos los campos tienen algo escrito de verdad
+function isFormComplete() {
+  const result = 
+    fillData.name.trim() !== "" &&
+    fillData.description.trim() !== "" &&
+    fillData.age !== "" &&
+    fillData.breed.trim() !== "" &&
+    fillData.weight !== "" &&
+    fillData.instagram.trim() !== "";
+
+  console.log("¿Formulario completo?", result);
+  
+  return result;
 }
 
-if (localStorage.getItem("temper")) {
-  temperInput.value = localStorage.getItem("temper");
-  temperValue.textContent = tmeperInput.value;
+// Función para comprobar si hay al menos algún dato escrito
+function hasAnyData() {
+  return (
+    fillData.name.trim() !== "" ||
+    fillData.description.trim() !== "" ||
+    fillData.age !== "" ||
+    fillData.breed.trim() !== "" ||
+    fillData.weight !== "" ||
+    fillData.instagram.trim() !== ""
+  );
 }
 
-nameInput.addEventListener("input", () => {
-  nameValue.textContent = nameInput.value;
-  localStorage.setItem("name", nameInput.value);
-});
+// Función para activar o desactivar el botón de submit (se desactiva el botón si el formulario NO está completo)
+function validateForm() {
+  fillSubmitBtn.disabled = !isFormComplete();
 
-ageInput.addEventListener("input", () => {
-  emailValue.textContent = ageInput.value;
-  localStorage.setItem("age", ageInput.value);
-});
+  console.log("Botón submit activo:", !fillSubmitBtn.disabled);
+}
 
-imageInput.addEventListener("input", () => {
-  imageValue.textContent = imageInput.value;
-  localStorage.setItem("image", imageInput.value);
-});
+// Función para activar o desactivar el botón de borrar datos (se desactiva el botón si NO hay datos)
+function toggleResetButton() {
+  resetButton.disabled = !hasAnyData();
+}
 
-breedInput.addEventListener("input", () => {
-  breedValue.textContent = breedInput.value;
-  localStorage.setItem("breed", breedInput.value);
-});
+// Función para resetear el formulario, objeto, localStorage y preview
+function handleClickReset() {
+  console.log("Click en borrar resultados");
+  // Vaciamos el objeto
+  fillData = {
+    name: "",
+    description: "",
+    age: "",
+    breed: "",
+    weight: "",
+    instagram: "",
+  };
 
-weightInput.addEventListener("input", () => {
-  weightValue.textContent = weightInput.value;
-  localStorage.setItem("weight", weightInput.value);
-});
+  // Reseteamos visualmente el formulario
+  fillForm.reset();
 
-temperInput.addEventListener("input", () => {
-  temperValue.textContent = temperInput.value;
-  localStorage.setItem("temper", temperInput.value);
-});
+  // Borramos el localStorage
+  localStorage.removeItem("fillData");
+
+  // Volvemos a pintar el preview con textos por defecto
+  renderPreview();
+
+  // Revalidamos los botones
+  validateForm();
+  toggleResetButton();
+
+  console.log("Después de reset:", fillData);
+
+}
+
+// Función del submit (evita el envío real y lo deja preparado para el siguiente paso)
+function handleSubmitFillForm(ev) {
+  ev.preventDefault();
+  if (!isFormComplete()) {
+    return;
+  }
+
+// Aquí faltaría por meter:
+// guardar en un estado global
+// pasar a la siguiente sección
+// enviar los datos a la API
+// navegar a compartir
+console.log("Datos enviados:", fillData);
+}
+
 
 /*SECCIÓN DE FUNCIONES DE EVENTOS*/
+// Escuchamos a todos los inputs del formulario
+if (fillForm && fillPreview) {
+  for (const input of fillInputs) {
+    input.addEventListener("input", handleInputFill);
+  }
+
+// Botón para borrar los resultados
+resetButton.addEventListener("click", handleClickReset);
+
+// Submit del form
+fillForm.addEventListener("submit", handleSubmitFillForm);
+
 
 /*SECCIÓN DE ACCIONES AL CARGAR LA PÁGINA - EJECUCIÓN*/
+// Recuperar los datos guardados (si es que existen)
+loadFillDataFromLocalStorage();
+
+// Pintar la preview al entrar en Rellena
+renderPreview();
+
+// Ajustar el estado inicial de los botones
+validateForm();
+toggleResetButton();
+}
+
