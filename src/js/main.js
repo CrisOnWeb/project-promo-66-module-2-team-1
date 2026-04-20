@@ -81,6 +81,8 @@ function displayLocalStorage(){
 }
 
 //EventListener - Inputs
+//hace cosas raras en los estilos
+
 
 previewName.addEventListener("input", () => {
   nameValue.textContent = previewName.value;
