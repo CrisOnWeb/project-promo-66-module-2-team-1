@@ -80,6 +80,11 @@ renderDefault()
 // Función para pintar los datos en la preview
 function renderPreview() {
   if (!fillPreview) return;
+   const cardElements = document.querySelectorAll('.js_input');
+  for(const element of cardElements){
+    element.classList.remove('palette0', 'palette1', 'palette2', 'palette3');
+    element.classList.add(theme);
+  }
   nameValue.textContent = fillData.name.trim() || "Nombre";
   ageValue.textContent = fillData.age ? `${fillData.age} años`: 'Edad';
   breedValue.innerHTML = `<i class="fa-solid fa-paw"></i> ${fillData.breed.trim() || "Raza"}`;
@@ -123,11 +128,12 @@ function handleInputFill(ev) {
   
   //el inputValue escrito en inputName es el valor del fillData[propiedad que se llama como el inputName]
   fillData[inputName] = inputValue
+  fillData[ev.target.id] = ev.target.value
   // Comprobar si el objeto se actualiza correctamente y si el name de los inputs está bien conectado
   console.log("fillData actualizado:", fillData[inputName]);
  
   saveFillDataInLocalStorage();
-  renderPreview(fillData[inputName]);
+  renderPreview(fillData);
   validateForm();
   toggleResetButton();
 }
