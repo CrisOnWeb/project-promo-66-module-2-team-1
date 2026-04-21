@@ -81,8 +81,9 @@ function renderDefault() {
 renderDefault();
 
 // Función para pintar los datos en la preview
-function renderPreview() {
+function renderPreview(fillData) {
   if (!fillPreview) return;
+<<<<<<< HEAD
   const cardElements = document.querySelectorAll(".js_input");
   for (const element of cardElements) {
     element.classList.remove("palette0", "palette1", "palette2", "palette3");
@@ -100,6 +101,17 @@ function renderPreview() {
     // Para poner como enlace el instagram sin espacios por el trim y, sino hay nada, se usa el # que es como un placeholder.
     instagramValue.href = fillData.instagram.trim() || "#";
   }
+=======
+  nameValue.textContent = fillData.name.trim() || "Nombre";
+  ageValue.textContent = fillData.age ? `${fillData.age} años`: 'Edad';
+  breedValue.innerHTML = `<i class="fa-solid fa-paw"></i> ${fillData.breed.trim() || "Raza"}`;
+  weightValue.innerHTML = `<i class="fa-solid fa-weight-hanging"></i> ${fillData.weight ? `${fillData.weight} kg` : "Peso"}`;
+  descriptionValue.textContent = fillData.description.trim() || "Descripción";
+  instagramValue.textContent = fillData.instagram.trim() ? "Ver Instagram" : "Instagram";
+
+  // Para poner como enlace el instagram sin espacios por el trim y, sino hay nada, se usa el # que es como un placeholder.
+  instagramValue.href = fillData.instagram.trim() || "#";
+>>>>>>> c05bfb99d58f2dc68fc31f6b3fdbb0399a0d5cd8
 }
 // Función para guardar el objeto completo en localStorage
 function saveFillDataInLocalStorage() {
