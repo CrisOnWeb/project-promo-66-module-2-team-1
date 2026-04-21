@@ -1,9 +1,48 @@
+Cosas que hablar con las chicas el MARTES 21:
+
+TODO EL GRUPO: 
+- No tenemos nombre del proyecto :(
+- Los tab-buttons en móvil pequeño se ven feos :(
+- ¿Instagram o Threads u otra?
+    ¿Debería aparecer en la tarjeta ese enlace?
+- ¿El footer no se ve demasiado grande en móvil?
+    ¿Tal vez hay que poner menos info o más pequeña?
+
+
+
+TEAM2:
+- "Elige el diseño" está abajo y "completa info" arriba
+    Tienen distintos tamaños y color
+    ¿"Datos del perro" y "completa info" o solo 1?
+- CREO que habría que añadirle a .previewContainer un width: 100%
+    (no sé si es eso porque todavía no funciona bien el resto)
+- Hay que probar a escribir a ver cómo quedan los textos dentro de preview
+- Añadir "años", "kg", etc desde JS
+- Años y nombre tienen mismo estilo, ¿lo dejamos así?
+- Los iconos desaparecen al escribir en el input
+- Al borrar el input, no vuelve al mensaje de default, se queda vacío
+    ¿O queremos que se quede vacío o solo con el icono?
+- Arreglar la función de RenderDesign, no hace cambios en la 1ª preview
+    ¿querySelectorAll() para todos los inputs?
+- La imagen no he mirado como se puede cambiar
+- He quitado los required SOLO en esta rama
+
+- ¡Elegir paletas! (Se pueden meter más, pero hay que añadirlas en HTML)
+    (O rompernos la cabeza en JS, claro)
+- ¿Nos gustan los colores default?
+- ¿Añadir texto de "pulsa en la tarjeta para volver a default"?
+    Se puede poner un botón, pero habría que tocar más cosas
+    O sin texto
+
 "use strict";
 /*SECCIÓN DE QUERY SELECTORS*/
 
-/*CQS FORM*/
+// Formulario principal de fill
 const fillForm = document.querySelector(".js_fillForm");
+// Todos los campos se rellenan desde fill
 const fillInputs = document.querySelectorAll(".js_fillInput");
+
+// Botones de acciones del formulario
 const fillSubmitBtn = document.querySelector(".js_fillSubmitBtn");
 const resetButton = document.querySelector(".js_resetButton");
 
@@ -15,22 +54,19 @@ const breedInput = document.querySelector("#breed");
 const weightInput = document.querySelector("#weight");
 const instagramInput = document.querySelector("#instagram");
 
-/*CQS DESIGN*/
-const selected = document.querySelector(".js_selectedDesign");
-const optionsBox = document.querySelector(".js_optionsDesign");
-const options = document.querySelectorAll(".js_option");
-const defaultOption = document.querySelector(".js_designDefault");
-const hiddenInput = document.querySelector(".js_hiddenDesign");
-
-
 /*CQS PREVIEW*/
-const fillPreview = document.querySelectorAll(".js_fillPreview");
-const nameValue = document.querySelectorAll(".js_nameValue");
-const ageValue = document.querySelectorAll(".js_ageValue");
-const breedValue = document.querySelectorAll(".js_breedValue");
-const weightValue = document.querySelectorAll(".js_weightValue");
-const descriptionValue = document.querySelectorAll(".js_descriptionValue");
-const instagramValue = document.querySelectorAll(".js_instagramValue");
+// Elementos visuales de la tarjeta preview que se actualizan en tiempo real
+// Puestos así para que el JS busque los elementos sólo dentro del preview de fill y no de design
+const fillPreview = document.querySelector(".js_fillPreview");
+const nameValue = fillPreview.querySelector(".js_nameValue");
+const ageValue = fillPreview.querySelector(".js_ageValue");
+const breedValue = fillPreview.querySelector(".js_breedValue");
+const weightValue = fillPreview.querySelector(".js_weightValue");
+const descriptionValue = fillPreview.querySelector(".js_descriptionValue");
+const instagramValue = fillPreview.querySelector(".js_instagramValue");
+
+console.log("Contenedor preview fill:", fillPreview);
+console.log("Nombre preview:", nameValue);
 
 
 /*SECCIÓN DE DATOS*/
@@ -46,45 +82,10 @@ let fillData = {
 
 
 /*SECCIÓN DE FUNCIONES*/
-
-//Sección Cambiar Diseño
-for(const option of options){ 
-  option.addEventListener("click", () => { 
-    const value = option.dataset.value; 
-    hiddenInput.value = value; //guardala en una variable 
-    renderDesign(value); 
-})} 
-
-function renderDesign(value){
-  const option = document.querySelector(`[data-value="${value}"]`); 
-  const theme = option.id;
-  const cardElements = document.querySelectorAll('.previewContainer > div');
-  for(const element of cardElements){
-    element.classList.remove('palette0', 'palette1', 'palette2', 'palette3');
-    element.classList.add(theme);
-  }
-}
-
-//Permite al usuario volver a default
-const backToDefault = document.querySelector('.previewContainer');
-backToDefault.addEventListener("click", () =>{
-  renderDefault()
-})
-
-function renderDefault(){
-  const cardElements = document.querySelectorAll('.previewContainer > div');
-  for(const element of cardElements){
-    element.classList.remove('palette0', 'palette1', 'palette2', 'palette3');
-    element.classList.add('palette0')
-  }
-}
-
-renderDefault() 
-
-
 // Función para pintar los datos en la preview
 function renderPreview() {
   if (!fillPreview) return;
+  
   nameValue.textContent = fillData.name.trim() || "Nombre";
   ageValue.textContent = fillData.age ? `${fillData.age} años`: 'Edad';
   breedValue.innerHTML = `<i class="fa-solid fa-paw"></i> ${fillData.breed.trim() || "Raza"}`;
@@ -212,7 +213,14 @@ function handleSubmitFillForm(ev) {
     return;
   }
 
+// Aquí faltaría por meter:
+// guardar en un estado global
+// pasar a la siguiente sección
+// enviar los datos a la API
+// navegar a compartir
+console.log("Datos enviados:", fillData);
 }
+
 
 /*SECCIÓN DE FUNCIONES DE EVENTOS*/
 // Escuchamos a todos los inputs del formulario
