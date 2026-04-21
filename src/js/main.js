@@ -25,13 +25,13 @@ const hiddenInput = document.querySelector(".js_hiddenDesign");
 
 /*CQS PREVIEW*/
 const fillPreview = document.querySelector(".js_fillPreview");
-const nameValue = document.querySelectorAll(".js_nameValue");
+const nameValue = document.querySelector(".js_nameValue");
 const ageValue = document.querySelector(".js_ageValue");
 const breedValue = document.querySelector(".js_breedValue");
 const weightValue = document.querySelector(".js_weightValue");
 const descriptionValue = document.querySelector(".js_descriptionValue");
 const instagramValue = document.querySelector(".js_instagramValue");
-//console.log("Contenedor preview fill:", fillPreview);
+
 
 
 /*SECCIÓN DE DATOS*/
@@ -94,14 +94,14 @@ function renderPreview() {
   // Para poner como enlace el instagram sin espacios por el trim y, sino hay nada, se usa el # que es como un placeholder.
   instagramValue.href = fillData.instagram.trim() || "#";
 }
-/*
+
 // Función para guardar el objeto completo en localStorage
 function saveFillDataInLocalStorage() {
   localStorage.setItem("fillData", JSON.stringify(fillData));
 }
-*/
+
 // Función para recuperar los datos guardados en localStorage
-/*function loadFillDataFromLocalStorage() {
+function loadFillDataFromLocalStorage() {
   const savedFillData = localStorage.getItem("fillData");
   
   if (savedFillData) {
@@ -118,22 +118,21 @@ function saveFillDataInLocalStorage() {
     
   }
 }
-*/
+
 // Función para actualizar el objeto fillData cuando la usuaria escribe
 function handleInputFill(ev) {
   const changedInput = ev.target; //donde ocurre el evento
-  const inputName = changedInput.name; //input donde escribe
+  const inputName = changedInput.id; //input donde escribe
   const inputValue = changedInput.value; //valor escrito en input
   console.log(changedInput)
   //el inputValue escrito en inputName es el valor del fillData[propiedad que se llama como el inputName]
-  fillData[inputName] =inputValue
-  //fillData.id = inputName
+  fillData[inputName] = inputValue
   // Comprobar si el objeto se actualiza correctamente y si el name de los inputs está bien conectado
-  console.log("fillData actualizado:", fillData);
-  
-  //saveFillDataInLocalStorage();
+  console.log("fillData actualizado:", fillData[inputName]);
+ 
+  saveFillDataInLocalStorage();
   renderPreview(fillData[inputName]);
-  //validateForm();
+  validateForm();
   toggleResetButton();
 }
 
@@ -147,7 +146,7 @@ function isFormComplete() {
     fillData.weight !== "" &&
     fillData.instagram.trim() !== "";
 
-  //console.log("¿Formulario completo?", result);
+  console.log("¿Formulario completo?", result);
   
   return result;
 }
@@ -213,10 +212,10 @@ function handleSubmitFillForm(ev) {
     return;
   }
   // Aquí faltaría por meter:
-// guardar en un estado global
-// pasar a la siguiente sección
-// enviar los datos a la API
-// navegar a compartir
+  // guardar en un estado global
+  // pasar a la siguiente sección
+  // enviar los datos a la API
+  // navegar a compartir
 console.log("Datos enviados:", fillData);
 }
 
@@ -236,12 +235,12 @@ fillForm.addEventListener("submit", handleSubmitFillForm);
 
 /*SECCIÓN DE ACCIONES AL CARGAR LA PÁGINA - EJECUCIÓN*/ 
 // Recuperar los datos guardados (si es que existen)
-//loadFillDataFromLocalStorage();
+loadFillDataFromLocalStorage();
 
 // Pintar la preview al entrar en Rellena
 renderPreview();
 
 // Ajustar el estado inicial de los botones
-//validateForm();
-//toggleResetButton();
+validateForm();
+toggleResetButton();
 }
