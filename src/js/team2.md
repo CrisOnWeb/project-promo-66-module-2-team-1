@@ -14,7 +14,9 @@ Cosas que hablar con las chicas el MARTES 21:
     ¿"Datos del perro" y "completa info" o solo 1?
 - CREO que habría que añadirle a .previewContainer un width: 100%
 - querySelectorAll() para todos los inputs
-  ERROR: interfiere con los colores
+  ERROR: no cambia ningún input
+- Inputs solo funcionan en 1ª preview
+- Description tiene un error, he dejado comentada la linea
 - La imagen no he mirado como se puede cambiar
 - He quitado los required SOLO en esta rama
 - ¡Elegir paletas! (Se pueden meter más, pero hay que añadirlas en HTML/JS)

@@ -120,7 +120,7 @@ function handleInputFill(ev) {
   const changedInput = ev.target; //donde ocurre el evento
   const inputName = changedInput.id; //input donde escribe
   const inputValue = changedInput.value; //valor escrito en input
-  console.log(changedInput)
+  
   //el inputValue escrito en inputName es el valor del fillData[propiedad que se llama como el inputName]
   fillData[inputName] = inputValue
   // Comprobar si el objeto se actualiza correctamente y si el name de los inputs está bien conectado
