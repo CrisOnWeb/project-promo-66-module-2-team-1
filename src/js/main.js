@@ -22,7 +22,6 @@ const options = document.querySelectorAll(".js_option");
 const defaultOption = document.querySelector(".js_designDefault");
 const hiddenInput = document.querySelector(".js_hiddenDesign");
 
-
 /*CQS PREVIEW*/
 const fillPreview = document.querySelector(".js_fillPreview");
 const nameValue = document.querySelector(".js_nameValue");
@@ -32,10 +31,8 @@ const weightValue = document.querySelector(".js_weightValue");
 const descriptionValue = document.querySelector(".js_descriptionValue");
 const instagramValue = document.querySelector(".js_instagramValue");
 
-
-
 /*SECCIÓN DE DATOS*/
-//Objeto principal donde guardamos la información que la usuaria escribe en fill
+//Obj que guarda la info que la usuaria escribe en fill
 let fillData = {
   name: "",
   description: "",
@@ -44,7 +41,6 @@ let fillData = {
   weight: "",
   instagram: "",
 };
-
 
 /*SECCIÓN DE FUNCIONES*/
 
