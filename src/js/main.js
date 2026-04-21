@@ -128,7 +128,7 @@ function handleInputFill(ev) {
   
   //el inputValue escrito en inputName es el valor del fillData[propiedad que se llama como el inputName]
   fillData[inputName] = inputValue
-  fillData[ev.target.id] = ev.target.value
+  //fillData[ev.target.id] = ev.target.value
   // Comprobar si el objeto se actualiza correctamente y si el name de los inputs está bien conectado
   console.log("fillData actualizado:", fillData[inputName]);
  

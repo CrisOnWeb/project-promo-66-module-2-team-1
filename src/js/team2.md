@@ -6,7 +6,7 @@ Cosas que hablar con las chicas el MARTES 21:
     ¿Debería aparecer en la tarjeta ese enlace?
 - ¿El footer no se ve demasiado grande en móvil?
     ¿Tal vez hay que poner menos info o más pequeña?
-- ¿Nos gustan los colores default?
+
 - ¿Añadir texto/botón de "pulsa en la tarjeta para volver a default"?
 
 - CREO que habría que añadirle a .previewContainer un width: 100%
@@ -30,3 +30,4 @@ SOLUCIONADO:
 - "Elige el diseño" está abajo y "completa info" arriba
     Tienen distintos tamaños y color
     ¿"Datos del perro" y "completa info" o solo 1?
+- ¿Nos gustan los colores default?
