@@ -2,7 +2,7 @@ Cosas que hablar con las chicas el MARTES 21:
 
 - No tenemos nombre del proyecto :(
 
-- ¿Instagram o Threads u otra? FACEBOOK
+- cambiar instagram por FACEBOOK
     ¿Debería aparecer en la tarjeta ese enlace?
 - ¿El footer no se ve demasiado grande en móvil?
     ¿Tal vez hay que poner menos info o más pequeña?
@@ -13,10 +13,8 @@ Cosas que hablar con las chicas el MARTES 21:
 - querySelectorAll() para todos los inputs
   ERROR: no cambia ningún input
 - Inputs solo funcionan en 1ª preview
-- Description tiene un error, he dejado comentada la linea
-- La imagen no he mirado como se puede cambiar
-- He quitado los required SOLO en esta rama
-- ¡Elegir paletas! (Se pueden meter más, pero hay que añadirlas en HTML/JS)
+
+- Falta la imagen
 
 
 SOLUCIONADO:
