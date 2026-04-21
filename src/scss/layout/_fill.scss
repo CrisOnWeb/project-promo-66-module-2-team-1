@@ -154,9 +154,20 @@
 }
 
 .fill__reset {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.85rem 1rem;
+  border: 0;
+  border-radius: 999px;
   margin-bottom: var(--space-3);
   background-color: var(--color-accent-third);
-  color: var(--color-text-secondary);
+  color: var(--color-bg-secondary);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
 }
 
 .fill__button:hover,
@@ -164,11 +175,6 @@
   filter: brightness(0.95);
 }
 
-.fill__reset,
-.fill__button:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(229, 126, 62, 0.18);
-}
 
 .fill__button:active {
   transform: translateY(1px);
