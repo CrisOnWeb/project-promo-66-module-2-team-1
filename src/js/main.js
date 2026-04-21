@@ -24,13 +24,14 @@ const hiddenInput = document.querySelector(".js_hiddenDesign");
 
 
 /*CQS PREVIEW*/
-const fillPreview = document.querySelectorAll(".js_fillPreview");
+const fillPreview = document.querySelector(".js_fillPreview");
 const nameValue = document.querySelectorAll(".js_nameValue");
-const ageValue = document.querySelectorAll(".js_ageValue");
-const breedValue = document.querySelectorAll(".js_breedValue");
-const weightValue = document.querySelectorAll(".js_weightValue");
-const descriptionValue = document.querySelectorAll(".js_descriptionValue");
-const instagramValue = document.querySelectorAll(".js_instagramValue");
+const ageValue = document.querySelector(".js_ageValue");
+const breedValue = document.querySelector(".js_breedValue");
+const weightValue = document.querySelector(".js_weightValue");
+const descriptionValue = document.querySelector(".js_descriptionValue");
+const instagramValue = document.querySelector(".js_instagramValue");
+//console.log("Contenedor preview fill:", fillPreview);
 
 
 /*SECCIÓN DE DATOS*/
@@ -78,9 +79,7 @@ function renderDefault(){
     element.classList.add('palette0')
   }
 }
-
 renderDefault() 
-
 
 // Función para pintar los datos en la preview
 function renderPreview() {
@@ -89,20 +88,20 @@ function renderPreview() {
   ageValue.textContent = fillData.age ? `${fillData.age} años`: 'Edad';
   breedValue.innerHTML = `<i class="fa-solid fa-paw"></i> ${fillData.breed.trim() || "Raza"}`;
   weightValue.innerHTML = `<i class="fa-solid fa-weight-hanging"></i> ${fillData.weight ? `${fillData.weight} kg` : "Peso"}`;
-  descriptionValue.textContent = fillData.description.trim() || "Descripción";
+  //descriptionValue.textContent = fillData.description.trim() || "Descripción";
   instagramValue.textContent = fillData.instagram.trim() ? "Ver Instagram" : "Instagram";
 
   // Para poner como enlace el instagram sin espacios por el trim y, sino hay nada, se usa el # que es como un placeholder.
   instagramValue.href = fillData.instagram.trim() || "#";
 }
-
+/*
 // Función para guardar el objeto completo en localStorage
 function saveFillDataInLocalStorage() {
   localStorage.setItem("fillData", JSON.stringify(fillData));
 }
-
+*/
 // Función para recuperar los datos guardados en localStorage
-function loadFillDataFromLocalStorage() {
+/*function loadFillDataFromLocalStorage() {
   const savedFillData = localStorage.getItem("fillData");
   
   if (savedFillData) {
@@ -116,23 +115,25 @@ function loadFillDataFromLocalStorage() {
     breedInput.value = fillData.breed || "";
     weightInput.value = fillData.weight || "";
     instagramInput.value = fillData.instagram || "";
+    
   }
 }
-
+*/
 // Función para actualizar el objeto fillData cuando la usuaria escribe
 function handleInputFill(ev) {
-  const changedInput = ev.target;
-  const inputName = changedInput.name;
-  const inputValue = changedInput.value;
-  
-  fillData[inputName] = inputValue;
-
+  const changedInput = ev.target; //donde ocurre el evento
+  const inputName = changedInput.name; //input donde escribe
+  const inputValue = changedInput.value; //valor escrito en input
+  console.log(changedInput)
+  //el inputValue escrito en inputName es el valor del fillData[propiedad que se llama como el inputName]
+  fillData[inputName] =inputValue
+  //fillData.id = inputName
   // Comprobar si el objeto se actualiza correctamente y si el name de los inputs está bien conectado
   console.log("fillData actualizado:", fillData);
   
-  saveFillDataInLocalStorage();
-  renderPreview();
-  validateForm();
+  //saveFillDataInLocalStorage();
+  renderPreview(fillData[inputName]);
+  //validateForm();
   toggleResetButton();
 }
 
@@ -146,7 +147,7 @@ function isFormComplete() {
     fillData.weight !== "" &&
     fillData.instagram.trim() !== "";
 
-  console.log("¿Formulario completo?", result);
+  //console.log("¿Formulario completo?", result);
   
   return result;
 }
@@ -211,11 +212,17 @@ function handleSubmitFillForm(ev) {
   if (!isFormComplete()) {
     return;
   }
-
+  // Aquí faltaría por meter:
+// guardar en un estado global
+// pasar a la siguiente sección
+// enviar los datos a la API
+// navegar a compartir
+console.log("Datos enviados:", fillData);
 }
 
 /*SECCIÓN DE FUNCIONES DE EVENTOS*/
 // Escuchamos a todos los inputs del formulario
+
 if (fillForm && fillPreview) {
   for (const input of fillInputs) {
     input.addEventListener("input", handleInputFill);
@@ -227,16 +234,14 @@ resetButton.addEventListener("click", handleClickReset);
 // Submit del form
 fillForm.addEventListener("submit", handleSubmitFillForm);
 
-
-/*SECCIÓN DE ACCIONES AL CARGAR LA PÁGINA - EJECUCIÓN*/
+/*SECCIÓN DE ACCIONES AL CARGAR LA PÁGINA - EJECUCIÓN*/ 
 // Recuperar los datos guardados (si es que existen)
-loadFillDataFromLocalStorage();
+//loadFillDataFromLocalStorage();
 
 // Pintar la preview al entrar en Rellena
 renderPreview();
 
 // Ajustar el estado inicial de los botones
-validateForm();
-toggleResetButton();
+//validateForm();
+//toggleResetButton();
 }
-
