@@ -78,13 +78,8 @@ function renderDefault(){
 renderDefault() 
 
 // Función para pintar los datos en la preview
-function renderPreview() {
+function renderPreview(fillData) {
   if (!fillPreview) return;
-   const cardElements = document.querySelectorAll('.js_input');
-  for(const element of cardElements){
-    element.classList.remove('palette0', 'palette1', 'palette2', 'palette3');
-    element.classList.add(theme);
-  }
   nameValue.textContent = fillData.name.trim() || "Nombre";
   ageValue.textContent = fillData.age ? `${fillData.age} años`: 'Edad';
   breedValue.innerHTML = `<i class="fa-solid fa-paw"></i> ${fillData.breed.trim() || "Raza"}`;
