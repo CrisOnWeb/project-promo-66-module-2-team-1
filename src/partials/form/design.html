@@ -1,4 +1,5 @@
 <section class="design js_designSection">
+  <load src="partials/preview.html" />
   <fieldset class="design__fieldset">
     <legend class="design__text">Elige el diseño de tu tarjeta:</legend>
     <div class="design__container">
@@ -52,12 +53,12 @@
     <div class="design__field">
       <label class="design__label" for="image">Añadir imagen</label>
       <input
-        class="design__input design__input--file"
+        class="design__input design__input--file js_previewImg"
         id="image"
         type="file"
         name="imagen"
         accept="image/*"
-        required
+        
       />
     </div>
   </fieldset>
