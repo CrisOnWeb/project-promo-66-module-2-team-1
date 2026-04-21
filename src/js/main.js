@@ -89,7 +89,7 @@ function renderPreview() {
   ageValue.textContent = fillData.age ? `${fillData.age} años`: 'Edad';
   breedValue.innerHTML = `<i class="fa-solid fa-paw"></i> ${fillData.breed.trim() || "Raza"}`;
   weightValue.innerHTML = `<i class="fa-solid fa-weight-hanging"></i> ${fillData.weight ? `${fillData.weight} kg` : "Peso"}`;
-  //descriptionValue.textContent = fillData.description.trim() || "Descripción";
+  descriptionValue.textContent = fillData.description.trim() || "Descripción";
   instagramValue.textContent = fillData.instagram.trim() ? "Ver Instagram" : "Instagram";
 
   // Para poner como enlace el instagram sin espacios por el trim y, sino hay nada, se usa el # que es como un placeholder.
