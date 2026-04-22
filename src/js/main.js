@@ -57,7 +57,7 @@ for (const option of options) {
 function renderDesign(value) {
   const option = document.querySelector(`[data-value="${value}"]`);
   const theme = option.id;
-  const cardElements = document.querySelectorAll(".previewContainer > div");
+  const cardElements = document.querySelectorAll(".preview > div");
   for (const element of cardElements) {
     element.classList.remove("palette0", "palette1", "palette2", "palette3");
     element.classList.add(theme);
@@ -65,13 +65,13 @@ function renderDesign(value) {
 }
 
 //Permite al usuario volver a default
-const backToDefault = document.querySelector(".previewContainer");
+const backToDefault = document.querySelector(".preview");
 backToDefault.addEventListener("click", () => {
   renderDefault();
 });
 
 function renderDefault() {
-  const cardElements = document.querySelectorAll(".previewContainer > div");
+  const cardElements = document.querySelectorAll(".preview > div");
   for (const element of cardElements) {
     element.classList.remove("palette0", "palette1", "palette2", "palette3");
     element.classList.add("palette0");
