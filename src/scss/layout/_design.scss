@@ -169,28 +169,28 @@
 .palette0{
     background-color: var(--form-color-bg);
     color: var(--form-color-text);
-    .imageContainer{
-      background-color: var(--form-color-accent);
+    .preview__img {
+      border: 17px solid var(--form-color-accent);
     }
 }
 .palette1{
     background-color: var(--form-color-bg);
     color: var(--form-color-text);
-    .imageContainer{
-      background-color: var(--form-color-accent);
+    .preview__img {
+      border: 17px solid var(--form-color-accent);
     }
 }
 .palette2{
     background-color: var(--form-color-bg);
     color: var(--form-color-text);
-    .imageContainer{
-      background-color: var(--form-color-accent);
+    .preview__img {
+      border: 17px solid var(--form-color-accent);
     }
 }
 .palette3{
     background-color: var(--form-color-bg);
     color: var(--form-color-text);
-    .imageContainer{
-      background-color: var(--form-color-accent);
+    .preview__img {
+      border: 17px solid var(--form-color-accent);
     }
 }
