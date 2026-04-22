@@ -7,8 +7,13 @@ Cosas que hablar con las chicas el MARTES 21:
     ¿Tal vez hay que poner menos info o más pequeña?
 - Poner "completa info" debajo de "datos del animal" y cambiar estilo
 - ¿Añadir texto/botón de "pulsa en la tarjeta para volver a default"?
-- Falta la imagen
-
+- Subir imagen y que cargue en la tarjeta
+- function handleSubmitFillForm(ev){}:
+  faltaría por meter:
+  // guardar en un estado global
+  // pasar a la siguiente sección
+  // enviar los datos a la API
+  // navegar a compartir
 
 SOLUCIONADO:
 - Los iconos desaparecen al escribir en el input 
