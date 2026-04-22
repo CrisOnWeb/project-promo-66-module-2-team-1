@@ -77,14 +77,14 @@ function renderDefault(){
 }
 renderDefault() 
 
-// Función para pintar los datos en la preview
-function renderPreview() {
-  if (!fillPreview) return;
-   const cardElements = document.querySelectorAll('.js_input');
-  for(const element of cardElements){
-    element.classList.remove('palette0', 'palette1', 'palette2', 'palette3');
-    element.classList.add(theme);
-  }
+// // Función para pintar los datos en la preview
+// function renderPreview() {
+//   if (!fillPreview) return;
+//    const cardElements = document.querySelectorAll('.js_input');
+//   for(const element of cardElements){
+//     element.classList.remove('palette0', 'palette1', 'palette2', 'palette3');
+//     element.classList.add(theme);
+//   }
   nameValue.textContent = fillData.name.trim() || "Nombre";
   ageValue.textContent = fillData.age ? `${fillData.age} años`: 'Edad';
   breedValue.innerHTML = `<i class="fa-solid fa-paw"></i> ${fillData.breed.trim() || "Raza"}`;
@@ -94,7 +94,7 @@ function renderPreview() {
 
   // Para poner como enlace el instagram sin espacios por el trim y, sino hay nada, se usa el # que es como un placeholder.
   instagramValue.href = fillData.instagram.trim() || "#";
-}
+
 
 // Función para guardar el objeto completo en localStorage
 function saveFillDataInLocalStorage() {
@@ -123,7 +123,7 @@ function loadFillDataFromLocalStorage() {
 // Función para actualizar el objeto fillData cuando la usuaria escribe
 function handleInputFill(ev) {
   const changedInput = ev.target; //donde ocurre el evento
-  const inputName = changedInput.id; //input donde escribe
+  const inputName = changedInput.name; //input donde escribe
   const inputValue = changedInput.value; //valor escrito en input
   
   //el inputValue escrito en inputName es el valor del fillData[propiedad que se llama como el inputName]
@@ -133,7 +133,7 @@ function handleInputFill(ev) {
   console.log("fillData actualizado:", fillData[inputName]);
  
   saveFillDataInLocalStorage();
-  renderPreview(fillData);
+  renderPreview();
   validateForm();
   toggleResetButton();
 }
