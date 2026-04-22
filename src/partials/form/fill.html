@@ -3,14 +3,14 @@
     <header class="fill__header">
       <!-- Ayuda contextual para decirle a la usuaria qué hacer y qué pasará, ya que tenemos un preview en tiempo real -->
       <h2 class="fill__title" id="fill-title">
-        Completa la información para ver los cambios.
+        Completa la información para ver los cambios
       </h2>
     </header>
 
     <!-- Contenido principal de la sección: primero preview y después formulario -->
     <div class="fill__content">
       <div>
-        <div class="fill__preview-card js_fillPreview">
+        <div class="fill__preview-card js_fillPreview" id="preview2">
           <load src="partials/preview.html" />
 
           <!-- Aquí se renderiza la tarjeta del preview del perro -->
@@ -83,14 +83,14 @@
               </div>
 
               <div class="fill__field">
-                <label class="fill__label" for="instagram">Instagram</label>
+                <label class="fill__label" for="instagram">Facebook</label>
                 <input
                   class="fill__input js_fillInput"
                   id="instagram"
                   type="url"
                   name="instagram"
                   autocomplete="url"
-                  placeholder="https://instagram.com/..."
+                  placeholder="https://facebook.com/..."
                 />
               </div>
             </div>
