@@ -1,51 +1,76 @@
+.preview {
+  font-family: 'Poppins', sans-serif;
+  padding-block: 1rem;
 
-.previewContainer {
-    font-family: Poppins, Roboto;
-    background-color: var(--color-bg-primary);
-    padding-bottom: 10px;
-    width: 100%;
-}
-.previewCard {
-    border-radius: 10%;
+  &__card {
+    max-width: 350px; // ??
+    padding-block: 32px;
+    padding-inline: 16px;
+    border-radius: 45px;
     box-shadow: 0px 0px 10px 2px #acacac;
-    max-width: 350px;
     margin-inline: auto;
     background-color: white;
-}
+  }
 
-.petInfo {
-    display: flex;
-    flex-direction: column;
-    padding-top: 10%;
-    font-weight: bold;
-    font-size: 120%;
-    align-items: center;
-}
-
-.imageContainer {
-    margin: 5%;
-    padding: 5%;
+  &__info {
     display: flex;
     justify-content: center;
-    border-radius: 10%;
-    background-color: #D2D4C0;
-}
+    align-items: center;
+    font-weight: 600;
+  }
 
-.imageValue {
-    border-radius: 10%;
-}
+  &__name {
+    color: var(--color-text-primary);
+    font-size: 32px;
+  }
 
-.cardInfo {
+  &__age {
+    font-size: 32px;
+
+    & span {
+      margin-left: 6px;
+    }
+  }
+
+  &__imgContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__img {
+    margin-block: 8px;
+    border-radius: 45px;
+    border: 17px solid var(--color-accent-secondary);
+
+    width: 250px;
+    height: 250px;
+    background-image: url('../../../public/imgs/images.jfif');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  &__features {
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
-    padding: 5%;
-    font-size: 120%;
-}
+    // padding: 5%;
+    padding-inline: 16px;
+    padding-block: 10px;
+    font-size: 18px;
+  }
 
-.temperValue {
-    display: flex;
-    align-items: center;
+  // Línea divisoria
+  &__breed {
+    padding-right: 20px;
+    border-right: 2px solid var(--color-text-primary);
+  }
+
+  &__descContainer {
+    padding-inline: 16px;
+  }
+
+  &__desc {
     text-align: center;
-    padding: 5%;
+  }
 }
