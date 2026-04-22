@@ -93,14 +93,18 @@ function renderPreview(target, data) {
     const weightValueInPreview = fillPreview2.querySelector('.js_weightValue');
     const descriptionValueInPreview = fillPreview2.querySelector('.js_descriptionValue');
     const instagramValueInPreview = fillPreview2.querySelector('.js_instagramValue');
+
+    nameValueInPreview.textContent = fillData.name 
+  ? fillData.name + ', '  + '\u200B' //así no ignora el espacio tras la coma
+  : 'Nala, ';
+    ageValueInPreview.textContent = `${fillData.age ? ' ' + fillData.age + ' años' : ''}`
+    //¿y si tiene 1 año?
     
-    nameValueInPreview.textContent = `${fillData.name.trim()}, ` || "Nombre";
-    ageValueInPreview.textContent = fillData.age ? ` ${fillData.age} años` : "Edad";
     breedValueInPreview.innerHTML = `<i class="fa-solid fa-paw"></i> ${fillData.breed.trim() || "Raza"}`;
     weightValueInPreview.innerHTML = `<i class="fa-solid fa-weight-hanging"></i> ${fillData.weight ? `${fillData.weight} kg` : "Peso"}`;
     descriptionValueInPreview.textContent = fillData.description.trim() || "Descripción";
     instagramValueInPreview.textContent = fillData.instagram.trim()
-    ? `${fillData.instagram.trim()}` : "";
+    ? `${fillData.instagram.trim()}` : "#";
     //instagramValue2.href = fillData.instagram.trim() || "#";
     // Para poner como enlace el instagram sin espacios por el trim y, sino hay nada, se usa el # que es como un placeholder.
 }
