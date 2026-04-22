@@ -6,6 +6,7 @@ Cosas que hablar con las chicas el MARTES 21:
 - ¿El footer no se ve demasiado grande en móvil?
     ¿Tal vez hay que poner menos info o más pequeña?
 - Poner "completa info" debajo de "datos del animal" y cambiar estilo
+- ¿y si tiene 1 año?
 - ¿Añadir texto/botón de "pulsa en la tarjeta para volver a default"?
 - Subir imagen y que cargue en la tarjeta
 - function handleSubmitFillForm(ev){}:

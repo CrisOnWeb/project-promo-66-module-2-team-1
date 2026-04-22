@@ -95,8 +95,8 @@ function renderPreview(target, data) {
     const instagramValueInPreview = fillPreview2.querySelector('.js_instagramValue');
 
     nameValueInPreview.textContent = fillData.name 
-  ? fillData.name + ', '  + '\u200B' //así no ignora el espacio tras la coma
-  : 'Nala, ';
+  ? fillData.name 
+  : 'Nombre';
     ageValueInPreview.textContent = `${fillData.age ? ' ' + fillData.age + ' años' : ''}`
     //¿y si tiene 1 año?
     
