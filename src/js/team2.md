@@ -29,3 +29,44 @@ SOLUCIONADO:
     Tienen distintos tamaños y color
     ¿"Datos del perro" y "completa info" o solo 1?
 - ¿Nos gustan los colores default?
+
+CRIS:
+<div class="preview">
+  <div id="previewCard" class="preview__card">
+    <div class="preview__info">
+      <p class="preview__name js_nameValue">Nala</p>
+      <p class="preview__age js_ageValue">,<span>4</span></p>
+    </div>
+    <div class="preview__imgContainer">
+      <div class="preview__img"></div>
+      <!-- <img class="preview__img js_imgValue" src=".\imgs\images.jfif" /> -->
+    </div>
+    <div class="preview__content">
+      <div class="preview__features">
+        <p class="preview__breed js_breedValue">
+          <i class="fa-solid fa-paw"></i> <span>Mestizo</span>
+        </p>
+        <p class="preview__weight js_weightValue">
+          <i class="fa-solid fa-weight-hanging"></i> <span>15</span> kg
+        </p>
+      </div>
+      <div class="preview__descContainer">
+        <p class="preview__desc js_temperValue">
+          Juguetona, cariñosa. Buena con personas y perros. Ideal para una casa
+          con niños o gatos
+        </p>
+         <!-- Añadido enlace a Instagram  -->
+        <!-- target="_blank" abre en nueva pestaña
+            noopener protege la página
+            noreferrer protege la privacidad -->
+        <a
+          class="instagramValue js_instagramValue"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Instagram</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

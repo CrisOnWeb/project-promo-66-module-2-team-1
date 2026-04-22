@@ -30,6 +30,7 @@ const breedValue = document.querySelector(".js_breedValue");
 const weightValue = document.querySelector(".js_weightValue");
 const descriptionValue = document.querySelector(".js_descriptionValue");
 const instagramValue = document.querySelector(".js_instagramValue");
+const previewCard = document.querySelector(".previewCard");
 
 /*SECCIÓN DE DATOS*/
 //Obj que guarda la info que la usuaria escribe en fill
@@ -45,57 +46,61 @@ let fillData = {
 /*SECCIÓN DE FUNCIONES*/
 
 //Sección Cambiar Diseño
-for(const option of options){ 
-  option.addEventListener("click", () => { 
-    const value = option.dataset.value; 
-    hiddenInput.value = value; //guardala en una variable 
-    renderDesign(value); 
-})} 
+for (const option of options) {
+  option.addEventListener("click", () => {
+    const value = option.dataset.value;
+    hiddenInput.value = value; //guardala en una variable
+    renderDesign(value);
+  });
+}
 
-function renderDesign(value){
-  const option = document.querySelector(`[data-value="${value}"]`); 
+function renderDesign(value) {
+  const option = document.querySelector(`[data-value="${value}"]`);
   const theme = option.id;
-  const cardElements = document.querySelectorAll('.previewContainer > div');
-  for(const element of cardElements){
-    element.classList.remove('palette0', 'palette1', 'palette2', 'palette3');
+  const cardElements = document.querySelectorAll(".preview > div");
+  for (const element of cardElements) {
+    element.classList.remove("palette0", "palette1", "palette2", "palette3");
     element.classList.add(theme);
   }
 }
 
 //Permite al usuario volver a default
-const backToDefault = document.querySelector('.previewContainer');
-backToDefault.addEventListener("click", () =>{
-  renderDefault()
-})
+const backToDefault = document.querySelector(".preview");
+backToDefault.addEventListener("click", () => {
+  renderDefault();
+});
 
-function renderDefault(){
-  const cardElements = document.querySelectorAll('.previewContainer > div');
-  for(const element of cardElements){
-    element.classList.remove('palette0', 'palette1', 'palette2', 'palette3');
-    element.classList.add('palette0')
+function renderDefault() {
+  const cardElements = document.querySelectorAll(".preview > div");
+  for (const element of cardElements) {
+    element.classList.remove("palette0", "palette1", "palette2", "palette3");
+    element.classList.add("palette0");
   }
 }
-renderDefault() 
+
+renderDefault();
 
 // Función para pintar los datos en la preview
 function renderPreview() {
   if (!fillPreview) return;
-   const cardElements = document.querySelectorAll('.js_input');
-  for(const element of cardElements){
-    element.classList.remove('palette0', 'palette1', 'palette2', 'palette3');
+  const cardElements = document.querySelectorAll(".js_input");
+  for (const element of cardElements) {
+    element.classList.remove("palette0", "palette1", "palette2", "palette3");
     element.classList.add(theme);
   }
-  nameValue.textContent = fillData.name.trim() || "Nombre";
-  ageValue.textContent = fillData.age ? `${fillData.age} años`: 'Edad';
-  breedValue.innerHTML = `<i class="fa-solid fa-paw"></i> ${fillData.breed.trim() || "Raza"}`;
-  weightValue.innerHTML = `<i class="fa-solid fa-weight-hanging"></i> ${fillData.weight ? `${fillData.weight} kg` : "Peso"}`;
-  //descriptionValue.textContent = fillData.description.trim() || "Descripción";
-  instagramValue.textContent = fillData.instagram.trim() ? "Ver Instagram" : "Instagram";
+    nameValue.textContent = fillData.name.trim() || "Nombre";
+    ageValue.textContent = fillData.age ? `${fillData.age} años` : "Edad";
+    breedValue.innerHTML = `<i class="fa-solid fa-paw"></i> ${fillData.breed.trim() || "Raza"}`;
+    weightValue.innerHTML = `<i class="fa-solid fa-weight-hanging"></i> ${fillData.weight ? `${fillData.weight} kg` : "Peso"}`;
+    descriptionValue.textContent = fillData.description.trim() || "Descripción";
+    instagramValue.textContent = fillData.instagram.trim()
+      ? "Ver Instagram"
+      : "Instagram";
 
-  // Para poner como enlace el instagram sin espacios por el trim y, sino hay nada, se usa el # que es como un placeholder.
-  instagramValue.href = fillData.instagram.trim() || "#";
+    // Para poner como enlace el instagram sin espacios por el trim y, sino hay nada, se usa el # que es como un placeholder.
+    instagramValue.href = fillData.instagram.trim() || "#";
+  
 }
-
 // Función para guardar el objeto completo en localStorage
 function saveFillDataInLocalStorage() {
   localStorage.setItem("fillData", JSON.stringify(fillData));
@@ -104,10 +109,10 @@ function saveFillDataInLocalStorage() {
 // Función para recuperar los datos guardados en localStorage
 function loadFillDataFromLocalStorage() {
   const savedFillData = localStorage.getItem("fillData");
-  
+
   if (savedFillData) {
     fillData = JSON.parse(savedFillData);
-    
+
     // Rellenamos también los inputs para que cuando recarguemos, el formulario conserve los datos.
     // Ej: pon en el input nameInput el valor de fillData.name y sino existe, pon un string vacío.
     nameInput.value = fillData.name || "";
@@ -116,7 +121,6 @@ function loadFillDataFromLocalStorage() {
     breedInput.value = fillData.breed || "";
     weightInput.value = fillData.weight || "";
     instagramInput.value = fillData.instagram || "";
-    
   }
 }
 
@@ -125,13 +129,13 @@ function handleInputFill(ev) {
   const changedInput = ev.target; //donde ocurre el evento
   const inputName = changedInput.id; //input donde escribe
   const inputValue = changedInput.value; //valor escrito en input
-  
+
   //el inputValue escrito en inputName es el valor del fillData[propiedad que se llama como el inputName]
-  fillData[inputName] = inputValue
+  fillData[inputName] = inputValue;
   //fillData[ev.target.id] = ev.target.value
   // Comprobar si el objeto se actualiza correctamente y si el name de los inputs está bien conectado
   console.log("fillData actualizado:", fillData[inputName]);
- 
+
   saveFillDataInLocalStorage();
   renderPreview(fillData);
   validateForm();
@@ -140,7 +144,7 @@ function handleInputFill(ev) {
 
 // Función para decir que el formulario está completo solo si todos los campos tienen algo escrito de verdad
 function isFormComplete() {
-  const result = 
+  const result =
     fillData.name.trim() !== "" &&
     fillData.description.trim() !== "" &&
     fillData.age !== "" &&
@@ -149,7 +153,7 @@ function isFormComplete() {
     fillData.instagram.trim() !== "";
 
   console.log("¿Formulario completo?", result);
-  
+
   return result;
 }
 
@@ -204,7 +208,6 @@ function handleClickReset() {
   toggleResetButton();
 
   console.log("Después de reset:", fillData);
-
 }
 
 // Función del submit (evita el envío real y lo deja preparado para el siguiente paso)
@@ -218,7 +221,7 @@ function handleSubmitFillForm(ev) {
   // pasar a la siguiente sección
   // enviar los datos a la API
   // navegar a compartir
-console.log("Datos enviados:", fillData);
+  console.log("Datos enviados:", fillData);
 }
 
 /*SECCIÓN DE FUNCIONES DE EVENTOS*/
@@ -229,20 +232,20 @@ if (fillForm && fillPreview) {
     input.addEventListener("input", handleInputFill);
   }
 
-// Botón para borrar los resultados
-resetButton.addEventListener("click", handleClickReset);
+  // Botón para borrar los resultados
+  resetButton.addEventListener("click", handleClickReset);
 
-// Submit del form
-fillForm.addEventListener("submit", handleSubmitFillForm);
+  // Submit del form
+  fillForm.addEventListener("submit", handleSubmitFillForm);
 
-/*SECCIÓN DE ACCIONES AL CARGAR LA PÁGINA - EJECUCIÓN*/ 
-// Recuperar los datos guardados (si es que existen)
-loadFillDataFromLocalStorage();
+  /*SECCIÓN DE ACCIONES AL CARGAR LA PÁGINA - EJECUCIÓN*/
+  // Recuperar los datos guardados (si es que existen)
+  loadFillDataFromLocalStorage();
 
-// Pintar la preview al entrar en Rellena
-renderPreview();
+  // Pintar la preview al entrar en Rellena
+  renderPreview();
 
-// Ajustar el estado inicial de los botones
-validateForm();
-toggleResetButton();
+  // Ajustar el estado inicial de los botones
+  validateForm();
+  toggleResetButton();
 }

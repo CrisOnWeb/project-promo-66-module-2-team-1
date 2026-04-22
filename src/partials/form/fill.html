@@ -1,120 +1,121 @@
 <section class="fill js_fillSection hidden" aria-labelledby="fill-title">
-    <div class="fill__layout">
-      <header class="fill__header">
-        <!-- Ayuda contextual para decirle a la usuaria qué hacer y qué pasará, ya que tenemos un preview en tiempo real -->
-        <h2 class="fill__title" id="fill-title">
-          Completa la información para ver los cambios.
-        </h2>
-      </header>
+  <div class="fill__layout">
+    <header class="fill__header">
+      <!-- Ayuda contextual para decirle a la usuaria qué hacer y qué pasará, ya que tenemos un preview en tiempo real -->
+      <h2 class="fill__title" id="fill-title">
+        Completa la información para ver los cambios.
+      </h2>
+    </header>
 
-      <!-- Contenido principal de la sección: primero preview y después formulario -->
-      <div class="fill__content">
-        <div>
-          <div class="fill__preview-card js_fillPreview">
-            <load src="partials/preview.html" />
-          
-            
-            <!-- Aquí se renderiza la tarjeta del preview del perro -->
-          </div>
+    <!-- Contenido principal de la sección: primero preview y después formulario -->
+    <div class="fill__content">
+      <div>
+        <div class="fill__preview-card js_fillPreview">
+          <load src="partials/preview.html" />
+
+          <!-- Aquí se renderiza la tarjeta del preview del perro -->
         </div>
+      </div>
 
         <div class="fill__form-wrapper">
           <!-- Se mantiene form porque estamos recogiendo datos y después se trabajará con JS sobre el submit -->
           <form class="fill__form js_fillForm" novalidate>
             <fieldset class="fill__group">
-              <legend class="fill__legend">Datos del perro</legend>
+              <legend class="fill__legend">Datos del animal</legend>
 
+            <div class="fill__field">
+              <label class="fill__label" for="name">Nombre</label>
+              <input
+                class="fill__input js_fillInput"
+                id="name"
+                type="text"
+                name="nombre"
+              />
+            </div>
+
+            <div class="fill__field">
+              <label class="fill__label" for="description">Descripción</label>
+              <textarea
+                class="fill__input fill__input--textarea js_fillInput"
+                id="description"
+                name="descripcion"
+                placeholder="Cuéntanos algo especial sobre este perrete"
+              ></textarea>
+            </div>
+
+            <!-- Creado grid para emplear en el CSS y agrupar los campos que pueden repartirse mejor en tablet/ordenador -->
+            <div class="fill__grid">
               <div class="fill__field">
-                <label class="fill__label" for="name">Nombre</label>
+                <label class="fill__label" for="age">Edad</label>
                 <input
                   class="fill__input js_fillInput"
-                  id="name"
-                  type="text"
-                  name="nombre"
-                  
+                  id="age"
+                  type="number"
+                  name="edad"
+                  min="0"
+                  max="20"
+                  step="1"
+                  inputmode="numeric"
                 />
               </div>
 
               <div class="fill__field">
-                <label class="fill__label" for="description">Descripción</label>
-                <textarea
-                  class="fill__input fill__input--textarea js_fillInput"
-                  id="description"
-                  name="descripcion"
-                  placeholder="Cuéntanos algo especial sobre este perrete"
-                  
-                ></textarea>
+                <label class="fill__label" for="breed">Raza</label>
+                <input
+                  class="fill__input js_fillInput"
+                  id="breed"
+                  type="text"
+                  name="raza"
+                />
               </div>
 
-              <!-- Creado grid para emplear en el CSS y agrupar los campos que pueden repartirse mejor en tablet/ordenador -->
-              <div class="fill__grid">
-                <div class="fill__field">
-                  <label class="fill__label" for="age">Edad</label>
-                  <input
-                    class="fill__input js_fillInput"
-                    id="age"
-                    type="number"
-                    name="edad"
-                    min="0"
-                    max="20"
-                    step="1"
-                    inputmode="numeric"
-                    
-                  />
-                </div>
-
-                <div class="fill__field">
-                  <label class="fill__label" for="breed">Raza</label>
-                  <input
-                    class="fill__input js_fillInput"
-                    id="breed"
-                    type="text"
-                    name="raza"
-                    
-                  />
-                </div>
-
-                <div class="fill__field">
-                  <label class="fill__label" for="weight">Peso</label>
-                  <input
-                    class="fill__input js_fillInput"
-                    id="weight"
-                    type="number"
-                    name="peso"
-                    min="0"
-                    step="0.1"
-                    inputmode="decimal"
-                    
-                  />
-                </div>
-
-                <div class="fill__field">
-                  <label class="fill__label" for="instagram">Instagram</label>
-                  <input
-                    class="fill__input js_fillInput"
-                    id="instagram"
-                    type="url"
-                    name="instagram"
-                    autocomplete="url"
-                    placeholder="https://instagram.com/..."
-                    
-                  />
-                </div>
+              <div class="fill__field">
+                <label class="fill__label" for="weight">Peso</label>
+                <input
+                  class="fill__input js_fillInput"
+                  id="weight"
+                  type="number"
+                  name="peso"
+                  min="0"
+                  step="0.1"
+                  inputmode="decimal"
+                />
               </div>
-            </fieldset>
 
-            <p class="fill__note">* Todos los campos son obligatorios.</p>
-            <!-- Botón único para guardar los cambios y seguir, posteriormente funcional con JS -->
-            <div class="fill__actions">
-              <button class="fill__button fill__button--secondary js_resetButton" type="button" disabled>
-                Reset
-              </button>
-              <button class="fill__button fill__button--primary js_fillSubmitBtn" type="submit" disabled>
-                Guardar y seguir
-              </button>
+              <div class="fill__field">
+                <label class="fill__label" for="instagram">Instagram</label>
+                <input
+                  class="fill__input js_fillInput"
+                  id="instagram"
+                  type="url"
+                  name="instagram"
+                  autocomplete="url"
+                  placeholder="https://instagram.com/..."
+                />
+              </div>
             </div>
-          </form>
-        </div>
+          </fieldset>
+
+          <p class="fill__note">* Todos los campos son obligatorios.</p>
+          <!-- Botón único para guardar los cambios y seguir, posteriormente funcional con JS -->
+          <div class="fill__actions">
+            <button
+              class="fill__reset fill__button--secondary js_resetButton"
+              type="button"
+              disabled
+            >
+              Reset
+            </button>
+            <button
+              class="fill__button fill__button--primary js_fillSubmitBtn"
+              type="submit"
+              disabled
+            >
+              Guardar y seguir
+            </button>
+          </div>
+        </form>
       </div>
     </div>
-  </section>
+  </div>
+</section>
