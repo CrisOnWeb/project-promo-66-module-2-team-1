@@ -13,7 +13,7 @@ const descriptionInput = document.querySelector("#description");
 const ageInput = document.querySelector("#age");
 const breedInput = document.querySelector("#breed");
 const weightInput = document.querySelector("#weight");
-const instagramInput = document.querySelector("#instagram");
+const facebookInput = document.querySelector("#facebook");
 
 /*CQS DESIGN*/
 const selected = document.querySelector(".js_selectedDesign");
@@ -31,7 +31,7 @@ const ageValue = document.querySelector(".js_ageValue");
 const breedValue = document.querySelector(".js_breedValue");
 const weightValue = document.querySelector(".js_weightValue");
 const descriptionValue = document.querySelector(".js_descriptionValue");
-const instagramValue = document.querySelector(".js_instagramValue");
+const facebookValue = document.querySelector(".js_facebookValue");
 const previewCard = document.querySelector(".js_previewCard");
 
 
@@ -45,7 +45,7 @@ let fillData = {
   age: "",
   breed: "",
   weight: "",
-  instagram: "",
+  facebook: "",
 };
 
 /*SECCIÓN DE FUNCIONES*/
@@ -92,21 +92,29 @@ function renderPreview(target, data) {
     const breedValueInPreview = fillPreview2.querySelector('.js_breedValue');
     const weightValueInPreview = fillPreview2.querySelector('.js_weightValue');
     const descriptionValueInPreview = fillPreview2.querySelector('.js_descriptionValue');
-    const instagramValueInPreview = fillPreview2.querySelector('.js_instagramValue');
+    const facebookValueInPreview = fillPreview2.querySelector('.js_facebookValue');
 
-    nameValueInPreview.textContent = fillData.name 
-  ? fillData.name 
-  : 'Nombre';
-    ageValueInPreview.textContent = `${fillData.age ? ' ' + fillData.age + ' años' : ''}`
+    nameValueInPreview.textContent = fillData.name.trim() ? `${fillData.name.trim()},` : 'Nombre';
+    // ageValueInPreview.textContent = fillData.age ? `${fillData.age} años` : '';
     //¿y si tiene 1 año?
+  
     
+  // Cambiado el ternario anterior porque el textContent lo elimina en preview dinámico y no se muestra bien
+    ageValueInPreview.textContent = '';
+    
+    if (fillData.age) {
+      const ageSpan = document.createElement('span');
+      ageSpan.textContent = `${fillData.age} años`;
+      ageValueInPreview.appendChild(ageSpan);
+  }
+
     breedValueInPreview.innerHTML = `<i class="fa-solid fa-paw"></i> ${fillData.breed.trim() || "Raza"}`;
     weightValueInPreview.innerHTML = `<i class="fa-solid fa-weight-hanging"></i> ${fillData.weight ? `${fillData.weight} kg` : "Peso"}`;
     descriptionValueInPreview.textContent = fillData.description.trim() || "Descripción";
-    instagramValueInPreview.textContent = fillData.instagram.trim()
-    ? `${fillData.instagram.trim()}` : "#";
-    //instagramValue2.href = fillData.instagram.trim() || "#";
-    // Para poner como enlace el instagram sin espacios por el trim y, sino hay nada, se usa el # que es como un placeholder.
+    facebookValueInPreview.textContent = fillData.facebook.trim()
+    ? `${fillData.facebook.trim()}` : "#";
+    //facebookValue2.href = fillData.facebook.trim() || "#";
+    // Para poner como enlace el facebook sin espacios por el trim y, sino hay nada, se usa el # que es como un placeholder.
 }
 // Función para guardar el objeto completo en localStorage
 function saveFillDataInLocalStorage() {
@@ -127,7 +135,7 @@ function loadFillDataFromLocalStorage() {
     ageInput.value = fillData.age || "";
     breedInput.value = fillData.breed || "";
     weightInput.value = fillData.weight || "";
-    instagramInput.value = fillData.instagram || "";
+    facebookInput.value = fillData.facebook || "";
   }
 }
 
@@ -157,7 +165,7 @@ function isFormComplete() {
     fillData.age !== "" &&
     fillData.breed.trim() !== "" &&
     fillData.weight !== "" &&
-    fillData.instagram.trim() !== "";
+    fillData.facebook.trim() !== "";
 
   console.log("¿Formulario completo?", result);
 
@@ -172,7 +180,7 @@ function hasAnyData() {
     fillData.age !== "" ||
     fillData.breed.trim() !== "" ||
     fillData.weight !== "" ||
-    fillData.instagram.trim() !== ""
+    fillData.facebook.trim() !== ""
   );
 }
 
@@ -198,7 +206,7 @@ function handleClickReset() {
     age: "",
     breed: "",
     weight: "",
-    instagram: "",
+    facebook: "",
   };
 
   // Reseteamos visualmente el formulario

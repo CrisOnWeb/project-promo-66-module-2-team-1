@@ -52,25 +52,48 @@
 
   &__features {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-3);
     flex-direction: row;
-    // padding: 5%;
     padding-inline: 16px;
     padding-block: 10px;
     font-size: 18px;
   }
 
   // Línea divisoria
+  &__breed,
+  &__weight {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
   &__breed {
-    padding-right: 20px;
-    border-right: 2px solid var(--color-text-primary);
+    padding-right: 1rem;
+    margin-right: 1rem;
+    border-right: 1px solid currentColor;
   }
 
   &__descContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-2);
     padding-inline: 16px;
   }
 
   &__desc {
     text-align: center;
+  }
+
+  &__descContainer .facebookValue,
+  &__descContainer .facebookValue:visited {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: var(--form-link-color);
+    overflow-wrap: anywhere;
   }
 }

@@ -48,6 +48,7 @@
     --form-color-bg: #d2d4c0;
     --form-color-text: #50570f;
     --form-color-accent: #4f6d63;
+    --form-link-color: var(--form-color-text);
   }
 
   /*Dejo comentada la paleta por si queremos rescatarlos*/
@@ -62,6 +63,7 @@
     --form-color-bg: #a8f0df;
     --form-color-text: #00674f;
     --form-color-accent: #d4af37;
+    --form-link-color: var(--form-color-text);
   }
 
   .palette2,
@@ -69,11 +71,13 @@
     --form-color-bg: #c5a8f0;
     --form-color-text: #2c0f57;
     --form-color-accent: #9ceaaf;
+    --form-link-color: var(--form-color-text);
   }
   .palette3,
   #palette3 {
     --form-color-bg: #2e4756;
-    --form-color-text: #a4bfeb; 
+    --form-color-text: #a4bfeb;
     --form-color-accent: #9b6a6c;
+    --form-link-color: #f7fbff;
   }
 }
