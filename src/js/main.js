@@ -23,14 +23,19 @@ const defaultOption = document.querySelector(".js_designDefault");
 const hiddenInput = document.querySelector(".js_hiddenDesign");
 
 /*CQS PREVIEW*/
-const fillPreview = document.querySelector(".js_fillPreview");
+const fillPreview = document.querySelectorAll(".js_fillPreview");
+const fillPreview2 = document.querySelector('#preview2');
+
 const nameValue = document.querySelector(".js_nameValue");
 const ageValue = document.querySelector(".js_ageValue");
 const breedValue = document.querySelector(".js_breedValue");
 const weightValue = document.querySelector(".js_weightValue");
 const descriptionValue = document.querySelector(".js_descriptionValue");
 const instagramValue = document.querySelector(".js_instagramValue");
-const previewCard = document.querySelector(".previewCard");
+const previewCard = document.querySelector(".js_previewCard");
+
+
+
 
 /*SECCIÓN DE DATOS*/
 //Obj que guarda la info que la usuaria escribe en fill
@@ -81,25 +86,23 @@ function renderDefault() {
 renderDefault();
 
 // Función para pintar los datos en la preview
-function renderPreview() {
-  if (!fillPreview) return;
-  const cardElements = document.querySelectorAll(".js_input");
-  for (const element of cardElements) {
-    element.classList.remove("palette0", "palette1", "palette2", "palette3");
-    element.classList.add(theme);
-  }
-    nameValue.textContent = fillData.name.trim() || "Nombre";
-    ageValue.textContent = fillData.age ? `${fillData.age} años` : "Edad";
-    breedValue.innerHTML = `<i class="fa-solid fa-paw"></i> ${fillData.breed.trim() || "Raza"}`;
-    weightValue.innerHTML = `<i class="fa-solid fa-weight-hanging"></i> ${fillData.weight ? `${fillData.weight} kg` : "Peso"}`;
-    descriptionValue.textContent = fillData.description.trim() || "Descripción";
-    instagramValue.textContent = fillData.instagram.trim()
-      ? "Ver Instagram"
-      : "Instagram";
-
+function renderPreview(target, data) {
+    const nameValueInPreview = fillPreview2.querySelector('.js_nameValue');
+    const ageValueInPreview = fillPreview2.querySelector('.js_ageValue');
+    const breedValueInPreview = fillPreview2.querySelector('.js_breedValue');
+    const weightValueInPreview = fillPreview2.querySelector('.js_weightValue');
+    const descriptionValueInPreview = fillPreview2.querySelector('.js_descriptionValue');
+    const instagramValueInPreview = fillPreview2.querySelector('.js_instagramValue');
+    
+    nameValueInPreview.textContent = `${fillData.name.trim()}, ` || "Nombre";
+    ageValueInPreview.textContent = fillData.age ? ` ${fillData.age} años` : "Edad";
+    breedValueInPreview.innerHTML = `<i class="fa-solid fa-paw"></i> ${fillData.breed.trim() || "Raza"}`;
+    weightValueInPreview.innerHTML = `<i class="fa-solid fa-weight-hanging"></i> ${fillData.weight ? `${fillData.weight} kg` : "Peso"}`;
+    descriptionValueInPreview.textContent = fillData.description.trim() || "Descripción";
+    instagramValueInPreview.textContent = fillData.instagram.trim()
+    ? `${fillData.instagram.trim()}` : "";
+    //instagramValue2.href = fillData.instagram.trim() || "#";
     // Para poner como enlace el instagram sin espacios por el trim y, sino hay nada, se usa el # que es como un placeholder.
-    instagramValue.href = fillData.instagram.trim() || "#";
-  
 }
 // Función para guardar el objeto completo en localStorage
 function saveFillDataInLocalStorage() {
@@ -137,7 +140,7 @@ function handleInputFill(ev) {
   console.log("fillData actualizado:", fillData[inputName]);
 
   saveFillDataInLocalStorage();
-  renderPreview(fillData);
+  renderPreview(fillPreview2, fillData);
   validateForm();
   toggleResetButton();
 }
@@ -227,7 +230,7 @@ function handleSubmitFillForm(ev) {
 /*SECCIÓN DE FUNCIONES DE EVENTOS*/
 // Escuchamos a todos los inputs del formulario
 
-if (fillForm && fillPreview) {
+if (fillForm && fillPreview2) {
   for (const input of fillInputs) {
     input.addEventListener("input", handleInputFill);
   }
