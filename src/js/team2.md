@@ -3,8 +3,6 @@ Cosas que hablar con las chicas el jueves 23:
 - ¿Debería aparecer en la tarjeta ese enlace?
 - ¿El footer no se ve demasiado grande en móvil?
 - ¿Tal vez hay que poner menos info o más pequeña?
-- ¿y si tiene 1 año?
-- ¿Añadir texto/botón de "pulsa en la tarjeta para volver a default"?
 - Subir imagen y que cargue en la tarjeta
 - function handleSubmitFillForm(ev){}:
   faltaría por meter:
@@ -38,3 +36,6 @@ SOLUCIONADO:
 - La raya que separa raza/peso que esté centrada y proporcionada en la preview de "rellena".
 - El botón de reset colocarlo debajo de "todos los cambios son obligatorios" y que sea más pequeño con respecto al botón de "guardar y seguir".
 - Poner "Completa la información " debajo de "Datos del animal" y cambiar estilo. Se trata de intercambiar posiciones.
+
+- ¿Añadir texto/botón de "pulsa en la tarjeta para volver a default"?
+- ¿y si tiene 1 año?
