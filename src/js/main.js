@@ -96,13 +96,22 @@ function renderPreview(target, data) {
 
     nameValueInPreview.textContent = fillData.name.trim() ? `${fillData.name.trim()},` : 'Nombre';
     // ageValueInPreview.textContent = fillData.age ? `${fillData.age} años` : '';
-    // Cambiado ternario: textContent lo elimina en preview dinámico y no se muestra bien
-    ageValueInPreview.textContent = '';
-    if (fillData.age && fillData.age > 1) {
-      const ageSpan = document.createElement('span');
-      ageSpan.textContent = `${fillData.age} años`;
-      ageValueInPreview.appendChild(ageSpan);
-    } //¿y si tiene 1 año?
+    // // Cambiado ternario: textContent lo elimina en preview dinámico y no se muestra bien
+    // ageValueInPreview.textContent = '';
+    // if (fillData.age && fillData.age > 1) {
+    //   const ageSpan = document.createElement('span');
+    //   ageSpan.textContent = `${fillData.age} años`;
+    //   ageValueInPreview.appendChild(ageSpan);
+    // } //¿y si tiene 1 año?
+  
+  ageValueInPreview.textContent = '';
+  
+  if (fillData.age !== "") {
+    const age = Number(fillData.age);
+    const ageSpan = document.createElement("span");
+    ageSpan.textContent = `${age} ${age === 1 ? "año" : "años"}`;
+    ageValueInPreview.appendChild(ageSpan);
+  }
 
     breedValueInPreview.innerHTML = `<i class="fa-solid fa-paw"></i> ${fillData.breed.trim() || "Raza"}`;
     weightValueInPreview.innerHTML = `<i class="fa-solid fa-weight-hanging"></i> ${fillData.weight ? `${fillData.weight} kg` : "Peso"}`;
