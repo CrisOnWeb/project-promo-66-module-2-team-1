@@ -3,9 +3,10 @@
   padding-block: 1rem;
 
   &__card {
+    width: fit-content;
     max-width: 350px; // ??
     padding-block: 32px;
-    padding-inline: 16px;
+    padding-inline: 38px;
     border-radius: 45px;
     box-shadow: 0px 0px 10px 2px #acacac;
     margin-inline: auto;
@@ -20,12 +21,15 @@
   }
 
   &__name {
+    width: fit-content;
     color: var(--form-color-text);
     font-size: 32px;
+    white-space: nowrap;
   }
 
   &__age {
     font-size: 32px;
+    white-space: nowrap;
 
     & span {
       margin-left: 6px;
