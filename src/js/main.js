@@ -96,31 +96,28 @@ function renderPreview(target, data) {
 
     nameValueInPreview.textContent = fillData.name.trim() ? `${fillData.name.trim()},` : 'Nombre';
     // ageValueInPreview.textContent = fillData.age ? `${fillData.age} años` : '';
-    //¿y si tiene 1 año?
-  
-    
-  // Cambiado el ternario anterior porque el textContent lo elimina en preview dinámico y no se muestra bien
+    // Cambiado ternario: textContent lo elimina en preview dinámico y no se muestra bien
     ageValueInPreview.textContent = '';
-    
-    if (fillData.age) {
+    if (fillData.age && fillData.age > 1) {
       const ageSpan = document.createElement('span');
       ageSpan.textContent = `${fillData.age} años`;
       ageValueInPreview.appendChild(ageSpan);
-  }
+    } //¿y si tiene 1 año?
 
     breedValueInPreview.innerHTML = `<i class="fa-solid fa-paw"></i> ${fillData.breed.trim() || "Raza"}`;
     weightValueInPreview.innerHTML = `<i class="fa-solid fa-weight-hanging"></i> ${fillData.weight ? `${fillData.weight} kg` : "Peso"}`;
     descriptionValueInPreview.textContent = fillData.description.trim() || "Descripción";
-    facebookValueInPreview.textContent = fillData.facebook.trim()
-    ? `${fillData.facebook.trim()}` : "#";
+    facebookValueInPreview.textContent = `${fillData.facebook.trim()
+    ? fillData.facebook.trim() : "#"}`;
     //facebookValue2.href = fillData.facebook.trim() || "#";
-    // Para poner como enlace el facebook sin espacios por el trim y, sino hay nada, se usa el # que es como un placeholder.
+    // enlace FB: sin espacios por trim() o # como placeholder
 }
+
 // Función para guardar el objeto completo en localStorage
 function saveFillDataInLocalStorage() {
   localStorage.setItem("fillData", JSON.stringify(fillData));
+  console.log("guardando datos en LS")
 }
-
 // Función para recuperar los datos guardados en localStorage
 function loadFillDataFromLocalStorage() {
   const savedFillData = localStorage.getItem("fillData");
@@ -128,8 +125,10 @@ function loadFillDataFromLocalStorage() {
   if (savedFillData) {
     fillData = JSON.parse(savedFillData);
 
-    // Rellenamos también los inputs para que cuando recarguemos, el formulario conserve los datos.
-    // Ej: pon en el input nameInput el valor de fillData.name y sino existe, pon un string vacío.
+    // Rellenamos inputs: al recargar, el formulario conserva los datos
+    
+    /* pone en el input "nameInput" el valor de "fillData.name"
+    si no existe, pone un string vacío */
     nameInput.value = fillData.name || "";
     descriptionInput.value = fillData.description || "";
     ageInput.value = fillData.age || "";
@@ -138,25 +137,21 @@ function loadFillDataFromLocalStorage() {
     facebookInput.value = fillData.facebook || "";
   }
 }
-
 // Función para actualizar el objeto fillData cuando la usuaria escribe
 function handleInputFill(ev) {
   const changedInput = ev.target; //donde ocurre el evento
   const inputName = changedInput.id; //input donde escribe
   const inputValue = changedInput.value; //valor escrito en input
-
-  //el inputValue escrito en inputName es el valor del fillData[propiedad que se llama como el inputName]
+  //el inputValue escrito en inputName es el valor de: fillData[propiedad que se llama como el inputName]
   fillData[inputName] = inputValue;
-  //fillData[ev.target.id] = ev.target.value
-  // Comprobar si el objeto se actualiza correctamente y si el name de los inputs está bien conectado
   console.log("fillData actualizado:", fillData[inputName]);
 
   saveFillDataInLocalStorage();
-  renderPreview(fillPreview2, fillData);
+  renderPreview(fillPreview2, fillData); 
+  //hay que especificarle a renderPreview donde "pintar" y con que datos
   validateForm();
   toggleResetButton();
 }
-
 // Función para decir que el formulario está completo solo si todos los campos tienen algo escrito de verdad
 function isFormComplete() {
   const result =
@@ -184,19 +179,21 @@ function hasAnyData() {
   );
 }
 
-// Función para activar o desactivar el botón de submit (se desactiva el botón si el formulario NO está completo)
+// Función para activar o desactivar el botón de submit 
+// (se desactiva el botón si el formulario NO está completo)
 function validateForm() {
   fillSubmitBtn.disabled = !isFormComplete();
 
   console.log("Botón submit activo:", !fillSubmitBtn.disabled);
 }
 
-// Función para activar o desactivar el botón de borrar datos (se desactiva el botón si NO hay datos)
+// Función para activar o desactivar el botón de borrar datos 
+// (se desactiva el botón si NO hay datos)
 function toggleResetButton() {
   resetButton.disabled = !hasAnyData();
 }
 
-// Función para resetear el formulario, objeto, localStorage y preview
+// Función para resetear formulario, objeto, localStorage y preview
 function handleClickReset() {
   console.log("Click en borrar resultados");
   // Vaciamos el objeto
