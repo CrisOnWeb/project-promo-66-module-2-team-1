@@ -24,7 +24,7 @@ const hiddenInput = document.querySelector('.js_hiddenDesign');
 
 /*CQS PREVIEW*/
 const fillPreview = document.querySelectorAll('.js_fillPreview');
-const fillPreview2 = document.querySelector('#preview2');
+const finalPreview = document.querySelector('#js_preview_userCard');
 
 const nameValue = document.querySelector('.js_nameValue');
 const ageValue = document.querySelector('.js_ageValue');
@@ -84,15 +84,15 @@ renderDefault();
 
 // Función para pintar los datos en la preview
 function renderPreview(target, data) {
-  const nameValueInPreview = fillPreview2.querySelector('.js_nameValue');
-  const ageValueInPreview = fillPreview2.querySelector('.js_ageValue');
-  const breedValueInPreview = fillPreview2.querySelector('.js_breedValue');
-  const weightValueInPreview = fillPreview2.querySelector('.js_weightValue');
-  const descriptionValueInPreview = fillPreview2.querySelector(
+  const nameValueInPreview = finalPreview.querySelector('.js_nameValue');
+  const ageValueInPreview = finalPreview.querySelector('.js_ageValue');
+  const breedValueInPreview = finalPreview.querySelector('.js_breedValue');
+  const weightValueInPreview = finalPreview.querySelector('.js_weightValue');
+  const descriptionValueInPreview = finalPreview.querySelector(
     '.js_descriptionValue',
   );
   const facebookValueInPreview =
-    fillPreview2.querySelector('.js_facebookValue');
+    finalPreview.querySelector('.js_facebookValue');
 
   nameValueInPreview.textContent = fillData.name.trim()
     ? `${fillData.name.trim()},`
@@ -103,7 +103,7 @@ function renderPreview(target, data) {
   if (fillData.age !== '') {
     const age = Number(fillData.age);
     const ageSpan = document.createElement('span');
-    ageSpan.textContent = `${age} ${age === 1 ? 'año' : 'años'}`;
+    ageSpan.textContent = `${age}`;
     ageValueInPreview.appendChild(ageSpan);
   }
 
@@ -152,7 +152,7 @@ function handleInputFill(ev) {
   console.log('fillData actualizado:', fillData[inputName]);
 
   saveFillDataInLocalStorage();
-  renderPreview(fillPreview2, fillData);
+  renderPreview(finalPreview, fillData);
   //hay que especificarle a renderPreview donde "pintar" y con que datos
   validateForm();
   toggleResetButton();
@@ -244,7 +244,7 @@ function handleSubmitFillForm(ev) {
 /*SECCIÓN DE FUNCIONES DE EVENTOS*/
 // Escuchamos a todos los inputs del formulario
 
-if (fillForm && fillPreview2) {
+if (fillForm && finalPreview) {
   for (const input of fillInputs) {
     input.addEventListener('input', handleInputFill);
   }
