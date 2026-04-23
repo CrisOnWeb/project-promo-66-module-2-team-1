@@ -37,6 +37,7 @@ const previewCard = document.querySelector(".js_previewCard");
 /*SECCIÓN DE DATOS*/
 //Obj que guarda la info que la usuaria escribe en fill
 let fillData = {
+  palette: "0",
   name: "",
   description: "",
   age: "",
@@ -59,6 +60,7 @@ for (const option of options) {
 function renderDesign(value) {
   const option = document.querySelector(`[data-value="${value}"]`);
   const theme = option.id;
+  fillData.palette = option.dataset.value;
   const cardElements = document.querySelectorAll(".preview > div");
   for (const element of cardElements) {
     element.classList.remove("palette0", "palette1", "palette2", "palette3");
@@ -268,7 +270,37 @@ if (fillForm && finalPreview) {
   toggleResetButton();
 }
 
+//QUERÝ-SELECTORS DEL INPUT FILE
+const fileField = document.querySelector(".js__profile-upload-btn");
+const profileImage = document.querySelector(".js__profile-image");
 
+//SECCIÓN DE DATOS
+const fr = new FileReader();
+
+//SECCIÓN DE FUNCIONES
+/**
+ * Una vez tenemos los datos listos en el FR podemos
+ * trabajar con ellos ;)
+ */
+function writeImage() {
+  /* En la propiedad `result` de nuestro FR se almacena
+   * el resultado. Ese resultado de procesar el fichero que hemos cargado
+   * podemos pasarlo como background a la imagen de perfil y a la vista previa
+   * de nuestro componente.
+   */
+  profileImage.style.backgroundImage = `url(${fr.result})`;
+  fillData.photo = fr.result;
+  //profilePreview.style.backgroundImage = `url(${fr.result})`;
+
+  /* Si en lugar de establecer la imagen como fondo de un elemento, 
+      estás trabajando con una etiqueta <img> en el HTML, entonces en vez de 
+      asignar la imagen como background, debes establecer la URL en el atributo `src` de la imagen.
+      Para ello, reemplaza las dos líneas anteriores de código por las siguientes:
+    
+      profileImage.src = fr.result;
+      profilePreview.src = fr.result;
+    */
+}
 function handleCreateCard(ev){
   console.log("???")
   ev.preventDefault();
@@ -280,7 +312,7 @@ function handleCreateCard(ev){
   field5: fillData.weight,
   field6: fillData.description,
   field7: fillData.facebook,
-  photo: fr.result,
+  photo: fillData.photo,
   }; 
   console.log(objToSend)
   fetch("https://api-pw.dev.adalab.es/api/info/data",{
