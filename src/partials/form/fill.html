@@ -1,30 +1,22 @@
 <section class="fill js_fillSection hidden" aria-labelledby="fill-title">
   <div class="fill__layout">
-    <header class="fill__header">
-      <!-- Ayuda contextual para decirle a la usuaria qué hacer y qué pasará, ya que tenemos un preview en tiempo real -->
-      <h2 class="fill__title" id="fill-title">
-        Completa la información para ver los cambios
-      </h2>
-    </header>
-
-    <!-- Contenido principal de la sección: primero preview y después formulario -->
     <div class="fill__content">
-      <div>
-        <div class="fill__preview-card js_fillPreview" id="preview2">
-          <load src="partials/preview.html" />
-
-          <!-- Aquí se renderiza la tarjeta del preview del perro -->
-        </div>
+      <div class="fill__preview-card js_fillPreview" id="preview2">
+        <load src="partials/preview.html" />
       </div>
 
-        <div class="fill__form-wrapper">
-          <!-- Se mantiene form porque estamos recogiendo datos y después se trabajará con JS sobre el submit -->
-          <form class="fill__form js_fillForm" novalidate>
-            <fieldset class="fill__group">
-              <legend class="fill__legend">Datos del animal</legend>
+      <div class="fill__form-wrapper">
+        <!-- Se mantiene form porque estamos recogiendo datos y después se trabajará con JS sobre el submit -->
+        <form class="fill__form js_fillForm" novalidate>
+          <fieldset class="fill__group">
+            <legend class="fill__legend">Datos del animal</legend>
+
+            <h2 class="fill__title" id="fill-title">
+              Completa la información para ver los cambios
+            </h2>
 
             <div class="fill__field">
-              <label class="fill__label" for="name">Nombre</label>
+              <label class="fill__label" for="name">Nombre </label>
               <input
                 class="fill__input js_fillInput"
                 id="name"
@@ -46,7 +38,7 @@
             <!-- Creado grid para emplear en el CSS y agrupar los campos que pueden repartirse mejor en tablet/ordenador -->
             <div class="fill__grid">
               <div class="fill__field">
-                <label class="fill__label" for="age">Edad</label>
+                <label class="fill__label" for="age"> Edad</label>
                 <input
                   class="fill__input js_fillInput"
                   id="age"
@@ -83,12 +75,12 @@
               </div>
 
               <div class="fill__field">
-                <label class="fill__label" for="instagram">Facebook</label>
+                <label class="fill__label" for="facebook">Facebook</label>
                 <input
                   class="fill__input js_fillInput"
-                  id="instagram"
+                  id="facebook"
                   type="url"
-                  name="instagram"
+                  name="facebook"
                   autocomplete="url"
                   placeholder="https://facebook.com/..."
                 />
@@ -104,7 +96,7 @@
               type="button"
               disabled
             >
-              Reset
+              Borrar datos
             </button>
             <button
               class="fill__button fill__button--primary js_fillSubmitBtn"

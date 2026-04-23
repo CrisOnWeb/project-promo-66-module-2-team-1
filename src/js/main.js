@@ -13,7 +13,7 @@ const descriptionInput = document.querySelector("#description");
 const ageInput = document.querySelector("#age");
 const breedInput = document.querySelector("#breed");
 const weightInput = document.querySelector("#weight");
-const instagramInput = document.querySelector("#instagram");
+const facebookInput = document.querySelector("#facebook");
 
 /*CQS DESIGN*/
 const selected = document.querySelector(".js_selectedDesign");
@@ -31,7 +31,7 @@ const ageValue = document.querySelector(".js_ageValue");
 const breedValue = document.querySelector(".js_breedValue");
 const weightValue = document.querySelector(".js_weightValue");
 const descriptionValue = document.querySelector(".js_descriptionValue");
-const instagramValue = document.querySelector(".js_instagramValue");
+const facebookValue = document.querySelector(".js_facebookValue");
 const previewCard = document.querySelector(".js_previewCard");
 
 
@@ -45,7 +45,7 @@ let fillData = {
   age: "",
   breed: "",
   weight: "",
-  instagram: "",
+  facebook: "",
 };
 
 /*SECCIÓN DE FUNCIONES*/
@@ -92,28 +92,42 @@ function renderPreview(target, data) {
     const breedValueInPreview = fillPreview2.querySelector('.js_breedValue');
     const weightValueInPreview = fillPreview2.querySelector('.js_weightValue');
     const descriptionValueInPreview = fillPreview2.querySelector('.js_descriptionValue');
-    const instagramValueInPreview = fillPreview2.querySelector('.js_instagramValue');
+    const facebookValueInPreview = fillPreview2.querySelector('.js_facebookValue');
 
-    nameValueInPreview.textContent = fillData.name 
-  ? fillData.name 
-  : 'Nombre';
-    ageValueInPreview.textContent = `${fillData.age ? ' ' + fillData.age + ' años' : ''}`
-    //¿y si tiene 1 año?
-    
+    nameValueInPreview.textContent = fillData.name.trim() ? `${fillData.name.trim()},` : 'Nombre';
+    // ageValueInPreview.textContent = fillData.age ? `${fillData.age} años` : '';
+    // // Cambiado ternario: textContent lo elimina en preview dinámico y no se muestra bien
+    // ageValueInPreview.textContent = '';
+    // if (fillData.age && fillData.age > 1) {
+    //   const ageSpan = document.createElement('span');
+    //   ageSpan.textContent = `${fillData.age} años`;
+    //   ageValueInPreview.appendChild(ageSpan);
+    // } //¿y si tiene 1 año?
+  
+  ageValueInPreview.textContent = '';
+  
+  if (fillData.age !== "") {
+    const age = Number(fillData.age);
+    const ageSpan = document.createElement("span");
+    ageSpan.textContent = `${age} ${age === 1 ? "año" : "años"}`;
+    ageValueInPreview.appendChild(ageSpan);
+  }
+
     breedValueInPreview.innerHTML = `<i class="fa-solid fa-paw"></i> ${fillData.breed.trim() || "Raza"}`;
     weightValueInPreview.innerHTML = `<i class="fa-solid fa-weight-hanging"></i> ${fillData.weight ? `${fillData.weight} kg` : "Peso"}`;
     descriptionValueInPreview.textContent = fillData.description.trim() || "Descripción";
-    instagramValueInPreview.textContent = fillData.instagram.trim()
-    ? `${fillData.instagram.trim()}` : "#";
-    //instagramValue2.href = fillData.instagram.trim() || "#";
-    // Para poner como enlace el instagram sin espacios por el trim y, sino hay nada, se usa el # que es como un placeholder.
+    facebookValueInPreview.textContent = `${fillData.facebook.trim()
+    ? fillData.facebook.trim() : "#"}`;
+    //facebookValue2.href = fillData.facebook.trim() || "#";
+    // enlace FB: sin espacios por trim() o # como placeholder
 }
+
 
 // Función para guardar el objeto completo en localStorage
 function saveFillDataInLocalStorage() {
   localStorage.setItem("fillData", JSON.stringify(fillData));
+  console.log("guardando datos en LS")
 }
-
 // Función para recuperar los datos guardados en localStorage
 function loadFillDataFromLocalStorage() {
   const savedFillData = localStorage.getItem("fillData");
@@ -121,35 +135,32 @@ function loadFillDataFromLocalStorage() {
   if (savedFillData) {
     fillData = JSON.parse(savedFillData);
 
-    // Rellenamos también los inputs para que cuando recarguemos, el formulario conserve los datos.
-    // Ej: pon en el input nameInput el valor de fillData.name y sino existe, pon un string vacío.
+    // Rellenamos inputs: al recargar, el formulario conserva los datos
+    
+    /* pone en el input "nameInput" el valor de "fillData.name"
+    si no existe, pone un string vacío */
     nameInput.value = fillData.name || "";
     descriptionInput.value = fillData.description || "";
     ageInput.value = fillData.age || "";
     breedInput.value = fillData.breed || "";
     weightInput.value = fillData.weight || "";
-    instagramInput.value = fillData.instagram || "";
+    facebookInput.value = fillData.facebook || "";
   }
 }
-
 // Función para actualizar el objeto fillData cuando la usuaria escribe
 function handleInputFill(ev) {
   const changedInput = ev.target; //donde ocurre el evento
   const inputName = changedInput.name; //input donde escribe
   const inputValue = changedInput.value; //valor escrito en input
-
-  //el inputValue escrito en inputName es el valor del fillData[propiedad que se llama como el inputName]
+  //el inputValue escrito en inputName es el valor de: fillData[propiedad que se llama como el inputName]
   fillData[inputName] = inputValue;
-  //fillData[ev.target.id] = ev.target.value
-  // Comprobar si el objeto se actualiza correctamente y si el name de los inputs está bien conectado
   console.log("fillData actualizado:", fillData[inputName]);
 
   saveFillDataInLocalStorage();
-  renderPreview(fillData);
+  renderPreview(fillPreview2, fillData);
   validateForm();
   toggleResetButton();
 }
-
 // Función para decir que el formulario está completo solo si todos los campos tienen algo escrito de verdad
 function isFormComplete() {
   const result =
@@ -158,7 +169,7 @@ function isFormComplete() {
     fillData.age !== "" &&
     fillData.breed.trim() !== "" &&
     fillData.weight !== "" &&
-    fillData.instagram.trim() !== "";
+    fillData.facebook.trim() !== "";
 
   console.log("¿Formulario completo?", result);
 
@@ -173,23 +184,25 @@ function hasAnyData() {
     fillData.age !== "" ||
     fillData.breed.trim() !== "" ||
     fillData.weight !== "" ||
-    fillData.instagram.trim() !== ""
+    fillData.facebook.trim() !== ""
   );
 }
 
-// Función para activar o desactivar el botón de submit (se desactiva el botón si el formulario NO está completo)
+// Función para activar o desactivar el botón de submit 
+// (se desactiva el botón si el formulario NO está completo)
 function validateForm() {
   fillSubmitBtn.disabled = !isFormComplete();
 
   console.log("Botón submit activo:", !fillSubmitBtn.disabled);
 }
 
-// Función para activar o desactivar el botón de borrar datos (se desactiva el botón si NO hay datos)
+// Función para activar o desactivar el botón de borrar datos 
+// (se desactiva el botón si NO hay datos)
 function toggleResetButton() {
   resetButton.disabled = !hasAnyData();
 }
 
-// Función para resetear el formulario, objeto, localStorage y preview
+// Función para resetear formulario, objeto, localStorage y preview
 function handleClickReset() {
   console.log("Click en borrar resultados");
   // Vaciamos el objeto
@@ -199,7 +212,7 @@ function handleClickReset() {
     age: "",
     breed: "",
     weight: "",
-    instagram: "",
+    facebook: "",
   };
 
   // Reseteamos visualmente el formulario

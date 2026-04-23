@@ -35,6 +35,14 @@
     }
   }
 
+  .design__note {
+    margin-top: var(--space-2);
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.35;
+    text-align: center;
+  }
+
   // ¿Cuándo se usa esto?
   .design__selected {
     //color que queda seleccionado
@@ -166,31 +174,31 @@
   width: 100%;
 }
 
-.palette0{
-    background-color: var(--form-color-bg);
-    color: var(--form-color-text);
-    .preview__img {
-      border: 17px solid var(--form-color-accent);
-    }
+.palette0 {
+  background-color: var(--form-color-bg);
+  color: var(--form-color-text);
+  .preview__img {
+    border: 17px solid var(--form-color-accent);
+  }
 }
-.palette1{
-    background-color: var(--form-color-bg);
-    color: var(--form-color-text);
-    .preview__img {
-      border: 17px solid var(--form-color-accent);
-    }
+.palette1 {
+  background-color: var(--form-color-bg);
+  color: var(--form-color-text);
+  .preview__img {
+    border: 17px solid var(--form-color-accent);
+  }
 }
-.palette2{
-    background-color: var(--form-color-bg);
-    color: var(--form-color-text);
-    .preview__img {
-      border: 17px solid var(--form-color-accent);
-    }
+.palette2 {
+  background-color: var(--form-color-bg);
+  color: var(--form-color-text);
+  .preview__img {
+    border: 17px solid var(--form-color-accent);
+  }
 }
-.palette3{
-    background-color: var(--form-color-bg);
-    color: var(--form-color-text);
-    .preview__img {
-      border: 17px solid var(--form-color-accent);
-    }
+.palette3 {
+  background-color: var(--form-color-bg);
+  color: var(--form-color-text);
+  .preview__img {
+    border: 17px solid var(--form-color-accent);
+  }
 }
