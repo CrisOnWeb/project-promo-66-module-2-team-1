@@ -27,15 +27,14 @@ SOLUCIONADO:
 - Inputs solo funcionan en 1ª preview
 - No tenemos nombre del proyecto : Refugio ADALAB
 - cambiar facebook por FACEBOOK
-
-## Otras tareas realizadas:
-
 - Centrar el enlace de Facebook tomando de medida el contenedor de descripcición (tanto en preview como en rellena).
   -Cambiar el color al enlace de Facebook dado que si se escoge el el tercer estilo, se ve oscuro.
 - Alinear el input de "raza" con respecto al de "edad".
 - La raya que separa raza/peso que esté centrada y proporcionada en la preview de "rellena".
 - El botón de reset colocarlo debajo de "todos los cambios son obligatorios" y que sea más pequeño con respecto al botón de "guardar y seguir".
 - Poner "Completa la información " debajo de "Datos del animal" y cambiar estilo. Se trata de intercambiar posiciones.
-
 - ¿Añadir texto/botón de "pulsa en la tarjeta para volver a default"?
 - ¿y si tiene 1 año?
+
+- No se actualizaba el href del enlace porque renderPreview metía el HTML de la usuaria en breed, arreglado que ahora se pueda hacer click al enlace.
+- El reset no devolvía la paleta a palette0 ni sincronizaba el hidden. Ahora el estado visual y el dato oculto quedan alineados.
