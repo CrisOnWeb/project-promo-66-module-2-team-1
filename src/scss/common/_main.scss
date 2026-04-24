@@ -7,6 +7,7 @@
   flex-direction: column;
   justify-content: center;
   padding-inline: 1rem;
+  padding-block: 1rem;
 
   @media (width > 768px) {
     flex-direction: row;
