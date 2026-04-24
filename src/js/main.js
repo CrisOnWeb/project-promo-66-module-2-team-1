@@ -37,6 +37,8 @@ const facebookValue = document.querySelector(".js_facebookValue");
 const imgValue = document.querySelector(".js_imgValue");
 /*CQS SHARE*/
 const shareSection = document.querySelector(".js_shareSection");
+const shareResult = document.querySelector('.js_shareResult');
+const shareError = document.querySelector('.js_shareError');
 
 /*CQS INPUT FILE*/
 const fileField = document.querySelector(".js__profile-upload-btn");
@@ -118,6 +120,8 @@ backToDefault.addEventListener("click", () => {
   renderDefault();
 });
 function renderDefault() {
+  shareResult.classList.add("hidden");
+  shareError.classList.add("hidden");
   const cardElements = document.querySelectorAll(".preview > div");
   fillData.palette = "0"
   for (const element of cardElements) {
@@ -361,6 +365,8 @@ function handleCreateCard(ev){
   field7: fillData.facebook,
   photo: fillData.photo,
   }; 
+  shareResult.classList.add("hidden");
+  shareError.classList.add("hidden");
   console.log(objToSend)
   fetch("https://api-pw.dev.adalab.es/api/info/data",{
       method: "POST",
@@ -371,11 +377,9 @@ function handleCreateCard(ev){
     }).then((response) => response.json())
       .then((response) => {
         if (response.success === true) {
-          const shareResult = document.querySelector('.js_shareResult')
           shareResult.classList.remove("hidden");
         }else{
-          const shareError = document.querySelector('.js_shareError')
-          shareError.classList.remove("hidden"); //???
+          shareError.classList.remove("hidden");
         }
       });
 }
@@ -392,4 +396,4 @@ renderDefault();
 if (fillData.photo) {
   profileImage.style.backgroundImage = `url(${fillData.photo})`;
 }
-fr
+  
