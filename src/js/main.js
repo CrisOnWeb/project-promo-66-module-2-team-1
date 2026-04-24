@@ -70,18 +70,30 @@ const handleClickDesignBtn = () => {
   designSection.classList.remove('hidden');
   fillSection.classList.add('hidden');
   shareSection.classList.add('hidden');
+
+  tabDesignBtn.classList.add('active');
+  tabFillBtn.classList.remove('active');
+  tabShareBtn.classList.remove('active');
 };
 
 const handleClickFillBtn = () => {
   fillSection.classList.remove('hidden');
   shareSection.classList.add('hidden');
   designSection.classList.add('hidden');
+
+  tabFillBtn.classList.add('active');
+  tabShareBtn.classList.remove('active');
+  tabDesignBtn.classList.remove('active');
 };
 
 const handleClickShareBtn = () => {
   shareSection.classList.remove('hidden');
   fillSection.classList.add('hidden');
   designSection.classList.add('hidden');
+
+  tabShareBtn.classList.add('active');
+  tabFillBtn.classList.remove('active');
+  tabDesignBtn.classList.remove('active');
 };
 
 const handleClickMenuBurger = () => {
@@ -158,7 +170,7 @@ function renderPreview() {
   if (fillData.age !== '') {
     const age = Number(fillData.age);
     const ageSpan = document.createElement('span');
-    ageSpan.textContent = `${age} ${age === 1 ? 'año' : 'años'}`;
+    ageSpan.textContent = `${age}`;
     ageValueInPreview.appendChild(ageSpan);
   }
 
