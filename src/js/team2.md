@@ -1,17 +1,17 @@
-Cosas que hablar con las chicas el jueves 23:
+## Cosas pendientes para HOY O NUNCA
 
-- ¿Debería aparecer en la tarjeta ese enlace?
-- ¿El footer no se ve demasiado grande en móvil?
-- ¿Tal vez hay que poner menos info o más pequeña?
-- Subir imagen y que cargue en la tarjeta
+- Meter required!!!
 - function handleSubmitFillForm(ev){}:
   faltaría por meter:
   // guardar en un estado global
   // pasar a la siguiente sección
-  // enviar los datos a la API
   // navegar a compartir
+- Limitación imagen a 20KB (40KB envía, pero iván dijo 20KB)
+- En la página de Share:
+  Link "tarjeta generada"? Lleva de nuevo al principio
+  Link "compartir en Instagram" - Cambiar a FB y que comparta
 
-SOLUCIONADO:
+## SOLUCIONADO:
 
 - Los iconos desaparecen al escribir en el input
 - Hay que probar a escribir a ver cómo quedan los textos dentro de preview
@@ -27,14 +27,24 @@ SOLUCIONADO:
 - Inputs solo funcionan en 1ª preview
 - No tenemos nombre del proyecto : Refugio ADALAB
 - cambiar facebook por FACEBOOK
+  <<<<<<< HEAD
+  =======
+- Subir imagen y que cargue en la tarjeta
+- enviar los datos a la API
+  > > > > > > > 6d93329451381c7495749f5b519e427f5c680b64
 - Centrar el enlace de Facebook tomando de medida el contenedor de descripcición (tanto en preview como en rellena).
-  -Cambiar el color al enlace de Facebook dado que si se escoge el el tercer estilo, se ve oscuro.
+- Cambiar el color al enlace de Facebook dado que si se escoge el el tercer estilo, se ve oscuro.
 - Alinear el input de "raza" con respecto al de "edad".
 - La raya que separa raza/peso que esté centrada y proporcionada en la preview de "rellena".
 - El botón de reset colocarlo debajo de "todos los cambios son obligatorios" y que sea más pequeño con respecto al botón de "guardar y seguir".
 - Poner "Completa la información " debajo de "Datos del animal" y cambiar estilo. Se trata de intercambiar posiciones.
+- ¿El footer no se ve demasiado grande en móvil?
 - ¿Añadir texto/botón de "pulsa en la tarjeta para volver a default"?
 - ¿y si tiene 1 año?
-
-- No se actualizaba el href del enlace porque renderPreview metía el HTML de la usuaria en breed, arreglado que ahora se pueda hacer click al enlace.
-- El reset no devolvía la paleta a palette0 ni sincronizaba el hidden. Ahora el estado visual y el dato oculto quedan alineados.
+- ¿Debería aparecer en la tarjeta ese enlace?
+- Imagen no está en LS
+- Falta imagen en :
+  handleInputFill
+  saveFillDataInLocalStorage
+  loadFillDataFromLocalStorage
+- En la página de share: Mensaje de error aparece aunque no de error

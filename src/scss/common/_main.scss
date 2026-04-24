@@ -1,3 +1,21 @@
 .main {
   flex-grow: 1;
 }
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-inline: 1rem;
+  padding-block: 1rem;
+
+  @media (width > 768px) {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  @media (width > 1228px) {
+    gap: 5rem;
+  }
+}

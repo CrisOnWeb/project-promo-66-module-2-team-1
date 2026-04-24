@@ -43,7 +43,6 @@
     text-align: center;
   }
 
-  // ¿Cuándo se usa esto?
   .design__selected {
     //color que queda seleccionado
     display: none;
@@ -103,19 +102,6 @@
       display: none;
     }
   }
-  /* ¿Se puede borrar?
-.design__options {
-    display: none;
-    position: absolute;
-    width: 100%;
-    margin-top: 5px;
-    border-radius: 12px;
-    background-color: var();
-    //box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    border: 1px solid blue;
-    }
-*/
-
   &__field {
     display: flex;
     flex-direction: column;
@@ -168,7 +154,6 @@
   }
 }
 
-// ¿Cuándo se usa esto?
 .custom-select {
   position: relative;
   width: 100%;
