@@ -148,7 +148,11 @@ function renderPreview(target, data) {
   facebookValueInPreview.textContent = `${
     fillData.facebook.trim() ? fillData.facebook.trim() : "#"
   }`;
+  if (fillData.photo) {
+    profileImage.style.backgroundImage = `url(${fillData.photo})`;
+  }
 }
+
 /*LOCAL STORAGE*/
 
 // Función para guardar el objeto completo en localStorage
@@ -245,8 +249,8 @@ function handleClickReset() {
     weight: "",
     facebook: "",
   };
-
   // Reseteamos visualmente el formulario
+  //
   fillForm.reset();
   // Borramos el localStorage
   localStorage.removeItem("fillData");
@@ -255,10 +259,17 @@ function handleClickReset() {
   // Revalidamos los botones
   validateForm();
   toggleResetButton();
-
+  resetImage()
+  
   console.log("Después de reset:", fillData);
 }
-
+function resetImage(){
+  function resetImage() {
+  profileImage.style.backgroundImage = "";
+  fillData.photo = "";
+  localStorage.setItem("fillData", JSON.stringify(fillData));
+}
+}
 // Función del submit (evita el envío real y lo deja preparado para el siguiente paso)
 function handleSubmitFillForm(ev) {
   ev.preventDefault();
@@ -368,3 +379,6 @@ fileField.addEventListener("change", getImage); //campo oculto para cuando cambi
 
 //Al recargar
 renderDefault();
+if (fillData.photo) {
+  profileImage.style.backgroundImage = `url(${fillData.photo})`;
+}
