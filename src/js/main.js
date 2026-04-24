@@ -7,7 +7,10 @@ const fillInputs = document.querySelectorAll(".js_fillInput");
 const fillSubmitBtn = document.querySelector(".js_fillSubmitBtn");
 const resetButton = document.querySelector(".js_resetButton");
 const createBtn = document.querySelector(".js_createBtn");
-//Inputs concretos del formulario
+const designSection = document.querySelector(".js_designSection");
+const fillSection = document.querySelector(".js_fillSection");
+
+/*CQS INPUTS*/
 const nameInput = document.querySelector("#name");
 const descriptionInput = document.querySelector("#description");
 const ageInput = document.querySelector("#age");
@@ -25,7 +28,6 @@ const hiddenInput = document.querySelector(".js_hiddenDesign");
 /*CQS PREVIEW*/
 const fillPreview = document.querySelectorAll(".js_fillPreview");
 const finalPreview = document.querySelector("#js_preview_userCard");
-
 const nameValue = document.querySelector(".js_nameValue");
 const ageValue = document.querySelector(".js_ageValue");
 const breedValue = document.querySelector(".js_breedValue");
@@ -33,6 +35,17 @@ const weightValue = document.querySelector(".js_weightValue");
 const descriptionValue = document.querySelector(".js_descriptionValue");
 const facebookValue = document.querySelector(".js_facebookValue");
 const previewCard = document.querySelector(".js_previewCard");
+/*CQS SHARE*/
+const shareSection = document.querySelector(".js_shareSection");
+
+/*CQS INPUT FILE*/
+const fileField = document.querySelector(".js__profile-upload-btn");
+const profileImage = document.querySelector(".js__profile-image");
+
+/*CQS TAB BUTTONS*/
+const tabDesignBtn = document.querySelector(".js_tabDesignBtn");
+const tabFillBtn = document.querySelector(".js_tabFillBtn");
+const tabShareBtn = document.querySelector(".js_tabShareBtn");
 
 /*SECCIÓN DE DATOS*/
 //Obj que guarda la info que la usuaria escribe en fill
@@ -45,8 +58,29 @@ let fillData = {
   weight: "",
   facebook: "",
 };
+//addEvent
+const fr = new FileReader();
 
 /*SECCIÓN DE FUNCIONES*/
+
+//Eventos que muestran/ocultan las secciones de la página create
+const handleClickDesignBtn = () => {
+  designSection.classList.remove("hidden");
+  fillSection.classList.add("hidden");
+  shareSection.classList.add("hidden");
+};
+
+const handleClickFillBtn = () => {
+  fillSection.classList.remove("hidden");
+  shareSection.classList.add("hidden");
+  designSection.classList.add("hidden");
+};
+
+const handleClickShareBtn = () => {
+  shareSection.classList.remove("hidden");
+  fillSection.classList.add("hidden");
+  designSection.classList.add("hidden");
+};
 
 //Sección Cambiar Diseño
 for (const option of options) {
@@ -269,16 +303,17 @@ if (fillForm && finalPreview) {
   validateForm();
   toggleResetButton();
 }
-
-//QUERÝ-SELECTORS DEL INPUT FILE
-const fileField = document.querySelector(".js__profile-upload-btn");
-const profileImage = document.querySelector(".js__profile-image");
-
-//SECCIÓN DE DATOS
-const fr = new FileReader();
-
-//SECCIÓN DE FUNCIONES
+tabDesignBtn.addEventListener("click", handleClickDesignBtn);
+tabFillBtn.addEventListener("click", handleClickFillBtn);
+tabShareBtn.addEventListener("click", handleClickShareBtn);
 /**
+ * Añadimos los listeners necesarios:
+ * - al botón visible para generar el click automático
+ * - al campo oculto para cuando cambie su value
+ */
+fileField.addEventListener("change", getImage);
+
+/*
  * Una vez tenemos los datos listos en el FR podemos
  * trabajar con ellos ;)
  */
@@ -301,8 +336,20 @@ function writeImage() {
       profilePreview.src = fr.result;
     */
 }
+/**
+ * Recoge el archivo añadido al campo de tipo "file"
+ * y lo carga en nuestro objeto FileReader para que
+ * lo convierta a algo con lo que podamos trabajar.
+ * Añade un listener al FR para que ejecute una función
+ * al tener los datos listos
+ * @param {evento} e
+ */
+function getImage(e) {
+  const myFile = e.currentTarget.files[0];
+  fr.addEventListener("load", writeImage);
+  fr.readAsDataURL(myFile);
+}
 function handleCreateCard(ev){
-  console.log("???")
   ev.preventDefault();
   const objToSend = {
   field1: fillData.palette,
@@ -332,4 +379,6 @@ function handleCreateCard(ev){
         }
       });
 }
+
+
 createBtn.addEventListener('click', handleCreateCard);
