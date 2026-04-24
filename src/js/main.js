@@ -360,14 +360,16 @@ function renderFacebookShare(cardURL) {
     return;
   }
 
-  const facebookShareURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-    cardURL,
-  )}`;
+  const facebookShareURL =
+    'https://www.facebook.com/sharer/sharer.php?u=' +
+    encodeURIComponent(cardURL);
 
   facebookShareBtn.href = facebookShareURL;
-  facebookShareBtn.target = '_blank';
-  facebookShareBtn.rel = 'noopener noreferrer';
+  facebookShareBtn.setAttribute('target', '_blank');
+  facebookShareBtn.setAttribute('rel', 'noopener noreferrer');
   facebookShareBtn.classList.remove('hidden');
+
+  console.log('Enlace final Facebook:', facebookShareBtn.href);
 }
 
 function handleCreateCard(ev) {
@@ -385,6 +387,8 @@ function handleCreateCard(ev) {
     photo: fillData.photo,
   };
 
+  console.log('DATOS QUE ENVÍAS:', objToSend);
+
   shareResult.classList.add('hidden');
   shareError.classList.add('hidden');
 
@@ -401,19 +405,24 @@ function handleCreateCard(ev) {
   })
     .then((response) => response.json())
     .then((response) => {
-      if (response.success === true) {
+      console.log('RESPUESTA REAL API:', response);
+
+      if (response.success === true && response.infoID) {
         shareResult.classList.remove('hidden');
 
-        if (response.cardURL) {
-          shareLink.href = response.cardURL;
-          shareLink.textContent = response.cardURL;
-          renderFacebookShare(response.cardURL);
-        }
+        const cardURL = `https://dev.adalab.es/api-pw/card/${response.infoID}`;
+
+        shareLink.href = cardURL;
+        shareLink.textContent = cardURL;
+
+        renderFacebookShare(cardURL);
       } else {
+        console.error('Error en la respuesta:', response);
         shareError.classList.remove('hidden');
       }
     })
-    .catch(() => {
+    .catch((error) => {
+      console.error('Error en fetch:', error);
       shareError.classList.remove('hidden');
     });
 }
