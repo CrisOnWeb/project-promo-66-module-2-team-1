@@ -6,21 +6,12 @@ const fillForm = document.querySelector('.js_fillForm');
 const fillInputs = document.querySelectorAll('.js_fillInput');
 const fillSubmitBtn = document.querySelector('.js_fillSubmitBtn');
 const resetButton = document.querySelector('.js_resetButton');
-const fillForm = document.querySelector('.js_fillForm');
-const fillInputs = document.querySelectorAll('.js_fillInput');
-const fillSubmitBtn = document.querySelector('.js_fillSubmitBtn');
-const resetButton = document.querySelector('.js_resetButton');
 const createBtn = document.querySelector('.js_createBtn');
+
 const designSection = document.querySelector('.js_designSection');
 const fillSection = document.querySelector('.js_fillSection');
+const shareSection = document.querySelector('.js_shareSection');
 
-//Inputs concretos del formulario
-const nameInput = document.querySelector('#name');
-const descriptionInput = document.querySelector('#description');
-const ageInput = document.querySelector('#age');
-const breedInput = document.querySelector('#breed');
-const weightInput = document.querySelector('#weight');
-const facebookInput = document.querySelector('#facebook');
 /*CQS INPUTS*/
 const nameInput = document.querySelector('#name');
 const descriptionInput = document.querySelector('#description');
@@ -30,40 +21,21 @@ const weightInput = document.querySelector('#weight');
 const facebookInput = document.querySelector('#facebook');
 
 /*CQS DESIGN*/
-const selected = document.querySelector('.js_selectedDesign');
-const optionsBox = document.querySelector('.js_optionsDesign');
 const options = document.querySelectorAll('.js_option');
-const defaultOption = document.querySelector('.js_designDefault');
 const hiddenInput = document.querySelector('.js_hiddenDesign');
 
 /*CQS PREVIEW*/
-const fillPreview = document.querySelectorAll('.js_fillPreview');
-const fillPreview2 = document.querySelector('#preview2');
-
-const nameValue = document.querySelector('.js_nameValue');
-const ageValue = document.querySelector('.js_ageValue');
-const breedValue = document.querySelector('.js_breedValue');
-const weightValue = document.querySelector('.js_weightValue');
-const descriptionValue = document.querySelector('.js_descriptionValue');
-const facebookValue = document.querySelector('.js_facebookValue');
-const previewCard = document.querySelector('.js_previewCard');
-const fillPreview = document.querySelectorAll('.js_fillPreview');
 const finalPreview = document.querySelector('#js_preview_userCard');
-const nameValue = document.querySelector('.js_nameValue');
-const ageValue = document.querySelector('.js_ageValue');
-const breedValue = document.querySelector('.js_breedValue');
-const weightValue = document.querySelector('.js_weightValue');
-const descriptionValue = document.querySelector('.js_descriptionValue');
-const facebookValue = document.querySelector('.js_facebookValue');
-const imgValue = document.querySelector('.js_imgValue');
+const profileImage = document.querySelector('.js__profile-image');
+
 /*CQS SHARE*/
-const shareSection = document.querySelector('.js_shareSection');
 const shareResult = document.querySelector('.js_shareResult');
 const shareError = document.querySelector('.js_shareError');
+const facebookShareBtn = document.querySelector('.js_facebookShareBtn');
+const shareLink = document.querySelector('.js_shareLink');
 
 /*CQS INPUT FILE*/
 const fileField = document.querySelector('.js__profile-upload-btn');
-const profileImage = document.querySelector('.js__profile-image');
 
 /*CQS TAB BUTTONS*/
 const tabDesignBtn = document.querySelector('.js_tabDesignBtn');
@@ -84,18 +56,15 @@ let fillData = {
   breed: '',
   weight: '',
   facebook: '',
-  palette: '',
-  name: '',
-  description: '',
-  age: '',
-  breed: '',
-  weight: '',
-  facebook: '',
+  palette: '0',
   photo: '',
 };
+
 //Obj que enviamos en fetch()
 const fr = new FileReader();
 
+/*SECCIÓN DE FUNCIONES*/
+// NAVEGACIÓN
 //Eventos que muestran/ocultan las secciones de la página create
 const handleClickDesignBtn = () => {
   designSection.classList.remove('hidden');
@@ -121,9 +90,7 @@ const handleClickMenuBurger = () => {
 
 burgerMenuBtn.addEventListener('click', handleClickMenuBurger);
 
-/*SECCIÓN DE FUNCIONES*/
-
-//CAMBIO DE DISEÑO
+// SECCIÓN DE DISEÑO
 for (const option of options) {
   option.addEventListener('click', () => {
     const value = option.dataset.value;
@@ -131,44 +98,49 @@ for (const option of options) {
     renderDesign(value);
   });
 }
+
+// Quitado el const duplicado y guardamos en palette
 function renderDesign(value) {
   const option = document.querySelector(`[data-value="${value}"]`);
   const theme = option.id;
   const cardElements = document.querySelectorAll('.preview > div');
-  fillData.palette = option.dataset.value;
-  const cardElements = document.querySelectorAll('.preview > div');
+
+  hiddenInput.value = value;
+  fillData.palette = value;
+  saveFillDataInLocalStorage();
+
   for (const element of cardElements) {
     element.classList.remove('palette0', 'palette1', 'palette2', 'palette3');
     element.classList.add(theme);
   }
 }
-//Permite al usuario volver a default
+
+//Permite al usuario volver a default. Protegemos sino existe preview.
 const backToDefault = document.querySelector('.preview');
-backToDefault.addEventListener('click', () => {
-  renderDefault();
-});
+
+if (backToDefault) {
+  backToDefault.addEventListener('click', () => {
+    renderDefault();
+  });
+}
+
 function renderDefault() {
-  shareResult.classList.add('hidden');
-  shareError.classList.add('hidden');
+  if (shareResult) shareResult.classList.add('hidden');
+  if (shareError) shareError.classList.add('hidden');
+  if (facebookShareBtn) facebookShareBtn.classList.add('hidden');
+
   const cardElements = document.querySelectorAll('.preview > div');
   fillData.palette = '0';
+
   for (const element of cardElements) {
     element.classList.remove('palette0', 'palette1', 'palette2', 'palette3');
     element.classList.add('palette0');
   }
 }
 
-// Función para pintar los datos en la preview
-function renderPreview(target, data) {
-  const nameValueInPreview = fillPreview2.querySelector('.js_nameValue');
-  const ageValueInPreview = fillPreview2.querySelector('.js_ageValue');
-  const breedValueInPreview = fillPreview2.querySelector('.js_breedValue');
-  const weightValueInPreview = fillPreview2.querySelector('.js_weightValue');
-  const descriptionValueInPreview = fillPreview2.querySelector(
-    '.js_descriptionValue',
-  );
-  const facebookValueInPreview =
-    fillPreview2.querySelector('.js_facebookValue');
+// SECCION DE PREVIEW
+// Todo el código vuelve a estar dentro de la función. Se modifica el orden.
+function renderPreview() {
   const nameValueInPreview = finalPreview.querySelector('.js_nameValue');
   const ageValueInPreview = finalPreview.querySelector('.js_ageValue');
   const breedValueInPreview = finalPreview.querySelector('.js_breedValue');
@@ -189,25 +161,29 @@ function renderPreview(target, data) {
     const age = Number(fillData.age);
     const ageSpan = document.createElement('span');
     ageSpan.textContent = `${age} ${age === 1 ? 'año' : 'años'}`;
-    const ageSpan = document.createElement('span');
-    ageSpan.textContent = `${age}`;
     ageValueInPreview.appendChild(ageSpan);
   }
 
-  breedValueInPreview.innerHTML = `<i class="fa-solid fa-paw"></i> ${fillData.breed.trim() || 'Raza'}`;
-  weightValueInPreview.innerHTML = `<i class="fa-solid fa-weight-hanging"></i> ${fillData.weight ? `${fillData.weight} kg` : 'Peso'}`;
+  breedValueInPreview.innerHTML = `<i class="fa-solid fa-paw"></i> ${
+    fillData.breed.trim() || 'Raza'
+  }`;
+
+  weightValueInPreview.innerHTML = `<i class="fa-solid fa-weight-hanging"></i> ${
+    fillData.weight ? `${fillData.weight} kg` : 'Peso'
+  }`;
+
   descriptionValueInPreview.textContent =
     fillData.description.trim() || 'Descripción';
-  facebookValueInPreview.textContent = `${
-    fillData.facebook.trim() ? fillData.facebook.trim() : '#'
-  }`;
+
+  facebookValueInPreview.textContent = fillData.facebook.trim() || '#';
+  facebookValueInPreview.href = fillData.facebook.trim() || '#';
+
   if (fillData.photo) {
     profileImage.style.backgroundImage = `url(${fillData.photo})`;
   }
 }
 
 /*LOCAL STORAGE*/
-
 // Función para guardar el objeto completo en localStorage
 //Falta imagen
 function saveFillDataInLocalStorage() {
@@ -222,25 +198,21 @@ function loadFillDataFromLocalStorage() {
 
   if (savedFillData) {
     fillData = JSON.parse(savedFillData);
-    // Rellenamos inputs: al recargar, el formulario conserva los datos
 
-    /* pone en el input "nameInput" el valor de "fillData.name"
-    si no existe, pone un string vacío */
     nameInput.value = fillData.name || '';
     descriptionInput.value = fillData.description || '';
     ageInput.value = fillData.age || '';
     breedInput.value = fillData.breed || '';
     weightInput.value = fillData.weight || '';
     facebookInput.value = fillData.facebook || '';
-    nameInput.value = fillData.name || '';
-    descriptionInput.value = fillData.description || '';
-    ageInput.value = fillData.age || '';
-    breedInput.value = fillData.breed || '';
-    weightInput.value = fillData.weight || '';
-    facebookInput.value = fillData.facebook || '';
-    imgValue.value = fillData.photo || '';
+
+    if (fillData.photo) {
+      profileImage.style.backgroundImage = `url(${fillData.photo})`;
+    }
   }
 }
+
+/*FORMULARIO*/
 // Función para actualizar el objeto fillData cuando la usuaria escribe
 function handleInputFill(ev) {
   const changedInput = ev.target; //donde ocurre el evento
@@ -251,26 +223,22 @@ function handleInputFill(ev) {
   console.log('fillData actualizado:', fillData[inputName]);
 
   saveFillDataInLocalStorage();
-  renderPreview(fillPreview2, fillData);
-  renderPreview(finalPreview, fillData);
-  //hay que especificarle a renderPreview donde "pintar" y con que datos
+  renderPreview();
   validateForm();
   toggleResetButton();
 }
 
 // Función para decir que el formulario está completo solo si todos los campos tienen algo escrito
 function isFormComplete() {
-  const result =
+  return (
     fillData.name.trim() !== '' &&
     fillData.description.trim() !== '' &&
     fillData.age !== '' &&
     fillData.breed.trim() !== '' &&
     fillData.weight !== '' &&
-    fillData.facebook.trim() !== '';
-
+    fillData.facebook.trim() !== ''
+  );
   console.log('¿Formulario completo?', result);
-
-  return result;
 }
 
 // Función para comprobar si hay al menos algún dato escrito
@@ -281,7 +249,8 @@ function hasAnyData() {
     fillData.age !== '' ||
     fillData.breed.trim() !== '' ||
     fillData.weight !== '' ||
-    fillData.facebook.trim() !== ''
+    fillData.facebook.trim() !== '' ||
+    fillData.photo !== ''
   );
 }
 
@@ -302,7 +271,6 @@ function toggleResetButton() {
 // Función para resetear formulario, objeto, localStorage y preview
 function handleClickReset() {
   console.log('Click en borrar resultados');
-  // Vaciamos el objeto
   fillData = {
     name: '',
     description: '',
@@ -310,61 +278,165 @@ function handleClickReset() {
     breed: '',
     weight: '',
     facebook: '',
-    palette: '',
-    name: '',
-    description: '',
-    age: '',
-    breed: '',
-    weight: '',
-    facebook: '',
+    palette: '0',
+    photo: '',
   };
+
   // Reseteamos visualmente el formulario
   //
   fillForm.reset();
   // Borramos el localStorage
   localStorage.removeItem('fillData');
-  // Volvemos a pintar el preview con textos por defecto
+
+  resetImage();
+  renderDefault();
   renderPreview();
-  // Revalidamos los botones
+
   validateForm();
   toggleResetButton();
-
-  console.log('Después de reset:', fillData);
-  resetImage();
-
-  console.log('Después de reset:', fillData);
 }
+
+// Se guarda la foto al cargarla y resetea el fondo.
 function resetImage() {
-  function resetImage() {
-    profileImage.style.backgroundImage = '';
-    fillData.photo = '';
-    localStorage.setItem('fillData', JSON.stringify(fillData));
-  }
+  profileImage.style.backgroundImage = '';
+  fillData.photo = '';
 }
+
 // Función del submit (evita el envío real y lo deja preparado para el siguiente paso)
+// Submit valida y pasa a sección de compartir
+// El fetch se hace al pulsar el botón de crear tarjeta
 function handleSubmitFillForm(ev) {
   ev.preventDefault();
+
   if (!isFormComplete()) {
     return;
   }
-  // Aquí faltaría por meter:
-  // guardar en un estado global
-  // pasar a la siguiente sección
-  // enviar los datos a la API
-  // navegar a compartir
-  console.log('Datos enviados:', fillData);
+
+  handleClickShareBtn();
+
+  shareResult.classList.add('hidden');
+  shareError.classList.add('hidden');
+
+  if (facebookShareBtn) {
+    facebookShareBtn.classList.add('hidden');
+  }
+}
+
+// SECCIÓN DE IMAGEN
+function writeImage() {
+  profileImage.style.backgroundImage = `url(${fr.result})`;
+  fillData.photo = fr.result;
+  saveFillDataInLocalStorage();
+  renderPreview();
+}
+
+function getImage(ev) {
+  const myFile = ev.currentTarget.files[0];
+  const MAX_SIZE = 2 * 1024 * 1024;
+
+  if (!myFile) {
+    return;
+  }
+
+  if (!myFile.type.startsWith('image/')) {
+    console.error('El archivo seleccionado no es una imagen válida.');
+    return;
+  }
+
+  if (myFile.size > MAX_SIZE) {
+    console.error('La imagen supera el tamaño máximo de 2MB.');
+    return;
+  }
+
+  fr.addEventListener('load', writeImage);
+  fr.addEventListener('error', () => {
+    console.error('Error al leer la imagen');
+  });
+  fr.readAsDataURL(myFile);
+}
+
+// SECCION DE COMPARTIR
+// Se genera el enlace para compartir en Facebook
+function renderFacebookShare(cardURL) {
+  if (!facebookShareBtn || !cardURL) {
+    return;
+  }
+
+  const facebookShareURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+    cardURL,
+  )}`;
+
+  facebookShareBtn.href = facebookShareURL;
+  facebookShareBtn.target = '_blank';
+  facebookShareBtn.rel = 'noopener noreferrer';
+  facebookShareBtn.classList.remove('hidden');
+}
+
+function handleCreateCard(ev) {
+  ev.preventDefault();
+
+  const objToSend = {
+    field1: fillData.palette,
+    field2: fillData.name,
+    field3: fillData.age,
+    field4: fillData.breed,
+    field5: fillData.weight,
+    field6: fillData.description,
+    field7: fillData.facebook,
+    photo: fillData.photo,
+  };
+
+  shareResult.classList.add('hidden');
+  shareError.classList.add('hidden');
+
+  if (facebookShareBtn) {
+    facebookShareBtn.classList.add('hidden');
+  }
+
+  fetch('https://api-pw.dev.adalab.es/api/info/data', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(objToSend),
+  }).then((response) => response.json());
+
+  if (response.success === true && response.cardURL) {
+    shareResult.classList.remove('hidden');
+
+    shareLink.href = response.cardURL;
+    shareLink.textContent = response.cardURL;
+
+    renderFacebookShare(response.cardURL);
+  } else {
+    shareError.classList.remove('hidden');
+  }
 }
 
 /*SECCIÓN DE FUNCIONES DE EVENTOS*/
 // Escuchamos a todos los inputs del formulario
+if (burgerMenuBtn) {
+  burgerMenuBtn.addEventListener('click', handleClickMenuBurger);
+}
+
+if (tabDesignBtn) {
+  tabDesignBtn.addEventListener('click', handleClickDesignBtn);
+}
+
+if (tabFillBtn) {
+  tabFillBtn.addEventListener('click', handleClickFillBtn);
+}
+
+if (tabShareBtn) {
+  tabShareBtn.addEventListener('click', handleClickShareBtn);
+}
 
 if (fillForm && finalPreview) {
   for (const input of fillInputs) {
     input.addEventListener('input', handleInputFill);
   }
-  // Botón para borrar los resultados
-  resetButton.addEventListener('click', handleClickReset);
 
+  // Botón para borrar los resultados
   resetButton.addEventListener('click', handleClickReset);
   // Submit del form
   fillForm.addEventListener('submit', handleSubmitFillForm);
@@ -379,79 +451,19 @@ if (fillForm && finalPreview) {
   // Ajustar el estado inicial de los botones
   validateForm();
   toggleResetButton();
-}
 
-function writeImage() {
-  profileImage.style.backgroundImage = `url(${fr.result})`;
-  fillData.photo = fr.result;
-  /* 
-  En la propiedad `result` de nuestro FR se almacena
-  el resultado. Ese resultado de procesar el fichero que hemos cargado
-  podemos pasarlo como background a la imagen de perfil y a la vista previa
-  de nuestro componente.
-  Si en lugar de establecer la imagen como fondo de un elemento, 
-  estás trabajando con una etiqueta <img> en el HTML, entonces en vez de 
-  asignar la imagen como background, debes establecer la URL en el atributo `src` de la imagen.
-  Para ello, reemplaza las dos líneas anteriores de código por las siguientes:
+  if (createBtn) {
+    createBtn.addEventListener('click', handleCreateCard);
+  }
 
-  profileImage.src = fr.result;
-  profilePreview.src = fr.result;
+  if (fileField) {
+    fileField.addEventListener('change', getImage);
+  }
 
-  Una vez tenemos los datos listos en el FR podemos trabajar con ellos ;)
- */
-}
-/*
- Recoge el archivo añadido al campo de tipo "file" y lo carga en nuestro objeto FileReader para que lo convierta a algo con lo que podamos trabajar.
- Añade un listener al FR para que ejecute una función al tener los datos listos
- @param {evento} e
- */
-function getImage(e) {
-  const myFile = e.currentTarget.files[0];
-  fr.addEventListener('load', writeImage);
-  fr.readAsDataURL(myFile);
-}
+  /*AL CARGAR*/
+  renderDefault();
 
-function handleCreateCard(ev) {
-  ev.preventDefault();
-  const objToSend = {
-    field1: fillData.palette,
-    field2: fillData.name,
-    field3: fillData.age,
-    field4: fillData.breed,
-    field5: fillData.weight,
-    field6: fillData.description,
-    field7: fillData.facebook,
-    photo: fillData.photo,
-  };
-  shareResult.classList.add('hidden');
-  shareError.classList.add('hidden');
-  console.log(objToSend);
-  fetch('https://api-pw.dev.adalab.es/api/info/data', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(objToSend),
-  })
-    .then((response) => response.json())
-    .then((response) => {
-      if (response.success === true) {
-        shareResult.classList.remove('hidden');
-      } else {
-        shareError.classList.remove('hidden');
-      }
-    });
-}
-
-/*SECCCIÓN .ADDEVENTLISTENER */
-tabDesignBtn.addEventListener('click', handleClickDesignBtn);
-tabFillBtn.addEventListener('click', handleClickFillBtn);
-tabShareBtn.addEventListener('click', handleClickShareBtn);
-createBtn.addEventListener('click', handleCreateCard);
-fileField.addEventListener('change', getImage); //campo oculto para cuando cambie su value
-
-//Al recargar
-renderDefault();
-if (fillData.photo) {
-  profileImage.style.backgroundImage = `url(${fillData.photo})`;
+  if (fillData.photo) {
+    profileImage.style.backgroundImage = `url(${fillData.photo})`;
+  }
 }

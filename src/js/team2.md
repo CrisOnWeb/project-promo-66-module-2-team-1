@@ -27,24 +27,11 @@
 - Inputs solo funcionan en 1ª preview
 - No tenemos nombre del proyecto : Refugio ADALAB
 - cambiar facebook por FACEBOOK
-  <<<<<<< HEAD
-  =======
-- Subir imagen y que cargue en la tarjeta
-- enviar los datos a la API
-  > > > > > > > 6d93329451381c7495749f5b519e427f5c680b64
-- Centrar el enlace de Facebook tomando de medida el contenedor de descripcición (tanto en preview como en rellena).
-- Cambiar el color al enlace de Facebook dado que si se escoge el el tercer estilo, se ve oscuro.
-- Alinear el input de "raza" con respecto al de "edad".
-- La raya que separa raza/peso que esté centrada y proporcionada en la preview de "rellena".
-- El botón de reset colocarlo debajo de "todos los cambios son obligatorios" y que sea más pequeño con respecto al botón de "guardar y seguir".
-- Poner "Completa la información " debajo de "Datos del animal" y cambiar estilo. Se trata de intercambiar posiciones.
-- ¿El footer no se ve demasiado grande en móvil?
-- ¿Añadir texto/botón de "pulsa en la tarjeta para volver a default"?
-- ¿y si tiene 1 año?
-- ¿Debería aparecer en la tarjeta ese enlace?
-- Imagen no está en LS
-- Falta imagen en :
-  handleInputFill
-  saveFillDataInLocalStorage
-  loadFillDataFromLocalStorage
-- En la página de share: Mensaje de error aparece aunque no de error
+
+- Hay const duplicados y el archivo no arranca.Hay redeclaraciones así que se quitan los repetidos de los bloques.
+- Corregido renderPreview() porque redeclaraba variables. Se correige para que use solo finalPreview y no un nodo inexistente.
+- La imagen no se persiste bien ni se limpia en fillData. Añadiendo photo: '', guarda la foto al cargarla y resetea el fondo.
+- El handleSubmitFillForm() está incompleto. Ahora solo valida; falta pasar a compartir (HACER).
+- Revisado el .hidden y funciona. Se aplica mejora que ahora si falla la red, no se muestra nada.
+- Enlace a Facebook creado.
+- Añadidos required.

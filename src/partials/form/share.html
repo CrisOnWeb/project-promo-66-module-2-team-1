@@ -2,17 +2,34 @@
   <h2 class="share__title">Comparte</h2>
 
   <div class="share__container">
-    <button class="share__create__btn js_createBtn" type="button">✨ Crear tarjeta</button>
+    <button class="share__create__btn js_createBtn" type="button">
+      ✨ Crear tarjeta
+    </button>
 
     <div class="share__result hidden js_shareResult">
       <p class="share__result__title">La tarjeta ha sido creada:</p>
 
-      <a href="#" target="_blank" class="share__link">
-        https://tarjeragenerada
+      <a
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="share__link js_shareLink"
+      >
+        Enlace de la tarjeta generada
       </a>
 
-      <button class="share__facebook__btn ">📸 Compartir en Instagram</button>
+      <a
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="share__facebook__btn js_facebookShareBtn hidden"
+      >
+        Compartir en Facebook
+      </a>
     </div>
-    <p class="hidden js_shareError">Lo sentimos, ha surgido un error. Inténtelo de nuevo más tarde.</p>
+
+    <p class="hidden js_shareError">
+      Lo sentimos, ha surgido un error. Inténtalo de nuevo más tarde.
+    </p>
   </div>
 </section>
