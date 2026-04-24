@@ -34,7 +34,7 @@ const breedValue = document.querySelector(".js_breedValue");
 const weightValue = document.querySelector(".js_weightValue");
 const descriptionValue = document.querySelector(".js_descriptionValue");
 const facebookValue = document.querySelector(".js_facebookValue");
-const previewCard = document.querySelector(".js_previewCard");
+const imgValue = document.querySelector(".js_imgValue");
 /*CQS SHARE*/
 const shareSection = document.querySelector(".js_shareSection");
 
@@ -48,20 +48,20 @@ const tabFillBtn = document.querySelector(".js_tabFillBtn");
 const tabShareBtn = document.querySelector(".js_tabShareBtn");
 
 /*SECCIÓN DE DATOS*/
+
 //Obj que guarda la info que la usuaria escribe en fill
 let fillData = {
-  palette: "0",
+  palette: "",
   name: "",
   description: "",
   age: "",
   breed: "",
   weight: "",
   facebook: "",
+  photo : "",
 };
-//addEvent
+//Obj que enviamos en fetch()
 const fr = new FileReader();
-
-/*SECCIÓN DE FUNCIONES*/
 
 //Eventos que muestran/ocultan las secciones de la página create
 const handleClickDesignBtn = () => {
@@ -82,7 +82,9 @@ const handleClickShareBtn = () => {
   designSection.classList.add("hidden");
 };
 
-//Sección Cambiar Diseño
+/*SECCIÓN DE FUNCIONES*/
+
+//CAMBIO DE DISEÑO
 for (const option of options) {
   option.addEventListener("click", () => {
     const value = option.dataset.value;
@@ -90,7 +92,6 @@ for (const option of options) {
     renderDesign(value);
   });
 }
-
 function renderDesign(value) {
   const option = document.querySelector(`[data-value="${value}"]`);
   const theme = option.id;
@@ -101,22 +102,19 @@ function renderDesign(value) {
     element.classList.add(theme);
   }
 }
-
 //Permite al usuario volver a default
 const backToDefault = document.querySelector(".preview");
 backToDefault.addEventListener("click", () => {
   renderDefault();
 });
-
 function renderDefault() {
   const cardElements = document.querySelectorAll(".preview > div");
+  fillData.palette = "0"
   for (const element of cardElements) {
     element.classList.remove("palette0", "palette1", "palette2", "palette3");
     element.classList.add("palette0");
   }
 }
-
-renderDefault();
 
 // Función para pintar los datos en la preview
 function renderPreview(target, data) {
@@ -150,11 +148,11 @@ function renderPreview(target, data) {
   facebookValueInPreview.textContent = `${
     fillData.facebook.trim() ? fillData.facebook.trim() : "#"
   }`;
-  //facebookValue2.href = fillData.facebook.trim() || "#";
-  // enlace FB: sin espacios por trim() o # como placeholder
 }
+/*LOCAL STORAGE*/
 
 // Función para guardar el objeto completo en localStorage
+//Falta imagen
 function saveFillDataInLocalStorage() {
   localStorage.setItem("fillData", JSON.stringify(fillData));
   console.log("guardando datos en LS");
@@ -165,9 +163,7 @@ function loadFillDataFromLocalStorage() {
 
   if (savedFillData) {
     fillData = JSON.parse(savedFillData);
-
     // Rellenamos inputs: al recargar, el formulario conserva los datos
-
     /* pone en el input "nameInput" el valor de "fillData.name"
     si no existe, pone un string vacío */
     nameInput.value = fillData.name || "";
@@ -176,6 +172,7 @@ function loadFillDataFromLocalStorage() {
     breedInput.value = fillData.breed || "";
     weightInput.value = fillData.weight || "";
     facebookInput.value = fillData.facebook || "";
+    imgValue.value = fillData.photo || "";
   }
 }
 // Función para actualizar el objeto fillData cuando la usuaria escribe
@@ -194,7 +191,7 @@ function handleInputFill(ev) {
   toggleResetButton();
 }
 
-// Función para decir que el formulario está completo solo si todos los campos tienen algo escrito de verdad
+// Función para decir que el formulario está completo solo si todos los campos tienen algo escrito
 function isFormComplete() {
   const result =
     fillData.name.trim() !== "" &&
@@ -240,6 +237,7 @@ function handleClickReset() {
   console.log("Click en borrar resultados");
   // Vaciamos el objeto
   fillData = {
+    palette: "",
     name: "",
     description: "",
     age: "",
@@ -250,13 +248,10 @@ function handleClickReset() {
 
   // Reseteamos visualmente el formulario
   fillForm.reset();
-
   // Borramos el localStorage
   localStorage.removeItem("fillData");
-
   // Volvemos a pintar el preview con textos por defecto
   renderPreview();
-
   // Revalidamos los botones
   validateForm();
   toggleResetButton();
@@ -285,10 +280,8 @@ if (fillForm && finalPreview) {
   for (const input of fillInputs) {
     input.addEventListener("input", handleInputFill);
   }
-
   // Botón para borrar los resultados
   resetButton.addEventListener("click", handleClickReset);
-
   // Submit del form
   fillForm.addEventListener("submit", handleSubmitFillForm);
 
@@ -303,52 +296,38 @@ if (fillForm && finalPreview) {
   validateForm();
   toggleResetButton();
 }
-tabDesignBtn.addEventListener("click", handleClickDesignBtn);
-tabFillBtn.addEventListener("click", handleClickFillBtn);
-tabShareBtn.addEventListener("click", handleClickShareBtn);
-/**
- * Añadimos los listeners necesarios:
- * - al botón visible para generar el click automático
- * - al campo oculto para cuando cambie su value
- */
-fileField.addEventListener("change", getImage);
 
-/*
- * Una vez tenemos los datos listos en el FR podemos
- * trabajar con ellos ;)
- */
 function writeImage() {
-  /* En la propiedad `result` de nuestro FR se almacena
-   * el resultado. Ese resultado de procesar el fichero que hemos cargado
-   * podemos pasarlo como background a la imagen de perfil y a la vista previa
-   * de nuestro componente.
-   */
   profileImage.style.backgroundImage = `url(${fr.result})`;
   fillData.photo = fr.result;
-  //profilePreview.style.backgroundImage = `url(${fr.result})`;
+  /* 
+  En la propiedad `result` de nuestro FR se almacena
+  el resultado. Ese resultado de procesar el fichero que hemos cargado
+  podemos pasarlo como background a la imagen de perfil y a la vista previa
+  de nuestro componente.
+  Si en lugar de establecer la imagen como fondo de un elemento, 
+  estás trabajando con una etiqueta <img> en el HTML, entonces en vez de 
+  asignar la imagen como background, debes establecer la URL en el atributo `src` de la imagen.
+  Para ello, reemplaza las dos líneas anteriores de código por las siguientes:
 
-  /* Si en lugar de establecer la imagen como fondo de un elemento, 
-      estás trabajando con una etiqueta <img> en el HTML, entonces en vez de 
-      asignar la imagen como background, debes establecer la URL en el atributo `src` de la imagen.
-      Para ello, reemplaza las dos líneas anteriores de código por las siguientes:
-    
-      profileImage.src = fr.result;
-      profilePreview.src = fr.result;
-    */
+  profileImage.src = fr.result;
+  profilePreview.src = fr.result;
+
+  Una vez tenemos los datos listos en el FR podemos trabajar con ellos ;)
+ */
+  
 }
-/**
- * Recoge el archivo añadido al campo de tipo "file"
- * y lo carga en nuestro objeto FileReader para que
- * lo convierta a algo con lo que podamos trabajar.
- * Añade un listener al FR para que ejecute una función
- * al tener los datos listos
- * @param {evento} e
+/*
+ Recoge el archivo añadido al campo de tipo "file" y lo carga en nuestro objeto FileReader para que lo convierta a algo con lo que podamos trabajar.
+ Añade un listener al FR para que ejecute una función al tener los datos listos
+ @param {evento} e
  */
 function getImage(e) {
   const myFile = e.currentTarget.files[0];
   fr.addEventListener("load", writeImage);
   fr.readAsDataURL(myFile);
 }
+
 function handleCreateCard(ev){
   ev.preventDefault();
   const objToSend = {
@@ -375,10 +354,17 @@ function handleCreateCard(ev){
           shareResult.classList.remove("hidden");
         }else{
           const shareError = document.querySelector('.js_shareError')
-          shareError.classList.remove("hidden");
+          shareError.classList.remove("hidden"); //???
         }
       });
 }
 
-
+/*SECCCIÓN .ADDEVENTLISTENER */
+tabDesignBtn.addEventListener("click", handleClickDesignBtn);
+tabFillBtn.addEventListener("click", handleClickFillBtn);
+tabShareBtn.addEventListener("click", handleClickShareBtn);
 createBtn.addEventListener('click', handleCreateCard);
+fileField.addEventListener("change", getImage); //campo oculto para cuando cambie su value
+
+//Al recargar
+renderDefault();

@@ -2,6 +2,7 @@
 ## Cosas pendientes para HOY O NUNCA
 - ¿El footer no se ve demasiado grande en móvil?
 - ¿Tal vez hay que poner menos info o más pequeña?
+- Meter required!!!
 
 - function handleSubmitFillForm(ev){}:
   faltaría por meter:
@@ -11,6 +12,11 @@
 
 - Imagen no está en LS
 - Limitación imagen a 20KB (40KB envía, pero iván dijo 20KB)
+- Falta imagen en :
+  handleInputFill
+  saveFillDataInLocalStorage
+  loadFillDataFromLocalStorage
+
 - En la página de Share:
   Link "tarjeta generada"? Lleva de nuevo al principio
   Link "compartir en Instagram" - Cambiar a FB y que comparta
