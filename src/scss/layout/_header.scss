@@ -38,8 +38,11 @@
     }
   }
 
-  &__menu-simbolo {
+  &__menu-hamb {
+    border: none;
+    background-color: transparent;
     font-size: 20px;
+    cursor: pointer;
 
     @media (width > 768px) {
       display: none;
@@ -65,11 +68,14 @@
 
   &__link {
     padding-block: 0.15rem;
-    padding-inline: 0.25rem;
+    padding-inline: 0.35rem;
     text-decoration-line: none;
     color: var(--color-bg-secondary);
     font-weight: 600;
     text-transform: uppercase;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
 
     &:hover {
       color: var(--color-bg-primary);
