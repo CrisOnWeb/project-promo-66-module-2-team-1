@@ -328,18 +328,30 @@ const handleClickDesignBtn = () => {
   designSection.classList.remove('hidden');
   fillSection.classList.add('hidden');
   shareSection.classList.add('hidden');
+
+  tabDesignBtn.classList.add('active');
+  tabFillBtn.classList.remove('active');
+  tabShareBtn.classList.remove('active');
 };
 
 const handleClickFillBtn = () => {
   fillSection.classList.remove('hidden');
   shareSection.classList.add('hidden');
   designSection.classList.add('hidden');
+
+  tabFillBtn.classList.add('active');
+  tabShareBtn.classList.remove('active');
+  tabDesignBtn.classList.remove('active');
 };
 
 const handleClickShareBtn = () => {
   shareSection.classList.remove('hidden');
   fillSection.classList.add('hidden');
   designSection.classList.add('hidden');
+
+  tabShareBtn.classList.add('active');
+  tabFillBtn.classList.remove('active');
+  tabDesignBtn.classList.remove('active');
 };
 
 function handleCreateCard(ev) {
