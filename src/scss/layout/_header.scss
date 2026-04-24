@@ -1,41 +1,79 @@
 .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 20px;
-      border-bottom: 2px solid var(--color-bg-secondary);
-      padding: 20px;
-      background-color: var(--color-fill-surface);
-    }
-.logo{
-    font-size: 16px;
-    color: var(--color-bg-secondary);
-}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 2px solid var(--color-bg-secondary);
+  padding: 20px;
+  background-color: var(--color-fill-surface);
 
-.menu-simbolo{
-    display: none;
-    font-size: 20px;
-}
+  @media (width > 768px) {
+    padding-inline: 2rem;
+  }
 
-.menu{
+  @media (width > 1228px) {
+    justify-content: space-around;
+  }
+
+  &__name {
     display: flex;
-    gap: 20px;
-}
+    align-items: center;
+    gap: 0.5rem;
+  }
 
-  @media (max-width: 768px) {
-      .menu-simbolo {
-        display: block;
-      }
-      nav.menu {
-        display: none;
-        flex-direction: column;
-        background-color: var(--color-bg-secondary);
-        color: var(--color-bg-secondary);
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 200px;
-        padding: 10px;
-      }
+  &__logo {
+    width: 36px;
+
+    @media (width > 768px) {
+      width: 40px;
     }
+  }
 
+  &__title {
+    font-size: 1rem;
+    color: var(--color-bg-secondary);
+
+    @media (width > 768px) {
+      font-size: 1.15rem;
+    }
+  }
+
+  &__menu-simbolo {
+    font-size: 20px;
+
+    @media (width > 768px) {
+      display: none;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: start;
+    gap: 20px;
+  }
+
+  &__menu {
+    display: none;
+
+    color: var(--color-bg-secondary);
+    padding: 10px;
+
+    @media (width > 768px) {
+      display: inline-flex;
+    }
+  }
+
+  &__link {
+    padding-block: 0.15rem;
+    padding-inline: 0.25rem;
+    text-decoration-line: none;
+    color: var(--color-bg-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+
+    &:hover {
+      color: var(--color-bg-primary);
+      background-color: var(--color-bg-secondary);
+    }
+  }
+}
