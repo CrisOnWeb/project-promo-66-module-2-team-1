@@ -88,8 +88,6 @@ const handleClickMenuBurger = () => {
   headerMenu.classList.toggle('is-open');
 };
 
-burgerMenuBtn.addEventListener('click', handleClickMenuBurger);
-
 // SECCIÓN DE DISEÑO
 for (const option of options) {
   option.addEventListener('click', () => {
@@ -374,6 +372,7 @@ function renderFacebookShare(cardURL) {
 
 function handleCreateCard(ev) {
   ev.preventDefault();
+  console.log('handleCreateCard ejecutada');
 
   const objToSend = {
     field1: fillData.palette,
@@ -399,18 +398,24 @@ function handleCreateCard(ev) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(objToSend),
-  }).then((response) => response.json());
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      if (response.success === true) {
+        shareResult.classList.remove('hidden');
 
-  if (response.success === true && response.cardURL) {
-    shareResult.classList.remove('hidden');
-
-    shareLink.href = response.cardURL;
-    shareLink.textContent = response.cardURL;
-
-    renderFacebookShare(response.cardURL);
-  } else {
-    shareError.classList.remove('hidden');
-  }
+        if (response.cardURL) {
+          shareLink.href = response.cardURL;
+          shareLink.textContent = response.cardURL;
+          renderFacebookShare(response.cardURL);
+        }
+      } else {
+        shareError.classList.remove('hidden');
+      }
+    })
+    .catch(() => {
+      shareError.classList.remove('hidden');
+    });
 }
 
 /*SECCIÓN DE FUNCIONES DE EVENTOS*/
