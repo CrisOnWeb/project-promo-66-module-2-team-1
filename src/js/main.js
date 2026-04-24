@@ -46,10 +46,6 @@ const tabDesignBtn = document.querySelector('.js_tabDesignBtn');
 const tabFillBtn = document.querySelector('.js_tabFillBtn');
 const tabShareBtn = document.querySelector('.js_tabShareBtn');
 
-/* CQS HEADER */
-const burgerMenuBtn = document.querySelector('.js_burgerMenuBtn');
-const headerMenu = document.querySelector('.js_headerMenu');
-
 /*SECCIÓN DE DATOS*/
 //Obj que guarda la info que la usuaria escribe en fill
 let fillData = {
@@ -358,10 +354,6 @@ const handleClickShareBtn = () => {
   tabDesignBtn.classList.remove('active');
 };
 
-const handleClickMenuBurger = () => {
-  headerMenu.classList.toggle('is-open');
-};
-
 function handleCreateCard(ev) {
   console.log('???');
   ev.preventDefault();
@@ -404,4 +396,3 @@ tabShareBtn.addEventListener('click', handleClickShareBtn);
  * - al campo oculto para cuando cambie su value
  */
 fileField.addEventListener('change', getImage);
-burgerMenuBtn.addEventListener('click', handleClickMenuBurger);
