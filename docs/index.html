@@ -3,23 +3,126 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Título</title>
+    <title>Refugio Adalab</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="/images/favicon.png" />
+    <link rel="icon" href="./imgs/favicon.ico" />
     <script
       src="https://kit.fontawesome.com/66349fc88a.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" crossorigin href="./assets/main-D8vTn9pk.css">
+    <link rel="stylesheet" crossorigin href="./assets/main-gbZcMZer.css">
   </head>
 
   <body>
-    Escribe aquí tu contenido
-    <a href="./create.html">Comenzar</a>
+    <header class="header">
+  <div class="header__name">
+    <img
+      class="header__logo"
+      src="./imgs/logo.png"
+      alt="Logo de Refugio Adalab"
+    />
+    <h1 class="header__title">REFUGIO ADALAB</h1>
+  </div>
+  <button class="header__menu-hamb js_burgerMenuBtn" aria-label="Botón de menú">
+    ☰
+  </button>
+  <nav class="header__menu js_headerMenu">
+    <a class="header__link" href="./index.html">Inicio</a>
+    <a class="header__link" href="./create.html">Diseña</a>
+    <a class="header__link" href="#">Sobre nosotras</a>
+  </nav>
+</header>
+
+    <main class="main page">
+      <section class="card">
+        <div class="card__inner">
+          <h2 class="card__title">Encuentra a quien te cambiará la vida</h2>
+          <p class="card__text">
+            Cientos de peluditos están esperando una segunda oportunidad.
+          </p>
+          <p class="card__text">
+            Adopta, acoge o confíanos a tu mascota cuando lo necesites.
+          </p>
+          <a class="card__link" href="./create.html">Empieza ahora</a>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+  <p class="footer__copy">
+    &copy; 2026 Proyecto <strong>Refugio Adalab</strong>.
+  </p>
+  <ul class="footer__list">
+    <li class="footer__item">
+      <a
+        class="footer__link"
+        href="https://github.com/CrisOnWeb"
+        target="_blank"
+        rel="noopener"
+        >Cris - <strong>@CrisOnWeb</strong></a
+      >
+    </li>
+    <li class="footer__item">
+      <a
+        class="footer__link"
+        href="https://github.com/eesser98"
+        target="_blank"
+        rel="noopener"
+        >Emma - <strong>@eesser98</strong></a
+      >
+    </li>
+    <li class="footer__item">
+      <a
+        class="footer__link"
+        href="https://github.com/letivsan"
+        target="_blank"
+        rel="noopener"
+        >Leti - <strong>@letivsan</strong></a
+      >
+    </li>
+    <li class="footer__item">
+      <a
+        class="footer__link"
+        href="https://github.com/Mari2navarro"
+        target="_blank"
+        rel="noopener"
+        >Mari - <strong>@Mari2navarro</strong></a
+      >
+    </li>
+    <li class="footer__item">
+      <a
+        class="footer__link"
+        href="https://github.com/Susana-Gl"
+        target="_blank"
+        rel="noopener"
+        >Susana - <strong>@Susana-Gl</strong></a
+      >
+    </li>
+    <li class="footer__item">
+      <a
+        class="footer__link"
+        href="https://github.com/idontwanttobeanurseanymore"
+        target="_blank"
+        rel="noopener"
+        >Marta - <strong>@idontwanttobeanurseanymore</strong></a
+      >
+    </li>
+  </ul>
+  <a
+    class="footer__link--project"
+    href="https://github.com/CrisOnWeb/project-promo-66-module-2-team-1"
+    target="_blank"
+    rel="noopener"
+    ><i class="fa-brands fa-github footer__icon--gh"></i
+    ><span class="footer__project">Ver en <strong>GitHub</strong></span></a
+  >
+</footer>
+
+
+    <script src="./js/header.js"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 /*SECCIÓN DE QUERY SELECTORS*/
 
 /*CQS FORM*/
@@ -19,11 +19,11 @@ const weightInput = document.querySelector("#weight");
 const facebookInput = document.querySelector("#facebook");
 
 /*CQS DESIGN*/
-const selected = document.querySelector(".js_selectedDesign");
-const optionsBox = document.querySelector(".js_optionsDesign");
-const options = document.querySelectorAll(".js_option");
-const defaultOption = document.querySelector(".js_designDefault");
-const hiddenInput = document.querySelector(".js_hiddenDesign");
+const selected = document.querySelector('.js_selectedDesign');
+const optionsBox = document.querySelector('.js_optionsDesign');
+const options = document.querySelectorAll('.js_option');
+const defaultOption = document.querySelector('.js_designDefault');
+const hiddenInput = document.querySelector('.js_hiddenDesign');
 
 /*CQS PREVIEW*/
 const fillPreview = document.querySelectorAll(".js_fillPreview");
@@ -46,6 +46,10 @@ const profileImage = document.querySelector(".js__profile-image");
 const tabDesignBtn = document.querySelector(".js_tabDesignBtn");
 const tabFillBtn = document.querySelector(".js_tabFillBtn");
 const tabShareBtn = document.querySelector(".js_tabShareBtn");
+
+/* CQS HEADER */
+const burgerMenuBtn = document.querySelector('.js_burgerMenuBtn');
+const headerMenu = document.querySelector('.js_headerMenu');
 
 /*SECCIÓN DE DATOS*/
 
@@ -81,6 +85,12 @@ const handleClickShareBtn = () => {
   fillSection.classList.add("hidden");
   designSection.classList.add("hidden");
 };
+
+const handleClickMenuBurger = () => {
+  headerMenu.classList.toggle('is-open');
+};
+
+burgerMenuBtn.addEventListener('click', handleClickMenuBurger);
 
 /*SECCIÓN DE FUNCIONES*/
 
@@ -382,3 +392,4 @@ renderDefault();
 if (fillData.photo) {
   profileImage.style.backgroundImage = `url(${fillData.photo})`;
 }
+fr

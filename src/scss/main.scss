@@ -1,15 +1,12 @@
 @use './common/reset';
 @use './common/variables';
-@use './common/mixins';
 @use './common/main';
+@use './layout/page';
 @use './layout/header';
 @use './layout/tab_buttons.scss';
 @use './layout/footer';
 @use './layout/preview';
-@use './layout/form';
 @use './layout/design';
 @use './layout/fill';
 @use './layout/share';
-@use './components/buttons';
-@use './components/inputs';
 @use './utilities/visibility';
