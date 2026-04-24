@@ -1,27 +1,16 @@
 
 ## Cosas pendientes para HOY O NUNCA
-- ¿El footer no se ve demasiado grande en móvil?
-- ¿Tal vez hay que poner menos info o más pequeña?
 - Meter required!!!
-
 - function handleSubmitFillForm(ev){}:
   faltaría por meter:
   // guardar en un estado global
   // pasar a la siguiente sección
   // navegar a compartir
-
-- Imagen no está en LS
+  
 - Limitación imagen a 20KB (40KB envía, pero iván dijo 20KB)
-- Falta imagen en :
-  handleInputFill
-  saveFillDataInLocalStorage
-  loadFillDataFromLocalStorage
-
 - En la página de Share:
   Link "tarjeta generada"? Lleva de nuevo al principio
   Link "compartir en Instagram" - Cambiar a FB y que comparta
-  Mensaje de error aparece aunque no de error
-
 
 ## SOLUCIONADO:
 - Los iconos desaparecen al escribir en el input
@@ -46,7 +35,13 @@
 - La raya que separa raza/peso que esté centrada y proporcionada en la preview de "rellena".
 - El botón de reset colocarlo debajo de "todos los cambios son obligatorios" y que sea más pequeño con respecto al botón de "guardar y seguir".
 - Poner "Completa la información " debajo de "Datos del animal" y cambiar estilo. Se trata de intercambiar posiciones.
-
+- ¿El footer no se ve demasiado grande en móvil?
 - ¿Añadir texto/botón de "pulsa en la tarjeta para volver a default"?
 - ¿y si tiene 1 año?
 - ¿Debería aparecer en la tarjeta ese enlace?
+- Imagen no está en LS
+- Falta imagen en :
+  handleInputFill
+  saveFillDataInLocalStorage
+  loadFillDataFromLocalStorage
+- En la página de share: Mensaje de error aparece aunque no de error
